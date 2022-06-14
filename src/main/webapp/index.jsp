@@ -24,7 +24,8 @@
     	</a>
     </div>
    <div class="item3">
-    	<button class="custom-btn btn-11">Login</button>
+    	<button class="custom-btn btn-11">Login</button><button onclick="location.href=
+    		'drink_Info_regController'">운영자전용 상품등록버튼</button>
    </div>
 </div>
   
@@ -34,8 +35,8 @@
 <div id="indexMenu">
         <ul>
             <li><a href="#">OUR COLLECTION</a></li>
-            <li><a href="#">COCKTAILS SALES</a></li>
-            <li><a href="#">GOODs SALES</a></li>
+           <li><a href="ShoppingController?name=Drink">COCKTAILS SALES</a></li>
+            <li><a href="ShoppingController?name=Goods">GOODs SALES</a></li>
             <li><a href="#">OUR SOCIAL</a>
                 <ul>
                     <li><a href="#">자유게시판</a></li>
