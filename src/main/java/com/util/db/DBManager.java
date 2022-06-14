@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class DBManager {
 	
-	//connect("¿Ã¥œº»");
+	//connect("jw");
 	public static Connection connnect(String who) throws SQLException, ClassNotFoundException
 	{
 		Class.forName("oracle.jdbc.driver.OracleDriver");
