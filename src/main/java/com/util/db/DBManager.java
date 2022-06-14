@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DBManager {
-	
+	//»Ï
 	//connect("jw");
 	public static Connection connnect(String who) throws SQLException, ClassNotFoundException
 	{
