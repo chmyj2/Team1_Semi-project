@@ -24,7 +24,7 @@
     	</a>
     </div>
    <div class="item3">
-    	<button class="custom-btn btn-11">Login</button><button onclick="location.href=
+    	<button class="custom-btn btn-11" onclick="location.href='LoginMainController'">Login</button><button onclick="location.href=
     		'drink_Info_regController'">운영자전용 상품등록버튼</button>
    </div>
 </div>
@@ -39,10 +39,10 @@
             <li><a href="ShoppingController?name=Goods">GOODs SALES</a></li>
             <li><a href="#">OUR SOCIAL</a>
                 <ul>
-                    <li><a href="#">자유게시판</a></li>
-                    <li><a href="#">레시피 게시판</a></li>
-                    <li><a href="#">후기 게시판</a></li>
-                    <li><a href="#">Q&A 게시판</a></li>
+                    <li><a href="boardCfree">자유게시판</a></li>
+                    <li><a href="boardCrecipe">레시피 게시판</a></li>
+                    <li><a href="boardCreview">후기 게시판</a></li>
+                    <li><a href="boardCqa">Q&A 게시판</a></li>
                 </ul>
             </li>
         </ul>
