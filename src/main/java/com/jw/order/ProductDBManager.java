@@ -11,7 +11,7 @@ import com.util.db.DBManager;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class ProductManager {
+public class ProductDBManager {
 
 	public static void getAll(HttpServletRequest request) {
 
@@ -26,7 +26,7 @@ public class ProductManager {
 			pstmt = con.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
-			
+
 			
 			
 			ArrayList<ProductBean> arrProduct = new ArrayList<ProductBean>();
@@ -37,27 +37,37 @@ public class ProductManager {
 				pb.setExp(rs.getString("Product_Exp"));
 				pb.setName(rs.getString("Product_Name"));
 				pb.setPrice(rs.getInt("Product_Price"));	
+
 				ArrayList<String> arrImg = new ArrayList<String>();
-				arrImg.add(rs.getString("Proudct_Img1"));
+				arrImg.add(rs.getString("Product_Img1"));
 				
-				if(!rs.getString("Proudct_Img2").equals(""))
+				
+				if(!(rs.getString("Product_Img2") == null))
 				{
-					arrImg.add(rs.getString("Proudct_Img2"));
+					arrImg.add(rs.getString("Product_Img2"));
 				}
-				if(!rs.getString("Proudct_Img3").equals(""))
+				if(!(rs.getString("Product_Img3") == null))
 				{
-					arrImg.add(rs.getString("Proudct_Img3"));
+					arrImg.add(rs.getString("Product_Img3"));
 				}
-				if(!rs.getString("Proudct_Img4").equals(""))
+				if(!(rs.getString("Product_Img4") == null))
 				{
-					arrImg.add(rs.getString("Proudct_Img4"));
+					arrImg.add(rs.getString("Product_Img4"));
 				}
 				pb.setImg(arrImg);
-				
+
 				ArrayList<String> arrTag = new ArrayList<String>();
 				String tempTag =  rs.getString("Product_Tag");
-				arrTag.add(tempTag);
+
+				String[] splitStr = tempTag.split(",");
+				for (String str : splitStr) {
+					arrTag.add(str);
+					System.out.println(str);
+
+				}
 				pb.setTag(arrTag);
+				
+				arrProduct.add(pb);
 			}
 			
 			request.setAttribute("products", arrProduct);
@@ -132,8 +142,6 @@ public class ProductManager {
 			System.out.println(e);
 		}finally {
 			DBManager.Close(con, pstmt, null);
-		}
-		
+		}	
 	}
-	
 }

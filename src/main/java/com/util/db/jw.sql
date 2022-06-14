@@ -4,6 +4,10 @@ delete ProductTbl;
 
 select * from productTbl;
 
+
+alter table ProductTbl
+modify Product_Img null;
+
 create table ProductTbl
 (
 	Product_Num Number(8 ) PRIMARY KEY,
@@ -11,9 +15,9 @@ create table ProductTbl
 	Product_Exp VARCHAR2(200 char) not null,
 	Product_Price Number(8) not null,
 	Product_Img1 varchar2(100 char)  not null,
-	Product_Img2 varchar2(100 char)  not null,
-	Product_Img3 varchar2(100 char)  not null,
-	Product_Img4 varchar2(100 char)  not null,
+	Product_Img2 varchar2(100 char)  ,
+	Product_Img3 varchar2(100 char)  ,
+	Product_Img4 varchar2(100 char)  ,
 	Product_Tag varchar2(200 char) not null
 );
 

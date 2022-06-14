@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,43 +8,43 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>��ǰ���</h1>
-	<form action="ProductDAO"  method = "post" enctype="multipart/form-data">
+	<h1>상품등록</h1>
+	<form action="ProductRegController"  method = "post" enctype="multipart/form-data">
 	<table id = "productTbl">
 			<tr>
-				<td>��ǰ �̸�</td>
+				<td>상품 이름</td>
 				<td><input name = title></td>
 			</tr>
 			<tr>
-				<td>�ǸŰ�</td>
+				<td>판매가</td>
 				<td><input name = "price"></td>
 			</tr>
 			<tr>
-				<td>��ǥ �̹���</td> 
+				<td>대표 이미지</td> 
 				<td> <input type="file" name = "file"></td> 
 			</tr>
 			<tr>
-				<td>�̹���1</td> 
+				<td>이미지1</td> 
 				<td> <input type="file" name = "file1"></td> 
 			</tr>
 			<tr>
-				<td>�̹���2</td> 
+				<td>이미지2</td> 
 				<td> <input type="file" name = "file2"></td> 
 			</tr>
 			<tr>
-				<td>�̹���3</td> 
+				<td>이미지3</td> 
 				<td> <input type="file" name = "file3"></td> 
 			</tr>
 			<tr>
-				<td>�󼼳���</td>
+				<td>상세내용</td>
 				<td><textarea name = "exp"></textarea></td>
 			</tr>
 			<tr>
-				<td>�ؽ��±�</td>
+				<td>해시태그</td>
 				<td><input name = "tag"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><button>���</button></td>
+				<td colspan="2"><button>등록</button></td>
 			</tr>
 	</table>
 	</form>
