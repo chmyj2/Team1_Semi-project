@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.util.db.DBManager;
 
 
@@ -193,16 +191,14 @@ public class AccountDAO {
 			System.out.println(path);
 			
 			// 이미 업로드 기능 처리 됨
-			MultipartRequest mr = new MultipartRequest(request, path, 20*1024*1024, "utf-8", new DefaultFileRenamePolicy());
 			
-			String name = mr.getParameter("name");
-			String id = mr.getParameter("id");
-			String pw = mr.getParameter("pw1");
-			String gender = mr.getParameter("gender");
-			String addr = mr.getParameter("addr");
-			String[] interest = mr.getParameterValues("hobby");
-			String txt = mr.getParameter("txt");
-			String img = mr.getFilesystemName("img");
+			String name = request.getParameter("name");
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw1");
+			String gender = request.getParameter("gender");
+			String addr = request.getParameter("addr");
+			String[] interest = request.getParameterValues("hobby");
+			String txt = request.getParameter("txt");
 			
 			String interest2 = "";
 			
@@ -228,7 +224,6 @@ public class AccountDAO {
 			
 			pstmt.setString(6, interest2);
 			pstmt.setString(7, txt);
-			pstmt.setString(8, img);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
