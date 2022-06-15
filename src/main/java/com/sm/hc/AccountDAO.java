@@ -21,9 +21,9 @@ public class AccountDAO {
 		Account a = (Account) hs.getAttribute("accountInfo");
 		
 		if (a == null) {
-			req.setAttribute("contentPage", "jsp/sm/login.jsp");
+			req.setAttribute("loginPage", "jsp/sm/loginBefore.jsp");
 		}else {
-			req.setAttribute("contentPage", "jsp/sm/loginOK.jsp");
+			req.setAttribute("loginPage", "jsp/sm/loginAfter.jsp");
 		}
 	}
 
@@ -34,8 +34,8 @@ public class AccountDAO {
 		// 로그인
 			
 			// 1. 값 받기
-			String userId = request.getParameter("user_id"); //userId에 입력한 id를 받아놓음
-			String userPw = request.getParameter("user_pw"); //request.getParameter("id") id를 가져옴
+			String userId = request.getParameter("id"); //userId에 입력한 id를 받아놓음
+			String userPw = request.getParameter("pw"); //request.getParameter("id") id를 가져옴
 			
 			// @ 수정 후 로그인 다시 하기 -> 다시 챙겨줘야함. 밑에 있는 updateAccount
 			/*
@@ -49,16 +49,14 @@ public class AccountDAO {
 			PreparedStatement pstmt = null; //실행 도구
 			ResultSet rs = null; //결과
 			
-			System.out.println("여기까지는?");
 			
 			try { //에러가 없으면
-					String sql = "select * from user_info_tbl where user_id = ?";
+					String sql = "select * from user_info_tbl where user_id=?";
 					con = DBManager.connect();
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, userId);
 					
 					rs = pstmt.executeQuery();
-			
 					if (rs.next()) {					
 						if (userPw.equals(rs.getString("user_pw"))) {
 								request.setAttribute("r", "로그인 성공");
@@ -71,12 +69,13 @@ public class AccountDAO {
 								a.setUser_addr(rs.getString("user_addr"));
 								a.setUser_phoneNumber(rs.getString("user_phoneNumber"));
 								a.setUser_age(rs.getString("user_age"));
-								a.setUser_level(rs.getString("user_level"));
 								
 								//세션을 써야 어디서나 사용 가능 -> 정보 수정 후 세션에 값 다시 넣음
 								HttpSession hs = request.getSession();//세션 생성
 								hs.setAttribute("accountInfo", a);//값 저장
 								hs.setMaxInactiveInterval(5*60); //세션시간 설정
+								
+								System.out.println("성공이야..?");
 								
 							} else {
 								request.setAttribute("r", "패스워드 오류");
@@ -84,7 +83,6 @@ public class AccountDAO {
 						} else {
 							request.setAttribute("r", "존재하지 않는 회원");
 						}
-				
 
 				
 			//에러가 발생하면 catch	
@@ -132,74 +130,35 @@ public class AccountDAO {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "insert into account_test values(?,?,?,?,?,?,?,?)";
+			String sql = "insert into user_info_tbl values(?,?,?,?,?,?,?)";
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 			
-			// 이미지 lib
-			String path = request.getSession().getServletContext().getRealPath("fileFolder");
-			System.out.println(path);
 			
-			// 이미 업로드 기능 처리 됨
-			MultipartRequest mr = new MultipartRequest(request, path, 20*1024*1024, "utf-8", new DefaultFileRenamePolicy());
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw1");
+			String name = request.getParameter("name");
+			String gender = request.getParameter("gender");		
+			String addr = request.getParameter("addr");
+			String phoneNum = request.getParameter("phoneNum");
+			String birth = request.getParameter("birth");
 			
-			String name = mr.getParameter("name");
-			String id = mr.getParameter("id");
-			String pw = mr.getParameter("pw1");
-			String gender = mr.getParameter("gender"); //w아니면 m -> 남여로 변환? if 문 사용
-			
-			if (gender.equals('w')) {
-				gender = "여";
-			} if (gender.equals('m')) {
-				gender = "남";
-			}
-			
-			String addr = mr.getParameter("addr");
-			String[] interest = mr.getParameterValues("hobby");//배열이니까 배열에 담아
-			String txt = mr.getParameter("txt");
-			String img = mr.getFilesystemName("img");
-			
-			String interest2 = ""; //배열 저장할 문자 새로 만듦
-			
-			
+	
 			System.out.println(name);
 			System.out.println(id);
 			System.out.println(pw);
 			System.out.println(gender);
 			System.out.println(addr);
-			
-//			for (String s : interest) {
-//				System.out.println(s);
-//				interest2 += s + "!"; // 구분자를 넣어서 붙지 않게 - 확실히 구분
-//			}
-			System.out.println(interest); //배열
-			System.out.println(interest2); //여러개 출력
-			System.out.println(txt);
-			System.out.println(img);
+			System.out.println(phoneNum);
+			System.out.println(birth);
 			
 			pstmt.setString(1, name);
 			pstmt.setString(2, id);
 			pstmt.setString(3, pw);
 			pstmt.setString(4, gender);
 			pstmt.setString(5, addr);
-			
-			
-			if (txt.isEmpty()) {
-				txt = "...";
-			}
-				
-			if (interest != null) {
-				for (String s : interest) {
-					System.out.println(s);
-					interest2 += s + "!";
-				}
-			}else {
-				interest2 = "관심사 없음";
-			}
-			
-			pstmt.setString(6, interest2);
-			pstmt.setString(7, txt);
-			pstmt.setString(8, img);
+			pstmt.setString(6, phoneNum);
+			pstmt.setString(7, birth);
 			
 			
 			if (pstmt.executeUpdate() == 1) {

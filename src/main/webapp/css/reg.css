@@ -1,9 +1,11 @@
+@charset "EUC-KR";
+
 body {
   background-color: rgb(240, 242, 241);
   font-family: "Asap", sans-serif;
 }
 
-.login {
+.reg {
   overflow: hidden;
   background-color: white;
   padding: 40px 30px 30px 30px;
@@ -17,7 +19,7 @@ body {
   text-align: center;
 }
 
-.login::before, .login::after {
+.reg::before, .login::after {
   content: "";
   /* position: relative; */
   width: 600px;
@@ -28,17 +30,17 @@ body {
   border-bottom-right-radius: 40%;
   z-index: -1;
 }
-.login::before {
+.reg::before {
   left: 40%;
   bottom: -130%;
   background-color: rgba(69, 105, 144, 0.15);
 }
-.login::after {
+.reg::after {
   left: 35%;
   bottom: -125%;
   background-color: rgba(2, 128, 144, 0.2);
 }
-.login > input {
+.reg > input {
   font-family: "Asap", sans-serif;
   display: block;
   border-radius: 5px;
@@ -51,7 +53,7 @@ body {
   margin-bottom: 20px;
   text-align: center;
 }
-.login > button {
+.reg > button {
   font-family: "Asap", sans-serif;
   cursor: pointer;
   color: #fff;
@@ -68,56 +70,8 @@ body {
   display: inline-block;
 }
 
-.login > button:hover {
+.reg > button:hover {
  	background: white;
 	color: black;
 	transition: all 0.5s ease;
-}
-
-
-
-/*드롭다운*/
-
-
-.dropdown{
-  position : relative;
-  display : inline-block;
-}
-
-.dropdown-content{
-  display : none;
-  position : absolute;
-  z-index : 3; /*다른 요소들보다 앞에 배치*/
-  border : 1px solid rgb(37, 37, 37);
-  border-radius : 4px;
-  background-color: #f5f5f5;
-  font-weight: 400;
-  color : rgb(37, 37, 37);
-  padding : 12px;
-  width :150px;
-  height: 150px;
-  text-align: center;
-  cursor : pointer;
-  font-size : 15px;
-  line-height : 40px;
-}
-
-.dropdown-content a{
-  display : block;
-}
-
-.dropdown-content a:hover{
-  background-color : #ececec
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.b1{
-	float:left;
-}
-
-.b2{
-	float:right;
 }

@@ -12,6 +12,17 @@ import com.sm.hc.AccountDAO;
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		
+		  // 로그아웃 하는 일
+			AccountDAO.logOut(request);
+		  
+		  // 일 시킨 다음에 어디로? 
+		  AccountDAO.loginCheck(request);
+		  request.setAttribute("contentPage", "home.jsp");
+		  request.getRequestDispatcher("index.jsp").forward(request, response);
+		 
+		
 		
 	}
 

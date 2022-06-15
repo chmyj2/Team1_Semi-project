@@ -10,7 +10,6 @@ public class Account {
 	private String user_addr;
 	private String user_phoneNumber;
 	private String user_age;
-	private String user_level;
 	
 	public Account() {
 		// TODO Auto-generated constructor stub
@@ -26,7 +25,6 @@ public class Account {
 		this.user_addr = user_addr;
 		this.user_phoneNumber = user_phoneNumber;
 		this.user_age = user_age;
-		this.user_level = user_level;
 	}
 
 	public String getUser_id() {
@@ -85,14 +83,6 @@ public class Account {
 		this.user_age = user_age;
 	}
 
-	public String getUser_level() {
-		return user_level;
-	}
-
-	public void setUser_level(String user_level) {
-		this.user_level = user_level;
-	}
-	
 	
 	
 	

@@ -7,13 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/LoginMainController")
-public class LoginMainController extends HttpServlet {
+@WebServlet("/HC")
+public class HC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		AccountDAO.loginCheck(request);
-		request.setAttribute("contentPage", "jsp/sm/login.jsp");
+		request.setAttribute("contentPage", "home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	
 	}
