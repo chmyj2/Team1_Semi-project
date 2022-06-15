@@ -9,7 +9,7 @@
 <body>
 
 <div>
-	<form action="InfoEditCotroller" class="login">
+	<form action="InfoEditCotroller" method="post" class="login">
 		<h2>My Page</h2><br><br>
 		<p style="font-size: 6px; text-align: left;">¾ÆÀÌµð</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_id }</p><br>

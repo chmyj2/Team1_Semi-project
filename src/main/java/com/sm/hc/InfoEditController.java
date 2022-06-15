@@ -11,25 +11,26 @@ import javax.servlet.http.HttpServletResponse;
 public class InfoEditController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		//해당 회원 정보 가져오기
-				AccountDAO.loginCheck(request);
+		//본인 확인
+		AccountDAO.loginCheck(request);
+		AccountDAO.passwordCheck(request);
 						
-				request.setAttribute("contentPage", "jsp/sm/loginUpdate.jsp");
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.setAttribute("contentPage", "jsp/sm/loginUpdate.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		System.out.println("헤이헤이헤이");
 		// 넘겨받은 값들로 수정하는 일
-				AccountDAO.updateAccount(request);
-				System.out.println("왜?");
-				AccountDAO.login(request);
-				AccountDAO.loginCheck(request);
+		AccountDAO.updateAccount(request);
+		AccountDAO.login(request);
+		AccountDAO.loginCheck(request);
 						
-				// 수정하고 어디로?
-				request.setAttribute("contentPage", "jsp/sm/myPage.jsp");
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+		// 수정하고 어디로?
+		request.setAttribute("contentPage", "jsp/sm/myPage.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	
 	}
 

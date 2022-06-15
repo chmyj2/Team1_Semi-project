@@ -11,7 +11,7 @@
 <div>
 	<form action="InfoEditController" class="login" style="height:330px;">
 		<h5>본인 확인</h5>
- 		<input type="password" placeholder="User Password" name="pw">
+ 		<input type="password" placeholder="User Password" name="pwContact">
   		<button class="b1">Login</button><br>
 	</form>
 </div>

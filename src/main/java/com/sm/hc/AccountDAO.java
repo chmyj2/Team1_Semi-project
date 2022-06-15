@@ -290,7 +290,18 @@ public class AccountDAO {
 
 	public static void passwordCheck(HttpServletRequest request) {
 	
-		
+		String pwContact = request.getParameter("pwContact");
+	
+		HttpSession hs = request.getSession();
+		Account aa = (Account)request.getSession().getAttribute("accountInfo");
+		String pw = aa.getUser_pw();
+				
+		if (pwContact.equals(pw)) {
+			System.out.println("성공이야????");
+			request.setAttribute("contentPage", "jsp/sm/loginUpdate.jsp");
+		}else {
+			request.setAttribute("contentPage", "jsp/sm/loginContact.jsp");
+		}
 		
 		
 	}
