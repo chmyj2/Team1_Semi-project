@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <!-- JavaScript -->
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-<script type="text/javascript" src="" ></script>
+<script type="text/javascript" src="home.js" ></script>
 
 </head>
 <body>
