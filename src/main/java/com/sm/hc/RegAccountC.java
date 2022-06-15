@@ -13,16 +13,16 @@ public class RegAccountC extends HttpServlet {
 			AccountDAO.loginCheck(request);
 			request.setAttribute("contentPage", "jsp/sm/sm_reg.jsp");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
-			System.out.println("헤이");
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 			//가입하는 일 -insert
-			//어디로 가는지
+			//끝나고 어디로 가는지
 			AccountDAO.regAccount(request);
 			AccountDAO.loginCheck(request);
-			request.setAttribute("contentPage", "home.jsp");
+			
+			request.setAttribute("contentPage", "jsp/sm/regOut.jsp");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	}

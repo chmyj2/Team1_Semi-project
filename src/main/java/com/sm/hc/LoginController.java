@@ -28,13 +28,18 @@ public class LoginController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		//로그인 하러ㄱㄱ
-		AccountDAO.login(request);
+		//로그인
+		if (AccountDAO.login(request)) {
+			//일 시킨 다음에 어디로?
+			AccountDAO.loginCheck(request);
+			request.setAttribute("contentPage", "home.jsp");
+			request.getRequestDispatcher("index.jsp").forward(request, response);		
+		} else {
+			AccountDAO.loginCheck(request);
+			request.setAttribute("contentPage", "jsp/sm/login.jsp");
+			request.getRequestDispatcher("index.jsp").forward(request, response);				
+		}
 		
-		//일 시킨 다음에 어디로?
-		AccountDAO.loginCheck(request);
-		request.setAttribute("contentPage", "home.jsp");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	
 	}

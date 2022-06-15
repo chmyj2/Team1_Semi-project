@@ -27,7 +27,7 @@ public class AccountDAO {
 
 	
 	
-	public static void login(HttpServletRequest request) {
+	public static boolean login(HttpServletRequest request) {
 		
 		// 로그인
 			
@@ -36,17 +36,19 @@ public class AccountDAO {
 			String userPw = request.getParameter("pw"); //request.getParameter("id") id를 가져옴
 			
 			// @ 수정 후 로그인 다시 하기 -> 다시 챙겨줘야함. 밑에 있는 updateAccount
-			/*
-			 * String iddd = (String) request.getAttribute("iddd"); String pwww = (String)
-			 * request.getAttribute("pwww"); if (iddd != null) {//값이 들어있을때! userId = iddd;
-			 * userPw = pwww; }
-			 */		
+			
+			 String id_s = (String) request.getAttribute("id_s"); String pw_s = (String)
+			 request.getAttribute("pw_s"); if (id_s != null) {//값이 들어있을때! userId = id_s;
+			 userPw = pw_s; }
+			 	
 			
 			// 2. db랑 비교 (껍데기 시리즈) 일치하는지 안하는지 비교해야함
 			Connection con = null; //연결 객체
 			PreparedStatement pstmt = null; //실행 도구
 			ResultSet rs = null; //결과
 			
+			
+			boolean isLogin = false;
 			
 			try { //에러가 없으면
 					String sql = "select * from user_info_tbl where user_id=?";
@@ -73,7 +75,7 @@ public class AccountDAO {
 								hs.setAttribute("accountInfo", a);//값 저장
 								hs.setMaxInactiveInterval(5*60); //세션시간 설정
 								
-								System.out.println("성공이야..?");
+								isLogin = true;
 								
 							} else {
 								request.setAttribute("r", "패스워드 오류");
@@ -82,11 +84,13 @@ public class AccountDAO {
 							request.setAttribute("r", "존재하지 않는 회원");
 						}
 
-				
+				return isLogin;
+						
 			//에러가 발생하면 catch	
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("실패...");
+				return isLogin;
 			} finally {
 				com.util.db.DBManager.close(con, pstmt, rs);
 			}
@@ -128,10 +132,10 @@ public class AccountDAO {
 		ResultSet rs = null;
 		
 		try {
+			request.setCharacterEncoding("utf-8");
 			String sql = "insert into user_info_tbl values(?,?,?,?,?,?,?)";
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
-			
 			
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw1");
@@ -139,34 +143,34 @@ public class AccountDAO {
 			String gender = request.getParameter("gender");		
 			String addr = request.getParameter("addr");
 			String phoneNum = request.getParameter("phoneNum");
-			String birth = request.getParameter("birth");
+			int age1 = Integer.parseInt(request.getParameter("birth"));
 			
-	
-			System.out.println(name);
+			int age2 = 2022 - age1;
+			
 			System.out.println(id);
 			System.out.println(pw);
+			System.out.println(name);
 			System.out.println(gender);
 			System.out.println(addr);
 			System.out.println(phoneNum);
-			System.out.println(birth);
+			System.out.println(age1);
 			
-			pstmt.setString(1, name);
-			pstmt.setString(2, id);
-			pstmt.setString(3, pw);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
+			pstmt.setString(3, name);
 			pstmt.setString(4, gender);
 			pstmt.setString(5, addr);
 			pstmt.setString(6, phoneNum);
-			pstmt.setString(7, birth);
+			pstmt.setInt(7, age2);
 			
 			
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("가입 성공");				
 			}
 			
-			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("실패");
 		}finally {
 			DBManager.close(con, pstmt, rs);
 		}			
@@ -239,7 +243,7 @@ public class AccountDAO {
 		
 		Connection con = null; //연결 객체
 		PreparedStatement pstmt = null; //실행 도구
-		String sql = "update account_test set a_name=?, a_pw=?, a_addr=?, a_interest=?, a_introduce=? where a_id=?";
+		String sql = "update user_info_tbl set user_pw=?, user_addr=?, user_phoneNumber=?, user_age=? where user_id=?";
 
 		try {
 			request.setCharacterEncoding("utf-8");
@@ -247,51 +251,32 @@ public class AccountDAO {
 			pstmt = con.prepareStatement(sql);
 			
 			// 값 받기
-			String name = request.getParameter("name");
 			String pw = request.getParameter("pw1");
 			String addr = request.getParameter("addr");
-			String interest = request.getParameter("hobby");
-			String[] interest2 = request.getParameterValues("hobby2");//배열이니까 배열에 담아
-			String txt = request.getParameter("txt");
-			
-			String interest3 = ""; //배열 저장할 문자 새로 만듦
+			String phoneNum = request.getParameter("phoneNum");
+			int age1 = Integer.parseInt(request.getParameter("birth"));
+			String id = request.getParameter("id");
 
 			// 세션 쓰던가 넘겨 주던가
 			Account aa = (Account)request.getSession().getAttribute("accountInfo");
-			String id = aa.getUser_id();
+			String id1 = aa.getUser_id();			
 			
-			if (interest2 != null) {
-				for (String s : interest2) {
-					System.out.println(s);
-					interest3 += s + "!";
-				}
-			}else {
-				interest3 = interest;
-			}
-			
-			if (txt.isEmpty()) {
-				txt = "...";
-			}
-
-			//값 입력받기			
-			pstmt.setString(1, name);
-			pstmt.setString(2, pw);
-			pstmt.setString(3, addr);
-			pstmt.setString(4, interest3);
-			pstmt.setString(5, txt);
-			pstmt.setString(6, id); //where절에 들어갈 id값
+			//값 입력받기
+			pstmt.setString(1, pw);
+			pstmt.setString(2, addr);
+			pstmt.setString(3, phoneNum);
+			pstmt.setInt(4, age1);
+			pstmt.setString(5, id1);			
 			
 			//로그인 다시 시켜 -> 수정된 값 바로 볼 수 있게 -> login에서 받아줘서 값 실려있음
 			//업뎃 기능이 수행되면 값이 실려있고 아니면 값이 없을꺼임
-			request.setAttribute("iddd", id);
-			request.setAttribute("pwww", pw);
+			request.setAttribute("id_s", id);
+			request.setAttribute("pw_s", pw);
 			
 			
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("수정 성공");				
 			}
-			
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -300,7 +285,19 @@ public class AccountDAO {
 		}			
 
 	}
+
+
+
+	public static void passwordCheck(HttpServletRequest request) {
+	
 		
+		
+		
+	}
+		
+	
+	
+	
 	}
 	
 	

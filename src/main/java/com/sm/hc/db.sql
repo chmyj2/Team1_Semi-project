@@ -5,7 +5,7 @@ user_name varchar2(20 char) not null,
 user_gender char(1 char) not null,
 user_addr varchar2(100 char) not null,
 user_phoneNumber varchar2(100 char) not null,
-user_age varchar2(10 char) not null
+user_age number(3) not null
 );
 
 create table user_cocktail_tbl(

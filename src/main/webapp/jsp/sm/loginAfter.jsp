@@ -11,7 +11,7 @@
 <div class="dropdown">
       <a class="dropbtn"><button class="custom-btn btn-11">My Page</button></a>
       <div class="dropdown-content">
-        <a href="#">My Page</a>
+        <a href="MyPageController">My Page</a>
         <a href="#">Order</a>
         <a href="LoginController">logout</a>
       </div>

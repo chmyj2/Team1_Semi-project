@@ -114,10 +114,8 @@ body {
   display: block;
 }
 
-.b1{
-	float:left;
+a:hover{
+	text-decoration: underline;
 }
 
-.b2{
-	float:right;
-}
+a:visited { color:gray; }

@@ -11,42 +11,21 @@ body {
   padding: 40px 30px 30px 30px;
   border-radius: 10px;
   /*position: static;*/
-  top: 50%;
-  left: 50%;
+  /* top: 50%;
+  left: 50%; */
   width: 400px;
   margin: 100px auto;
   box-shadow: 5px 10px 10px rgba(2, 128, 144, 0.2);
   text-align: center;
 }
 
-.reg::before, .login::after {
-  content: "";
-  /* position: relative; */
-  width: 600px;
-  height: 600px;
-  border-top-left-radius: 40%;
-  border-top-right-radius: 45%;
-  border-bottom-left-radius: 35%;
-  border-bottom-right-radius: 40%;
-  z-index: -1;
-}
-.reg::before {
-  left: 40%;
-  bottom: -130%;
-  background-color: rgba(69, 105, 144, 0.15);
-}
-.reg::after {
-  left: 35%;
-  bottom: -125%;
-  background-color: rgba(2, 128, 144, 0.2);
-}
 .reg > input {
   font-family: "Asap", sans-serif;
-  display: block;
+  display: inline;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 10px;
   background: white;
-  width: 100%;
+  width: 100px;
   border: 0;
   padding: 10px 10px;
   margin: 15px -10px;
@@ -74,4 +53,8 @@ body {
  	background: white;
 	color: black;
 	transition: all 0.5s ease;
+}
+
+.reginfo{
+	
 }
