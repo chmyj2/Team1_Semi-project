@@ -7,8 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> yjyj
 @WebServlet("/drink_Info_regController")
 public class drink_Info_regController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

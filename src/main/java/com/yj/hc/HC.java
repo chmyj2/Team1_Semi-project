@@ -24,4 +24,8 @@ public class HC extends HttpServlet {
 	
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> yjyj
