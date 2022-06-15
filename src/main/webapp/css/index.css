@@ -1,0 +1,261 @@
+@charset "UTF-8";
+
+
+
+
+ 
+* {
+	margin: 0;
+	padding: 0;
+	
+	}
+
+
+/* 로고바 */
+
+.nabar-brand{
+	display: flex;
+	text-align: center;
+	}
+	
+	
+.item{
+	background-color : #0d47a1;
+	flex: 1 1 0;
+	}
+
+.item2{
+	background-color : #0d47a1;
+	padding-top:10px;
+	flex: 1 1 0;
+	}
+	
+.item3{
+	padding-right:20px;
+	text-align:right;
+	background-color : #0d47a1;
+	flex: 1 1 0;
+	}
+      
+.item:nth-child(2){
+	flex: 2 1 0;
+	}
+	
+	
+	
+.btn-11 {
+  overflow: hidden;
+  color: white;
+  margin: 15px;
+  
+}
+
+
+.btn-11:hover {
+	background: white;
+	color: black;
+	transition: all 0.5s ease;
+}
+
+.btn-11:before {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    top: -180px;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    background-color: #1565c0;
+    animation: shiny-btn1 4s ease-in-out infinite;
+}
+
+.btn-11:active{
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 red, 
+	    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    	inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+@-webkit-keyframes shiny-btn1 {
+    0% { -webkit-transform: scale(0) rotate(45deg); opacity: 0; }
+    30% { -webkit-transform: scale(0) rotate(45deg); opacity: 0.5; }
+    60% { -webkit-transform: scale(4) rotate(45deg); opacity: 1; }
+    100% { -webkit-transform: scale(50) rotate(45deg); opacity: 0; }
+}
+
+
+
+.custom-btn {
+	width: 130px;
+  	height: 40px;
+  	padding: 10px 25px;
+  	border: 2px solid white;
+  	font-family: 'Lato', sans-serif;
+  	font-weight: 500;
+  	background: transparent;
+  	cursor: pointer;
+  	transition: all 0.5s ease;
+  	position: relative;
+  	display: inline-block;
+}
+
+
+
+/* 메뉴바 */
+
+
+
+   
+.index-main{
+	display: flex;
+        
+    }
+
+.index-main div{
+	flex-grow: 1;
+	height: 1200px;
+	text-align: center;
+	
+    }
+
+
+
+/* ul li태그에 리스트 스타일을 없앰 */
+ul li{
+	list-style: none;
+	}
+
+
+a {
+	text-decoration: none;
+	
+	}
+	
+
+        
+/* 글자크기를 16px 맑은 고딕 굵게하고 width넓이 700, 높이 50만큼 배경색은 #ccc, 글자색은 검정색, 라인높이50px
+menu박스 가운데정렬, 글자가운데 정렬 */
+        
+        
+#indexMenu {
+	position: fixed;
+	top: 0px;
+    height:50px;
+    background: #0d47a1;
+    line-height: 50px;
+    margin:0 auto;
+    text-align: center;
+    position: sticky;
+    z-index: 1;
+    
+    }
+    
+    
+
+#indexMenu ul{
+	display: inline-block;
+	
+	 }
+        
+
+
+
+/* menu태그 자식의 ul의 자식 li를 왼쪽정렬과 넓이 140설정 */
+	
+#indexMenu > ul > li {
+	float:left;
+	width:140px;
+	position:relative;
+	font-weight: 500;
+	}
+	
+
+
+#indexMenu > ul > li > a {
+  color: white;
+}
+
+	
+/* 메뉴 4 들어갔을때 */
+#indexMenu > ul > li > ul {
+	width:550px;
+	display:none;
+	position: absolute;
+	font-size:14px;
+	background : #B8B8B8;
+	
+	
+	
+	}
+	
+	
+#indexMenu > ul > li:hover > ul {
+	
+	display:flex;
+
+	}
+	
+	
+#indexMenu >ul>li>ul>li{
+	width: 500px;
+	}
+
+
+#indexMenu > ul > li > ul > li:hover {
+	background: #0d47a1;
+	transition: ease 0.5s;
+	}
+		
+		
+#indexMenu > ul > li > ul > li > a {
+  color: white;
+}
+
+
+.footer{
+	height: 300px;
+	background-color: #0d47a1;
+    }
+
+
+.indexFooterItem1{
+    font-size: 15px;
+	font-weight:bold ;
+	padding: 40px;	
+	text-align: center;
+	color: white;
+}
+
+.indexFooterItem2{
+    vertical-align:top;
+    font-size: 12px;
+    text-align: center;
+    color: white;
+	
+}
+
+.indexFooterItem3{
+    font-size: 15px;
+	padding-top: 40px;	
+	vertical-align:top;
+	text-align: center;
+	letter-spacing: 1px;
+	color: white;
+	
+}
+
+.indexFooterItem3 span{
+	vertical-align:top;
+	color: gray;
+	letter-spacing: 1px;
+	
+}
+
+.indexFooterItem4{
+    font-size: 13px;
+    padding-top: 60px;	
+    padding-right: 40px;	
+    text-align: right;
+    color: white;
+	
+}

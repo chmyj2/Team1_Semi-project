@@ -7,10 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
 @WebServlet("/drink_Info_regController")
 public class drink_Info_regController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
+		DrinkDAO.Get_All_drink_Info(request);
 		request.setAttribute("contentPage", "jsp/yj/drink_Info_reg.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	
@@ -18,7 +21,8 @@ public class drink_Info_regController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		DrinkDAO.drink_Info_Update(request);
+		DrinkDAO.drink_Info_Reg(request);
+		DrinkDAO.Get_All_drink_Info(request);
 		request.setAttribute("contentPage", "jsp/yj/drink_Info_reg.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 		
