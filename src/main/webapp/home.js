@@ -105,4 +105,17 @@ function frmCheck(){
  
  }
  
+ 
+ 
+function deleteDrinkInfo(PKnum){
+	
+	let ok = confirm('정말 삭제 합니까?')
+	console.log(ok)
+	
+	if(ok){
+		location.href='Drink_Info_DeleteController?PKnum='+ PKnum
+	}
+	
+}
+ 
 

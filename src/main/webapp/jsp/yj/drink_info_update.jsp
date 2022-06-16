@@ -15,7 +15,7 @@
 	<h1>수정하고 싶은 술 : ${drink.cocktail_name }</h1>
 
 
-	<form name="form" action="drink_Info_Update_Controller" method="post" enctype="multipart/form-data">
+	<form name="form" action="Drink_Info_Update_Controller" method="post" enctype="multipart/form-data">
 
 		<table style="background-color: gray">
 			<tr>
@@ -99,7 +99,6 @@
 
 
 
-<%-- <button name="button" value="${param.num }onClick="frmCheck();" style="text-align: center; width: 310px">수정</button> --%>
 
 	<table border="1">
 		<tr>

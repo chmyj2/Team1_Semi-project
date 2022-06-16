@@ -1,4 +1,4 @@
-package com.yj.drink_info_regController;
+package com.yj.drink_info_CRUD;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.yj.drink_info_regController.DrinkDAO;
+import com.yj.drink_info_CRUD.DrinkDAO;
 
-@WebServlet("/drink_Info_Update_Controller")
-public class drink_Info_Update_Controller extends HttpServlet {
+@WebServlet("/Drink_Info_Update_Controller")
+public class Drink_Info_Update_Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 			DrinkDAO.getDrinkInfo(request);
@@ -28,11 +28,13 @@ public class drink_Info_Update_Controller extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		
 		DrinkDAO.drink_info_Update(request);
+
 		DrinkDAO.Get_All_drink_Info(request);
+
 		request.setAttribute("contentPage", "jsp/yj/drink_Info_reg.jsp");
-	
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+
 	
 	}
 

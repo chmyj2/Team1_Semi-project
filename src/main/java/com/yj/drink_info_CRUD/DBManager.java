@@ -1,4 +1,4 @@
-package com.yj.drink_info_regController;
+package com.yj.drink_info_CRUD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

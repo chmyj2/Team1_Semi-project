@@ -25,7 +25,7 @@
     </div>
    <div class="item3">
     	<button class="custom-btn btn-11">Login</button><button onclick="location.href=
-    		'drink_Info_regController'">운영자전용 상품등록버튼</button>
+    		'Drink_Info_regController'">운영자전용 상품등록버튼</button>
    </div>
 </div>
   

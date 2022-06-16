@@ -1,4 +1,4 @@
-package com.yj.drink_info_regController;
+package com.yj.drink_info_CRUD;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.yj.drink_info_regController.DBManager;
+import com.yj.drink_info_CRUD.DBManager;
 
 
 public class DrinkDAO {
@@ -46,11 +46,9 @@ public class DrinkDAO {
 			String cocktail_recipe2 = "";
 
 								
-			System.out.println(path);
 			
 			if (cocktail_ingredient != null) {
 				for (String s : cocktail_ingredient) {
-					System.out.println(s);
 					cocktail_ingredient2 += s + "!";
 				}
 				
@@ -61,7 +59,6 @@ public class DrinkDAO {
 			
 			if (cocktail_tag != null) {
 				for (String s : cocktail_tag) {
-					System.out.println(s);
 					cocktail_tag2 += s + "!";
 				}	
 			}else {
@@ -70,7 +67,6 @@ public class DrinkDAO {
 			
 			if (cocktail_recipe != null) {
 				for (String v : cocktail_recipe) {
-					System.out.println(v);
 					cocktail_recipe2 += v + "@";
 				}
 				
@@ -97,7 +93,6 @@ public class DrinkDAO {
 			
 			
 			
-			System.out.println("여기까지옴옴");
 			
 			
 			
@@ -132,7 +127,7 @@ public class DrinkDAO {
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
-				
+
 				try {			
 					String sql = "select * from cocktail_recipe_tbl";
 					con = DBManager.connect();
@@ -155,14 +150,13 @@ public class DrinkDAO {
 					
 					
 					
-					
-					
+
 					drinks.add(d);	
 					}
-					request.setAttribute("drink",drinks);
+					request.setAttribute("drinks",drinks);
 								
 				} catch (Exception e) {
-				System.out.println(e);;
+					e.printStackTrace();
 				}finally {
 					DBManager.close(con, pstmt, rs);
 				}
@@ -239,11 +233,9 @@ public class DrinkDAO {
 				String cocktail_tag2 = "";
 				String cocktail_recipe2 = "";
 									
-				System.out.println(cocktail_num);
 				
 				if (cocktail_ingredient != null) {
 					for (String s : cocktail_ingredient) {
-						System.out.println(s);
 						cocktail_ingredient2 += s + "!";
 					}
 					
@@ -254,7 +246,6 @@ public class DrinkDAO {
 				
 				if (cocktail_tag != null) {
 					for (String s : cocktail_tag) {
-						System.out.println(s);
 						cocktail_tag2 += s + "!";
 					}	
 				}else {
@@ -263,7 +254,6 @@ public class DrinkDAO {
 				
 				if (cocktail_recipe != null) {
 					for (String v : cocktail_recipe) {
-						System.out.println(v);
 						cocktail_recipe2 += v + "@";
 					}
 					
@@ -321,6 +311,57 @@ public class DrinkDAO {
 				
 	
 }
+
+	public static void delete_drink_info(HttpServletRequest request) {
+
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "delete cocktail_recipe_tbl where cocktail_num=?";
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			
+			int no = Integer.parseInt(request.getParameter("PKnum"));
+			
+			pstmt.setInt(1, no);
+			
+			if(pstmt.executeUpdate() == 1) {
+				request.setAttribute("r", "정보 삭제 완료");
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("r", "정보 삭제 오류");
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+		
+		
+	
+	}
+//
+//	public static int makeInterest(HttpServletRequest request) {
+//		Account a =	(Account) request.getSession().getAttribute("accountInfo");
+//		
+//		if (a != null) {
+//			String interest = a.getA_interest();
+//				String [] interest2 = interest.split("!");
+//				request.setAttribute("inter", interest2);
+//				return 1;
+//		}
+//			return 0;
+//			
+//			
+//			
+//			
+//		}
+	
+	
+	
+	
 }
 
 

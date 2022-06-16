@@ -11,9 +11,11 @@
 
 <body>
 	<h1>술 등록</h1>
+	
+	<h2>${r }</h2>
+	
 
-
-	<form name="form" action="drink_Info_regController" method="post"
+	<form name="form" action="Drink_Info_regController" method="post"
 		enctype="multipart/form-data">
 
 		<table style="background-color: gray">
@@ -97,7 +99,7 @@
 		</tr>
 	</table>
 
-<c:forEach var="m" items="${drink }">
+<c:forEach var="m" items="${drinks }">
 	<table id="" border="1">
 		<tr>
 			<td id="" colspan="2"><img id="" src="fileFolder/${m.cocktail_img}"></td>
@@ -124,8 +126,8 @@
 		</tr>
 		
 			<td>
-			<button onclick="location.href='drink_Info_Update_Controller?num=${m.cocktail_num}'">수정</button>
-			<button onclick="deleteMovie(${m.cocktail_num})">삭제</button>
+			<button onclick="location.href='Drink_Info_Update_Controller?num=${m.cocktail_num}'">수정</button>
+			<button onclick="deleteDrinkInfo(${m.cocktail_num})">삭제</button>
 			</td>
 		</tr>
 	</table>
