@@ -208,6 +208,12 @@ public class DrinkDAO {
 		}
 }
 
+	
+	
+	
+	
+	
+	
 	public static void drink_info_Update(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -342,27 +348,64 @@ public class DrinkDAO {
 		
 	
 	}
-//
-//	public static int makeInterest(HttpServletRequest request) {
-//		Account a =	(Account) request.getSession().getAttribute("accountInfo");
-//		
-//		if (a != null) {
-//			String interest = a.getA_interest();
-//				String [] interest2 = interest.split("!");
-//				request.setAttribute("inter", interest2);
-//				return 1;
-//		}
-//			return 0;
-//			
-//			
-//			
-//			
-//		}
+
+
+	public static void searched_drink(HttpServletRequest request) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {			
+			String sql = "select * from cocktail_recipe_tbl where cocktail_name like ? or cocktail_ingredient LIKE ?";
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			
+			String num = request.getParameter("selected_cocktail");
+			
+			pstmt.setString(1, '%' + num + '%');
+			pstmt.setString(2, '%' + num + '%');
+			
+			System.out.println(num);
+			rs = pstmt.executeQuery();
+			
+			java.util.ArrayList<Drink> drinks = new java.util.ArrayList<Drink>();
+			
+			
+			while (rs.next()) {		
+			Drink d = new Drink();
+			
+			d.setCocktail_num(rs.getString("cocktail_num")); 
+			d.setCocktail_name(rs.getString("cocktail_name"));
+			d.setCocktail_info(rs.getNString("cocktail_info"));
+			d.setCocktail_ingredient(rs.getString("cocktail_ingredient"));
+			d.setCocktail_recipe(rs.getString("cocktail_recipe"));
+			d.setCocktail_img(rs.getString("cocktail_img"));
+			d.setCocktail_tag(rs.getString("cocktail_tag"));
+			
+			
+			
+
+			drinks.add(d);	
+			}
+			request.setAttribute("drinks",drinks);
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		
+	}
 	
-	
-	
+		
+		
 	
 }
+	
+	
+	
+
 
 
 

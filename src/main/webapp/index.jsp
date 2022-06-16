@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/index.css">
 <link rel="stylesheet" href="css/home.css" media="screen">
+<link rel="stylesheet" href="css/ourCollection.css">
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <!-- JavaScript -->
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
@@ -34,7 +35,7 @@
 <!-- 메뉴바 -->  
 <div id="indexMenu">
         <ul>
-            <li><a href="#">OUR COLLECTION</a></li>
+            <li><a href="ourCollectionController">OUR COLLECTION</a></li>
             <li><a href="#">COCKTAILS SALES</a></li>
             <li><a href="#">GOODs SALES</a></li>
             <li><a href="#">OUR SOCIAL</a>

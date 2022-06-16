@@ -21,7 +21,7 @@
 		<table style="background-color: gray">
 			<tr>
 				<td>술이름</td>
-				<td><input name="cocktail_name"></td>
+				<td><input name="cocktail_name" style="width: 255px" ></td>
 			</tr>
 			<tr>
 				<td>술 설명</td>

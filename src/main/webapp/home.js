@@ -117,5 +117,12 @@ function deleteDrinkInfo(PKnum){
 	}
 	
 }
- 
 
+
+function goDetail(PK){
+	
+	
+	location.href='Drink_Info_DetailController?num='+ PK
+	
+}
+ 
