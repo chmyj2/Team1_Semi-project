@@ -10,12 +10,12 @@ import javax.servlet.http.HttpSession;
 import com.util.db.DBManager;
 
 
-//°èÁ¤ °ü·Ã db ÀÛ¾÷ Ã³¸®ÇÏ´Â M¸ğµ¨
+//ê³„ì • ê´€ë ¨ db ì‘ì—… ì²˜ë¦¬í•˜ëŠ” Mëª¨ë¸
 public class AccountDAO {
 	
-	//¼¼¼Ç À¯ÁöµÇ¸é À¯ÁöµÈ »óÅÂ·Î ÆäÀÌÁö º¸¿©ÁÜ
+	//ì„¸ì…˜ ìœ ì§€ë˜ë©´ ìœ ì§€ëœ ìƒíƒœë¡œ í˜ì´ì§€ ë³´ì—¬ì¤Œ
 	public static void loginCheck(HttpServletRequest req) {
-		HttpSession hs = req.getSession(); //¼¼¼Ç »ı¼º
+		HttpSession hs = req.getSession(); //ì„¸ì…˜ ìƒì„±
 		Account a = (Account) hs.getAttribute("accountInfo");
 		
 		if (a == null) {
@@ -29,28 +29,29 @@ public class AccountDAO {
 	
 	public static boolean login(HttpServletRequest request) {
 		
-		// ·Î±×ÀÎ
+		// ë¡œê·¸ì¸
 			
-			// 1. °ª ¹Ş±â
-			String userId = request.getParameter("id"); //userId¿¡ ÀÔ·ÂÇÑ id¸¦ ¹Ş¾Æ³õÀ½
-			String userPw = request.getParameter("pw"); //request.getParameter("id") id¸¦ °¡Á®¿È
+			// 1. ê°’ ë°›ê¸°
+			String userId = request.getParameter("id"); //userIdì— ì…ë ¥í•œ idë¥¼ ë°›ì•„ë†“ìŒ
+			String userPw = request.getParameter("pw"); //request.getParameter("id") idë¥¼ ê°€ì ¸ì˜´
 			
-			// @ ¼öÁ¤ ÈÄ ·Î±×ÀÎ ´Ù½Ã ÇÏ±â -> ´Ù½Ã Ã¬°ÜÁà¾ßÇÔ. ¹Ø¿¡ ÀÖ´Â updateAccount
-			
-			 String id_s = (String) request.getAttribute("id_s"); String pw_s = (String)
-			 request.getAttribute("pw_s"); if (id_s != null) {//°ªÀÌ µé¾îÀÖÀ»¶§! userId = id_s;
-			 userPw = pw_s; }
+			// @ ìˆ˜ì • í›„ ë¡œê·¸ì¸ ë‹¤ì‹œ í•˜ê¸° -> ë‹¤ì‹œ ì±™ê²¨ì¤˜ì•¼í•¨. ë°‘ì— ìˆëŠ” updateAccount			
+			 String id_r = (String) request.getAttribute("id_r");
+			 String pw_r = (String) request.getAttribute("pw_r");
+			 if (id_r != null) {
+				 userId = id_r;
+				 userPw = pw_r; }
 			 	
 			
-			// 2. db¶û ºñ±³ (²®µ¥±â ½Ã¸®Áî) ÀÏÄ¡ÇÏ´ÂÁö ¾ÈÇÏ´ÂÁö ºñ±³ÇØ¾ßÇÔ
-			Connection con = null; //¿¬°á °´Ã¼
-			PreparedStatement pstmt = null; //½ÇÇà µµ±¸
-			ResultSet rs = null; //°á°ú
+			// 2. dbë‘ ë¹„êµ (ê»ë°ê¸° ì‹œë¦¬ì¦ˆ) ì¼ì¹˜í•˜ëŠ”ì§€ ì•ˆí•˜ëŠ”ì§€ ë¹„êµí•´ì•¼í•¨
+			Connection con = null; //ì—°ê²° ê°ì²´
+			PreparedStatement pstmt = null; //ì‹¤í–‰ ë„êµ¬
+			ResultSet rs = null; //ê²°ê³¼
 			
 			
 			boolean isLogin = false;
 			
-			try { //¿¡·¯°¡ ¾øÀ¸¸é
+			try { //ì—ëŸ¬ê°€ ì—†ìœ¼ë©´
 					String sql = "select * from user_info_tbl where user_id=?";
 					con = DBManager.connect();
 					pstmt = con.prepareStatement(sql);
@@ -59,7 +60,7 @@ public class AccountDAO {
 					rs = pstmt.executeQuery();
 					if (rs.next()) {					
 						if (userPw.equals(rs.getString("user_pw"))) {
-								request.setAttribute("r", "·Î±×ÀÎ ¼º°ø");
+								request.setAttribute("r", "ë¡œê·¸ì¸ ì„±ê³µ");
 								
 								Account a = new Account();
 								a.setUser_id(rs.getString("user_id"));
@@ -70,26 +71,26 @@ public class AccountDAO {
 								a.setUser_phoneNumber(rs.getString("user_phoneNumber"));
 								a.setUser_age(rs.getString("user_age"));
 								
-								//¼¼¼ÇÀ» ½á¾ß ¾îµğ¼­³ª »ç¿ë °¡´É -> Á¤º¸ ¼öÁ¤ ÈÄ ¼¼¼Ç¿¡ °ª ´Ù½Ã ³ÖÀ½
-								HttpSession hs = request.getSession();//¼¼¼Ç »ı¼º
-								hs.setAttribute("accountInfo", a);//°ª ÀúÀå
-								hs.setMaxInactiveInterval(5*60); //¼¼¼Ç½Ã°£ ¼³Á¤
+								//ì„¸ì…˜ì„ ì¨ì•¼ ì–´ë””ì„œë‚˜ ì‚¬ìš© ê°€ëŠ¥ -> ì •ë³´ ìˆ˜ì • í›„ ì„¸ì…˜ì— ê°’ ë‹¤ì‹œ ë„£ìŒ
+								HttpSession hs = request.getSession();//ì„¸ì…˜ ìƒì„±
+								hs.setAttribute("accountInfo", a);//ê°’ ì €ì¥
+								hs.setMaxInactiveInterval(10*60); //ì„¸ì…˜ì‹œê°„ ì„¤ì •
 								
 								isLogin = true;
 								
 							} else {
-								request.setAttribute("r", "ÆĞ½º¿öµå ¿À·ù");
+								request.setAttribute("r", "íŒ¨ìŠ¤ì›Œë“œ ì˜¤ë¥˜");
 							}
 						} else {
-							request.setAttribute("r", "Á¸ÀçÇÏÁö ¾Ê´Â È¸¿ø");
+							request.setAttribute("r", "ì¡´ì¬í•˜ì§€ ì•ŠëŠ” íšŒì›");
 						}
 
 				return isLogin;
 						
-			//¿¡·¯°¡ ¹ß»ıÇÏ¸é catch	
+			//ì—ëŸ¬ê°€ ë°œìƒí•˜ë©´ catch	
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("½ÇÆĞ...");
+				System.out.println("ì‹¤íŒ¨...");
 				return isLogin;
 			} finally {
 				com.util.db.DBManager.close(con, pstmt, rs);
@@ -104,17 +105,17 @@ public class AccountDAO {
 
 	public static void logOut(HttpServletRequest request) {
 
-		// ·Î±×¾Æ¿ô ÇÏ´Â ÀÏ
-		// ¼¼¼ÇÀ» Á×¿©¾ß ÇÔ.
+		// ë¡œê·¸ì•„ì›ƒ í•˜ëŠ” ì¼
+		// ì„¸ì…˜ì„ ì£½ì—¬ì•¼ í•¨.
 		
 		HttpSession hs = request.getSession();
-		hs.getAttribute("accountInfo"); //¼¼¼ÇÀ» ¾ò¾î¿À·Á¸é?
-//1.		hs.setAttribute("accountInfo", null); //null °ªÀ» ³Ö¾î¼­ accountInfo(¼¼¼Ç)À» Á×ÀÓ
-//2.		hs.removeAttribute("accountInfo"); //ÁöÁ¤ÀÌ °¡´É
-		hs.invalidate(); //´Ù Áö¿ò(ÁöÁ¤ ºÒ°¡)
-//4.		hs.setMaxInactiveInterval(0); //ÀÌ°Å´Â ¾ÈµÊ!!!
+		hs.getAttribute("accountInfo"); //ì„¸ì…˜ì„ ì–»ì–´ì˜¤ë ¤ë©´?
+//1.		hs.setAttribute("accountInfo", null); //null ê°’ì„ ë„£ì–´ì„œ accountInfo(ì„¸ì…˜)ì„ ì£½ì„
+//2.		hs.removeAttribute("accountInfo"); //ì§€ì •ì´ ê°€ëŠ¥
+		hs.invalidate(); //ë‹¤ ì§€ì›€(ì§€ì • ë¶ˆê°€)
+//4.		hs.setMaxInactiveInterval(0); //ì´ê±°ëŠ” ì•ˆë¨!!!
 		
-		// ¾ÖÃÊ¿¡ ¸¸µé¾îÁøÀûÀÌ ¾øÀ»¶§(·Î±×ÀÎÀÌ ¾ÈµÆÀ»¶§), ¼³Á¤ÇÑ ½Ã°£ÀÌ ¸¸·áµÇ¸é -> 2°¡Áö °æ¿ì°¡ ÀÖÀ½
+		// ì• ì´ˆì— ë§Œë“¤ì–´ì§„ì ì´ ì—†ì„ë•Œ(ë¡œê·¸ì¸ì´ ì•ˆëì„ë•Œ), ì„¤ì •í•œ ì‹œê°„ì´ ë§Œë£Œë˜ë©´ -> 2ê°€ì§€ ê²½ìš°ê°€ ìˆìŒ
 		
 		
 		
@@ -124,11 +125,11 @@ public class AccountDAO {
 
 
 
-	//°¡ÀÔÇÏ´Â ÀÏ
+	//ê°€ì…í•˜ëŠ” ì¼
 	public static void regAccount(HttpServletRequest request) {
-		// ²®µ¥±â
-		Connection con = null; //¿¬°á °´Ã¼
-		PreparedStatement pstmt = null; //½ÇÇà µµ±¸
+		// ê»ë°ê¸°
+		Connection con = null; //ì—°ê²° ê°ì²´
+		PreparedStatement pstmt = null; //ì‹¤í–‰ ë„êµ¬
 		ResultSet rs = null;
 		
 		try {
@@ -165,12 +166,12 @@ public class AccountDAO {
 			
 			
 			if (pstmt.executeUpdate() == 1) {
-				System.out.println("°¡ÀÔ ¼º°ø");				
+				System.out.println("ê°€ì… ì„±ê³µ");				
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("½ÇÆĞ");
+			System.out.println("ì‹¤íŒ¨");
 		}finally {
 			DBManager.close(con, pstmt, rs);
 		}			
@@ -180,7 +181,7 @@ public class AccountDAO {
 	
 
 
-	// È¸¿ø Á¤º¸ °¡Á®¿À±â
+	// íšŒì› ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 	public static void getAccount(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -194,7 +195,7 @@ public class AccountDAO {
 			String path = request.getSession().getServletContext().getRealPath("fileFolder");
 			System.out.println(path);
 			
-			// ÀÌ¹Ì ¾÷·Îµå ±â´É Ã³¸® µÊ
+			// ì´ë¯¸ ì—…ë¡œë“œ ê¸°ëŠ¥ ì²˜ë¦¬ ë¨
 			
 			String name = request.getParameter("name");
 			String id = request.getParameter("id");
@@ -223,7 +224,7 @@ public class AccountDAO {
 					interest2 += s + "!";
 				}
 			}else {
-				interest2 = "°ü½É»ç ¾øÀ½";
+				interest2 = "ê´€ì‹¬ì‚¬ ì—†ìŒ";
 			}
 			
 			pstmt.setString(6, interest2);
@@ -238,44 +239,41 @@ public class AccountDAO {
 	}
 
 
-	//¼öÁ¤ÇÏ´Â ÀÏ
+	//ìˆ˜ì •í•˜ëŠ” ì¼
 	public static void updateAccount(HttpServletRequest request) {
 		
-		Connection con = null; //¿¬°á °´Ã¼
-		PreparedStatement pstmt = null; //½ÇÇà µµ±¸
-		String sql = "update user_info_tbl set user_pw=?, user_addr=?, user_phoneNumber=?, user_age=? where user_id=?";
+		Connection con = null; //ì—°ê²° ê°ì²´
+		PreparedStatement pstmt = null; //ì‹¤í–‰ ë„êµ¬
+		String sql = "update user_info_tbl set user_pw=?, user_addr=?, user_phoneNumber=? where user_id=?";
 
 		try {
 			request.setCharacterEncoding("utf-8");
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 			
-			// °ª ¹Ş±â
-			String pw = request.getParameter("pw1");
+			// ê°’ ë°›ê¸°
+			String pw3 = request.getParameter("pw3");
 			String addr = request.getParameter("addr");
 			String phoneNum = request.getParameter("phoneNum");
-			int age1 = Integer.parseInt(request.getParameter("birth"));
-			String id = request.getParameter("id");
 
-			// ¼¼¼Ç ¾²´ø°¡ ³Ñ°Ü ÁÖ´ø°¡
-			Account aa = (Account)request.getSession().getAttribute("accountInfo");
-			String id1 = aa.getUser_id();			
+			// ì„¸ì…˜ ì“°ë˜ê°€ ë„˜ê²¨ ì£¼ë˜ê°€
+			Account a = (Account)request.getSession().getAttribute("accountInfo");
+			String id = a.getUser_id();			
 			
-			//°ª ÀÔ·Â¹Ş±â
-			pstmt.setString(1, pw);
+			//ê°’ ì…ë ¥ë°›ê¸°
+			pstmt.setString(1, pw3);
 			pstmt.setString(2, addr);
 			pstmt.setString(3, phoneNum);
-			pstmt.setInt(4, age1);
-			pstmt.setString(5, id1);			
+			pstmt.setString(4, id);			
 			
-			//·Î±×ÀÎ ´Ù½Ã ½ÃÄÑ -> ¼öÁ¤µÈ °ª ¹Ù·Î º¼ ¼ö ÀÖ°Ô -> login¿¡¼­ ¹Ş¾ÆÁà¼­ °ª ½Ç·ÁÀÖÀ½
-			//¾÷µ« ±â´ÉÀÌ ¼öÇàµÇ¸é °ªÀÌ ½Ç·ÁÀÖ°í ¾Æ´Ï¸é °ªÀÌ ¾øÀ»²¨ÀÓ
-			request.setAttribute("id_s", id);
-			request.setAttribute("pw_s", pw);
+			//ë¡œê·¸ì¸ ë‹¤ì‹œ ì‹œì¼œ -> ìˆ˜ì •ëœ ê°’ ë°”ë¡œ ë³¼ ìˆ˜ ìˆê²Œ -> loginì—ì„œ ë°›ì•„ì¤˜ì„œ ê°’ ì‹¤ë ¤ìˆìŒ
+			//ì—…ëƒ ê¸°ëŠ¥ì´ ìˆ˜í–‰ë˜ë©´ ê°’ì´ ì‹¤ë ¤ìˆê³  ì•„ë‹ˆë©´ ê°’ì´ ì—†ì„êº¼ì„
+			request.setAttribute("id_r", id);
+			request.setAttribute("pw_r", pw3);
 			
 			
 			if (pstmt.executeUpdate() == 1) {
-				System.out.println("¼öÁ¤ ¼º°ø");				
+				System.out.println("ìˆ˜ì • ì„±ê³µ");				
 			}
 			
 		} catch (Exception e) {
@@ -287,22 +285,142 @@ public class AccountDAO {
 	}
 
 
-
-	public static void passwordCheck(HttpServletRequest request) {
-	
-		String pwContact = request.getParameter("pwContact");
+	//ì •ë³´ ìˆ˜ì • ì „ ë¹„ë²ˆ ì²´í¬
+	public static boolean passwordCheck(HttpServletRequest request) {
 	
 		HttpSession hs = request.getSession();
-		Account aa = (Account)request.getSession().getAttribute("accountInfo");
-		String pw = aa.getUser_pw();
-				
-		if (pwContact.equals(pw)) {
-			System.out.println("¼º°øÀÌ¾ß????");
-			request.setAttribute("contentPage", "jsp/sm/loginUpdate.jsp");
-		}else {
-			request.setAttribute("contentPage", "jsp/sm/loginContact.jsp");
+		Account a = (Account) hs.getAttribute("accountInfo");
+		String pwContact = request.getParameter("pwContact");
+		
+		boolean isPwCheck = false;		
+		
+		if (pwContact.equals(a.getUser_pw())) {
+			isPwCheck = true;
+		}	
+			return isPwCheck;
+		
+	}
+
+
+	// íšŒì› íƒˆí‡´
+	public static void DeleteAccount(HttpServletRequest request) {
+		
+		//ê»ë°ê¸°
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		HttpSession hs = request.getSession();
+		Account a = (Account) hs.getAttribute("accountInfo");
+		
+		try {
+			String sql = "delete user_info_tbl where user_id=?";
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, a.getUser_id());		
+			
+			if(pstmt.executeUpdate() == 1) {
+				request.setAttribute("r", "ì‚­ì œ ì„±ê³µ!");
+			}
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+				request.setAttribute("r", "ì„œë²„ ì˜¤ë¥˜...");
+			} finally {
+				DBManager.close(con, pstmt, null);
+			}
+			
+			
+		
+		
+		
+		
+	}
+
+
+	//ì•„ì´ë”” ì°¾ê¸°
+	public static boolean searchId(HttpServletRequest request) {
+		
+		String name = request.getParameter("name");
+		String phoneNumber = request.getParameter("phoneNumber");
+		
+		System.out.println(name);
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		boolean isCorrectId = false;
+		
+		try {
+			request.setCharacterEncoding("utf-8");
+			String sql = "select user_id from user_info_tbl where user_name=? and user_phoneNumber=?";
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			
+			
+			pstmt.setString(1, name);
+			pstmt.setString(2, phoneNumber);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				String id = rs.getString("user_id");
+				request.setAttribute("searchId", id);
+				isCorrectId = true;
+			}
+			
+			return isCorrectId;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return isCorrectId;
+		} finally {
+			DBManager.close(con, pstmt, rs);
 		}
 		
+		
+	}
+
+
+	//ë¹„ë²ˆ ì°¾ê¸°
+	public static boolean searchPw(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		String phoneNumber = request.getParameter("phoneNumber");
+		
+		System.out.println(id);
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		boolean isCorrectId = false;
+		
+		try {
+			request.setCharacterEncoding("utf-8");
+			String sql = "select user_pw from user_info_tbl where user_id=? and user_phoneNumber=?";
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			
+			
+			pstmt.setString(1, id);
+			pstmt.setString(2, phoneNumber);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				String pw = rs.getString("user_pw");
+				request.setAttribute("searchPw", pw);
+				isCorrectId = true;
+			}
+			
+			return isCorrectId;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return isCorrectId;
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
 		
 	}
 		

@@ -9,10 +9,10 @@
 <body>
 
 <div>
-	<form action="MyPageController" method="post" class="login" style="height:230px;">
-		<h5>본인 확인</h5>
- 		<input type="password" placeholder="User Password" name="pwContact">
-  		<button class="b1">확인</button><br>
+	<form class="login">
+		<h2>탈퇴 되었습니다.</h2>
+		<h5>DOSU를 이용해주셔서 감사합니다.</h5>
+		
 	</form>
 </div>
 

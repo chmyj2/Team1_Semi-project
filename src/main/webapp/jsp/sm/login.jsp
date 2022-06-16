@@ -1,16 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/login.css">
 <script type="text/javascript" src="jsp/sm/reg.js"></script>
 <script type="text/javascript" src="jsp/sm/validCheck.js"></script>
 </head>
 <body>
-<!-- ·Î±×ÀÎ ÆäÀÌÁö/·Î±×ÀÎ È¸¿ø°¡ÀÔ/LoginController·Î ÀÌµ¿ÇØ¼­ ÀÏ Ã³¸® -->
+<!-- ë¡œê·¸ì¸ í˜ì´ì§€/ë¡œê·¸ì¸ íšŒì›ê°€ì…/LoginControllerë¡œ ì´ë™í•´ì„œ ì¼ ì²˜ë¦¬ -->
 
 <div>
 	<form action="LoginController" method="post" class="login" style="height:330px;" name="loginForm" onsubmit="return loginform()">
@@ -18,8 +18,8 @@
  		<input type="password" placeholder="User Password" name="pw">
   		<button class="b1">Login</button><br><br><br>
   		<a href="RegAccountC" style="color:gray;" class="signup">sign up</a><br>
-  		<a style="color:gray;" class="signup">¾ÆÀÌµğ Ã£±â</a>&nbsp;
-  		<a style="color:gray;" class="signup">ºñ¹Ğ¹øÈ£ Ã£±â</a>
+  		<a href="searchIdC" style="color:gray; font-size: 6pt;" class="signup">ì•„ì´ë”” ì°¾ê¸°</a>&nbsp;
+  		<a href="searchPwC" style="color:gray; font-size: 6pt;" class="signup">ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</a>
 	</form>
 </div>
 

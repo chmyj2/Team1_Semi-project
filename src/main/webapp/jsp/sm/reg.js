@@ -87,6 +87,52 @@ function loginform(){
 		pw.focus();
 		pw.value="";		
 		return false;
+	}	
+	
+}
+
+
+function update(){
+	let pw2 = document.updateForm.pw2;
+	let pw3 = document.updateForm.pw3;
+	let addr = document.updateForm.addr;
+	let phoneNum = document.updateForm.phoneNum;
+		
+	if(isEmpty(pw2)){
+		alert('빈칸을 입력하세요.')
+		pw2.focus();
+		pw2.value="";		
+		return false;
 	}
 	
+	if(isEmpty(pw3)){
+		alert('빈칸을 입력하세요.')
+		pw3.focus();
+		pw3.value="";		
+		return false;
+	}
+	
+	if(matchPW(pw2,pw3)){
+		alert('비밀번호가 일치하지 않습니다.')
+		pw3.focus();
+		pw3.value="";
+		return false;
+	}
+	
+	if(isEmpty(addr)){
+		alert('빈칸을 입력하세요.')
+		addr.focus();
+		addr.value="";		
+		return false;
+	}
+	
+	if(!notContain(phoneNum,"-")||isEmpty(phoneNum)){
+		alert('연락처를 입력하세요.')
+		phoneNum.focus();
+		phoneNum.value="";		
+		return false;
+	}
+	
+	//update.submit();
+	return true;	
 }

@@ -9,8 +9,8 @@
 <body>
 
 <div>
-	<form action="MyPageController" class="login">
-		<h2>My Page</h2><br><br>
+	<form class="login">
+		<h2>수정된 My Page</h2><br><br>
 		<p style="font-size: 6px; text-align: left;">아이디</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_id }</p><br>
 
@@ -35,9 +35,6 @@
   		<br><button>수정하기</button>
 	</form>
 </div>
-
-
-
 
 </body>
 </html>

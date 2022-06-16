@@ -7,29 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/MyPageController")
-public class MyPageController extends HttpServlet {
+import com.sm.hc.AccountDAO;
+
+@WebServlet("/AccountDropController")
+public class AccountDropController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//수정하기 전 비번 확인
+	
+		//탈퇴 동의창 보여주는 일
 		AccountDAO.loginCheck(request);
-						
-		request.setAttribute("contentPage", "jsp/sm/loginContact.jsp");
+		
+		request.setAttribute("contentPage", "jsp/sm/announceDrop.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if (AccountDAO.passwordCheck(request)) {
-			AccountDAO.loginCheck(request);
-			request.setAttribute("contentPage", "jsp/sm/loginUpdate.jsp");
-			request.getRequestDispatcher("index.jsp").forward(request, response);			
-		} else {
-			AccountDAO.loginCheck(request);
-			request.setAttribute("contentPage", "jsp/sm/loginContact.jsp");
-			request.getRequestDispatcher("index.jsp").forward(request, response);					
-		}
 	}
 
 }

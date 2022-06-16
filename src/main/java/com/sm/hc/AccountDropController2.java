@@ -7,30 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/InfoEditController")
-public class InfoEditController extends HttpServlet {
+@WebServlet("/AccountDropController2")
+public class AccountDropController2 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		//본인 확인
+		//탈퇴하는 일
+		AccountDAO.DeleteAccount(request);
+		AccountDAO.logOut(request);
 		AccountDAO.loginCheck(request);
-		AccountDAO.passwordCheck(request);
-						
-		request.setAttribute("contentPage", "jsp/sm/loginUpdate.jsp");
+		
+		//탈퇴가 끝나면 여기로
+		request.setAttribute("contentPage", "jsp/sm/accountDrop.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
-	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		System.out.println("헤이헤이헤이");
-		// 넘겨받은 값들로 수정하는 일
-		AccountDAO.updateAccount(request);
-		AccountDAO.login(request);
-		AccountDAO.loginCheck(request);
-						
-		// 수정하고 어디로?
-		request.setAttribute("contentPage", "jsp/sm/myPage.jsp");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
 	
 	}
 

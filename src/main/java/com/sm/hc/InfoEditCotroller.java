@@ -7,29 +7,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/MyPageController")
-public class MyPageController extends HttpServlet {
+import com.sm.hc.AccountDAO;
+
+@WebServlet("/InfoEditCotroller")
+public class InfoEditCotroller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//수정하기 전 비번 확인
+		//해당 회원 정보 가져오기
 		AccountDAO.loginCheck(request);
-						
-		request.setAttribute("contentPage", "jsp/sm/loginContact.jsp");
+				
+		request.setAttribute("contentPage", "account/update.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
+				
 	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		if (AccountDAO.passwordCheck(request)) {
-			AccountDAO.loginCheck(request);
-			request.setAttribute("contentPage", "jsp/sm/loginUpdate.jsp");
-			request.getRequestDispatcher("index.jsp").forward(request, response);			
-		} else {
-			AccountDAO.loginCheck(request);
-			request.setAttribute("contentPage", "jsp/sm/loginContact.jsp");
-			request.getRequestDispatcher("index.jsp").forward(request, response);					
-		}
+	
+		// 넘겨받은 값들로 수정하는 일
+		AccountDAO.updateAccount(request);
+		AccountDAO.login(request);
+		AccountDAO.loginCheck(request);
+				
+		// 수정하고 어디로?
+		request.setAttribute("contentPage", "jsp/sm/myPage.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+			
+	
+	
 	}
 
 }
