@@ -15,8 +15,8 @@
 <div class="ourCollectionInput">
 		
 <form action="Search_drinkController">
-		<div style="background-color: green">
-			sdas<input name="selected_cocktail" type="text" onkeyup="this.value = this.value.toUpperCase();"><button>검색</button>
+		<div style="background-color: #0d47a1">
+			<input name="selected_cocktail" type="text" placeholder="SEARCH" onkeyup="this.value = this.value.toUpperCase();"><button>검색</button>
 		</div>
 </form>
 	</div>
@@ -24,17 +24,18 @@
 <table>
 <tr>
 
-<c:forEach var="m" items="${drinks}" varStatus="status">
-<c:if test="${status.index%4==0}">
-</tr>
-<tr>
-</c:if>
-    <td><button onclick="goDetail(${m.cocktail_num})" style="border:0;outline: none;"><img alt="" src="fileFolder/${m.cocktail_img}" style="width: 170px; height: 230px"><br>
-    ${m.cocktail_name}</button></td>
-
-
-</c:forEach>
-
+<table class="OurCocktail_Tbl">
+	<tr>
+	<td colspan="10"></td>
+		<c:forEach var="m" items="${drinks}" varStatus="status">
+			<c:if test="${status.index%4==0}">
+				</tr><tr>
+			</c:if>
+    	<td class="OurCocktail_Td"><a href="Drink_Info_DetailController?num=${m.cocktail_num}"><img alt="" src="fileFolder/${m.cocktail_img}" style="width: 170px; height: 230px"></a></td>
+    	<td class="OurCocktail_Td2">${m.cocktail_name}</td>
+		</c:forEach>
+	</tr>
+</table>
 </tr>
 </table>
 

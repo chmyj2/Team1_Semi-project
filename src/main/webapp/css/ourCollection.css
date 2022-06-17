@@ -10,7 +10,28 @@
     background: #0d47a1;
     line-height: 50px;
     margin:0 auto;
-    text-align: center;
     position: sticky;
+    
+    text-align: center;
+	
+}
+
+
+.OurCocktail_Tbl{
+	
+	margin-left: 110px;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	
+	
+	
+}
+
+
+.OurCocktail_Td2{
+
+	font-size: 12pt;
+	vertical-align: bottom;
+	text-align: left;
 	
 }

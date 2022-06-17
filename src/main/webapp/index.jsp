@@ -42,7 +42,7 @@
                 <ul>
                     <li><a href="#">자유게시판</a></li>
                     <li><a href="#">레시피 게시판</a></li>
-                    <li><a href="#">후기 게시판</a></li>
+                    <li><a href="boardCreview">후기 게시판</a></li>
                     <li><a href="#">Q&A 게시판</a></li>
                 </ul>
             </li>
