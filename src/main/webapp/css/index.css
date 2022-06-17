@@ -101,6 +101,28 @@
 
 
 
+<<<<<<< HEAD
+=======
+/* 메뉴바 */
+
+
+
+   
+.index-main{
+	display: flex;
+        
+    }
+
+.index-main div{
+	flex-grow: 1;
+	height: 1200px;
+	text-align: center;
+	
+    }
+
+
+
+>>>>>>> WorkBranch/Develop
 /* ul li태그에 리스트 스타일을 없앰 */
 ul li{
 	list-style: none;

@@ -36,7 +36,15 @@
 	<table class="home_Tbl">
 		<tr>
 			<td class="home_Tbl_td1"><img  class="home_Tb1_Img" alt="" src="img/OSU-logo (3).png"> </td>
+<<<<<<< HEAD
 			<td class="home_Tbl_td2"><p>DOSU회원가입시<br>전품목 5% 할인.<br></p>5% Discount On All Items <br>When Registering As a Member.<br><br><button onclick="location.href='#'" class="home-btn btn-33"><span>SIGN UP</span></button></td>
+=======
+<<<<<<< HEAD
+			<td class="home_Tbl_td2"><p>SUDO회원가입시<br>전품목 5% 할인.<br></p>5% Discount On All Items <br>When Registering As a Member.<br><br><button onclick="location.href='#'" class="home-btn btn-33"><span>SIGN UP</span></button></td>
+=======
+			<td class="home_Tbl_td2"><p>DOSU회원가입시<br>전품목 5% 할인.<br></p>5% Discount On All Items <br>When Registering As a Member.<br><br><button onclick="location.href='#'" class="home-btn btn-33"><span>SIGN UP</span></button></td>
+>>>>>>> yjyj
+>>>>>>> WorkBranch/Develop
 			<td class="home_Tbl_td3">2022 June 13 - 2022 Sep 09 <br>SOLDESK 802<br>WHAT IS TODAY'S LUNCH?</td>
 		</tr>
 		

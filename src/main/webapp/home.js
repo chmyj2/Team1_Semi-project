@@ -8,7 +8,11 @@ function insRow() {
   var oCell = oRow.insertCell();
 
   //삽입될 Form Tag
+<<<<<<< HEAD
   var frmTag = "<input type=text name='cocktail_ingredient' style='width: 300px'>";
+=======
+  var frmTag = "<input type=text name='addText' style='width: 300px'>";
+>>>>>>> WorkBranch/Develop
   frmTag += "<input type=button value='삭제' onClick='removeRow()' style='cursor:hand'>";
   oCell.innerHTML = frmTag;
 }
@@ -31,7 +35,11 @@ function insRow2() {
   var oCell = oRoww.insertCell();
 
   //삽입될 Form Tag
+<<<<<<< HEAD
   var frmTag = "<input type=text name='cocktail_tag' style='width: 300px'>";
+=======
+  var frmTag = "<input type=text name='addTextt' style='width: 300px'>";
+>>>>>>> WorkBranch/Develop
   frmTag += "<input type=button value='삭제' onClick='removeRow2()' style='cursor:hand'>";
   oCell.innerHTML = frmTag;
 }
@@ -52,7 +60,11 @@ function insRow3() {
   var oCelll = oRowww.insertCell();
 
   //삽입될 Form Tag
+<<<<<<< HEAD
   var frmTag = "<input type=text name='cocktail_recipe' style='width: 300px'>";
+=======
+  var frmTag = "<input type=text name='addTexttt' style='width: 300px'>";
+>>>>>>> WorkBranch/Develop
   frmTag += "<input type=button value='삭제' onClick='removeRow3()' style='cursor:hand'>";
   oCelll.innerHTML = frmTag;
 }
@@ -68,6 +80,7 @@ function removeRow3() {
 
 
 function frmCheck(){
+<<<<<<< HEAD
 	
 	
 	
@@ -94,12 +107,34 @@ function frmCheck(){
 		}else if(frm.elements[i].name == "cocktail_tag"){
 			if( !frm.elements[i].value ){
              alert("태그를 입력하세요!");
+=======
+  var frm = document.form;
+  
+  
+  for( var i = 0; i <= frm.elements.length - 1; i++ ){
+     if( frm.elements[i].name == "addTexttt" ){
+         if( !frm.elements[i].value ){
+             alert("래사를 입력하세요!");
+                 frm.elements[i].focus();
+	 return;
+          }
+      }else if(frm.elements[i].name == "addText"){
+			if( !frm.elements[i].value ){
+             alert("재료 입력하세요!");
+                 frm.elements[i].focus();
+	 return;
+          }
+		}else if(frm.elements[i].name == "addTextt"){
+			if( !frm.elements[i].value ){
+             alert("태그 입력하세요!");
+>>>>>>> WorkBranch/Develop
                  frm.elements[i].focus();
 	 return;
           }
    }
    }
    frm.submit();
+<<<<<<< HEAD
   
    
  
@@ -121,3 +156,9 @@ function deleteDrinkInfo(PKnum){
 
 
  
+=======
+   
+   
+ 
+ }
+>>>>>>> WorkBranch/Develop
