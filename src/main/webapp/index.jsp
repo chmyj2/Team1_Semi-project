@@ -6,15 +6,26 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/index.css">
+<<<<<<< HEAD
 <link rel="stylesheet" href="css/login.css">
+=======
+>>>>>>> WorkBranch/Develop
 <link rel="stylesheet" href="css/home.css" media="screen">
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <!-- JavaScript -->
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<<<<<<< HEAD
 
 </head>
 <body>
 <!-- 주석 -->
+=======
+<script type="text/javascript" src="home.js" ></script>
+
+</head>
+<body>
+<!-- 주석2 -->
+>>>>>>> WorkBranch/Develop
 <!-- 로고 부분 -->
 <div class="nabar-brand">
 	<div class="item"></div>
@@ -24,7 +35,12 @@
     	</a>
     </div>
    <div class="item3">
+<<<<<<< HEAD
     	<jsp:include page="${ loginPage}"></jsp:include>
+=======
+    	<button class="custom-btn btn-11" onclick="location.href='LoginMainController'">Login</button><button onclick="location.href=
+    		'drink_Info_regController'">운영자전용 상품등록버튼</button>
+>>>>>>> WorkBranch/Develop
    </div>
 </div>
   
@@ -34,8 +50,13 @@
 <div id="indexMenu">
         <ul>
             <li><a href="#">OUR COLLECTION</a></li>
+<<<<<<< HEAD
             <li><a href="#">COCKTAILS SALES</a></li>
             <li><a href="#">GOODs SALES</a></li>
+=======
+           <li><a href="ShoppingController?name=Drink">COCKTAILS SALES</a></li>
+            <li><a href="ShoppingController?name=Goods">GOODs SALES</a></li>
+>>>>>>> WorkBranch/Develop
             <li><a href="#">OUR SOCIAL</a>
                 <ul>
                     <li><a href="boardCfree">자유게시판</a></li>
@@ -48,7 +69,11 @@
 </div>
     
     
+<<<<<<< HEAD
 <!-- 콘텐츠 페이지 -->
+=======
+<!-- 콘텐츠 페이지1 -->
+>>>>>>> WorkBranch/Develop
 	<div> <jsp:include page="${contentPage}"></jsp:include></div>
        
   

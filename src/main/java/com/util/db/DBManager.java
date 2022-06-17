@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 public class DBManager {
 	
+<<<<<<< HEAD
 	// DB 관련 작업을 할때 매번 연결코드를 쓴 이후 작업 해옴
 	// 반복되는 작업을 한번만 하기 위해서 (crud 반복작업)
 	// 그거 AOP 하자
@@ -33,4 +34,47 @@ public class DBManager {
 			
 		}
 	
+=======
+	//connect("jw");
+	public static Connection connnect(String who) throws SQLException, ClassNotFoundException
+	{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+
+		String id =null;
+		String pw =null;
+		
+		
+		
+		if(who.equals("jw"))
+		{
+			id="C##jw";
+			pw="jw1234";
+		}
+		else if(who.equals("sm"))
+		{
+			id="sm";
+			pw="sm";
+		}
+		else if(who.equals("yj"))
+		{
+			
+			return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", id, pw);
+		}
+		
+		
+		return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", id, pw);
+	}
+	
+	public static void Close(Connection con, PreparedStatement pstmt, ResultSet rs)
+	{
+		try {
+			if(rs!=null)
+			rs.close();
+			pstmt.close();
+			con.close();	
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+>>>>>>> WorkBranch/Develop
 }
