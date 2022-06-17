@@ -11,29 +11,6 @@
 <body>
 
 <div class = "page-shop" >
-
-
-	<section class = "products">
-		<div class = "container">
-			<ul>
-				<c:forEach var="p" items = "${products}">	
-				<li>
-					<div>
-						<img id="movieImg" src ="img/${p.img[0]}">
-					</div>
-					<div>
-						${p.price }
-					</div>
-					<div>	
-						${p.name }
-					</div>
-					<div>
-					</div>
-				</li>
-				</c:forEach>		
-			</ul>
-		</div>
-	</section>
 	<a href="ProductRegController"><button>상품 추가</button></a>
 	
 </div>

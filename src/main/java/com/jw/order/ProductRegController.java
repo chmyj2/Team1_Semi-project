@@ -7,19 +7,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jw.DbUtil.ProductDBManager;
+
 @WebServlet("/ProductRegController")
 public class ProductRegController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("contentPage", "jsp/jw/regProduct.jsp");
-		request.getRequestDispatcher("fakeIndex.jsp").forward(request, response);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductDBManager.RegProduct(request);
-		
-		
-		System.out.println("등록성공");
 		response.sendRedirect("ShoppingController");
 	}
-
 }

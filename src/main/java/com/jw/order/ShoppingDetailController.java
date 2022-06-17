@@ -7,14 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/OrderController")
-public class OrderController extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("contentPage", "jsp/jw/OrderPage.jsp");
-		request.getRequestDispatcher("index.jsp").forward(request, response);		
-	}
+import com.jw.DbUtil.ProductDBManager;
 
+@WebServlet("/ShoppingDetailController")
+public class ShoppingDetailController extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ProductDBManager.getAllProduct(request);
+		request.setAttribute("contentPage", "jsp/jw/shopDetail.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
-
 }

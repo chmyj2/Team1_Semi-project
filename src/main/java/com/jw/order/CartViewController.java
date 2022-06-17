@@ -7,14 +7,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/OrderController")
-public class OrderController extends HttpServlet {
+import com.jw.DbUtil.CartDBManager;
+@WebServlet("/CartViewController")
+public class CartViewController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("contentPage", "jsp/jw/OrderPage.jsp");
-		request.getRequestDispatcher("index.jsp").forward(request, response);		
+		request.setAttribute("contentPage", "jsp/jw/CartView.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
-
 }
