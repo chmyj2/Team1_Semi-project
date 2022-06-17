@@ -80,27 +80,27 @@ public class StarDao {
 			pstmt = con.prepareStatement(sql);			
 			rs = pstmt.executeQuery();
 			
-			java.util.ArrayList<StarPoint> s = new java.util.ArrayList<Drink>();
-			
-			
-			while (rs.next()) {		
-			Drink d = new Drink();
-			
-			d.setCocktail_num(rs.getString("cocktail_num")); 
-			d.setCocktail_name(rs.getString("cocktail_name"));
-			d.setCocktail_info(rs.getNString("cocktail_info"));
-			d.setCocktail_ingredient(rs.getString("cocktail_ingredient"));
-			d.setCocktail_recipe(rs.getString("cocktail_recipe"));
-			d.setCocktail_img(rs.getString("cocktail_img"));
-			d.setCocktail_tag(rs.getString("cocktail_tag"));
-			
-			
-			
-
-			drinks.add(d);	
-			}
-			request.setAttribute("drinks",drinks);
-						
+//			java.util.ArrayList<StarPoint> s = new java.util.ArrayList<Drink>();
+//			
+//			
+//			while (rs.next()) {		
+//			Drink d = new Drink();
+//			
+//			d.setCocktail_num(rs.getString("cocktail_num")); 
+//			d.setCocktail_name(rs.getString("cocktail_name"));
+//			d.setCocktail_info(rs.getNString("cocktail_info"));
+//			d.setCocktail_ingredient(rs.getString("cocktail_ingredient"));
+//			d.setCocktail_recipe(rs.getString("cocktail_recipe"));
+//			d.setCocktail_img(rs.getString("cocktail_img"));
+//			d.setCocktail_tag(rs.getString("cocktail_tag"));
+//			
+//			
+//			
+//
+//			drinks.add(d);	
+//			}
+//			request.setAttribute("drinks",drinks);
+//						
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
