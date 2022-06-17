@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/login.css">
 </head>
@@ -11,20 +11,20 @@
 
 <div>
 	<form class="login">
-		<h2>È¸¿ø Å»Åð ¾È³»</h2><br><br>
+		<h2>íšŒì› íƒˆí‡´ ì•ˆë‚´</h2><br><br>
 		<p style="font-size: 6pt; text-align: left;">
-		È¸¿ø Å»Åð¸¦ ½ÅÃ»ÇÏ±â Àü¿¡ ¾È³» »çÇ×À» ²À È®ÀÎÇØÁÖ¼¼¿ä.<br>
-		È¸¿ø´Ô²²¼­ »ç¿ëÇÏ°í °è½Å ¾ÆÀÌµð(${sessionScope.accountInfo.user_id })´Â Å»ÅðÇÒ °æ¿ì Àç»ç¿ë ¹× º¹±¸°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.<br><br>
-		¡á Å»ÅðÇÑ ¾ÆÀÌµð´Â º»ÀÎ°ú Å¸ÀÎ ¸ðµÎ Àç»ç¿ë ¹× º¹±¸°¡ ºÒ°¡ÇÏ¿À´Ï ½ÅÁßÇÏ°Ô ¼±ÅÃÇÏ½Ã±â ¹Ù¶ø´Ï´Ù.<br><br>
-		¡á Å»Åð ÈÄ È¸¿øÁ¤º¸ ¹× °³ÀÎÇü ¼­ºñ½º ÀÌ¿ë±â·ÏÀº ¸ðµÎ »èÁ¦µË´Ï´Ù.<br><br>
-		¡á Å»Åð ÈÄ¿¡µµ °Ô½ÃÆÇ ¼­ºñ½º¿¡ µî·ÏÇÑ °Ô½Ã¹°Àº ±×´ë·Î ³²¾Æ ÀÖ½À´Ï´Ù.<br>»èÁ¦¸¦ ¿øÇÏ´Â °Ô½Ã±ÛÀÌ ÀÖ´Ù¸é ¹Ýµå½Ã Å»Åð Àü »èÁ¦ÇÏ½Ã±â ¹Ù¶ø´Ï´Ù.<br><br>
-		¡á Å»Åð ÈÄ¿¡´Â ¾ÆÀÌµð(${sessionScope.accountInfo.user_id }) ·Î ´Ù½Ã °¡ÀÔÇÒ ¼ö ¾ø½À´Ï´Ù.	<br><br><br>	
+		íšŒì› íƒˆí‡´ë¥¼ ì‹ ì²­í•˜ê¸° ì „ì— ì•ˆë‚´ ì‚¬í•­ì„ ê¼­ í™•ì¸í•´ì£¼ì„¸ìš”.<br>
+		íšŒì›ë‹˜ê»˜ì„œ ì‚¬ìš©í•˜ê³  ê³„ì‹  ì•„ì´ë””(${sessionScope.accountInfo.user_id })ëŠ” íƒˆí‡´í•  ê²½ìš° ìž¬ì‚¬ìš© ë° ë³µêµ¬ê°€ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.<br><br>
+		â–  íƒˆí‡´í•œ ì•„ì´ë””ëŠ” ë³¸ì¸ê³¼ íƒ€ì¸ ëª¨ë‘ ìž¬ì‚¬ìš© ë° ë³µêµ¬ê°€ ë¶ˆê°€í•˜ì˜¤ë‹ˆ ì‹ ì¤‘í•˜ê²Œ ì„ íƒí•˜ì‹œê¸° ë°”ëžë‹ˆë‹¤.<br><br>
+		â–  íƒˆí‡´ í›„ íšŒì›ì •ë³´ ë° ê°œì¸í˜• ì„œë¹„ìŠ¤ ì´ìš©ê¸°ë¡ì€ ëª¨ë‘ ì‚­ì œë©ë‹ˆë‹¤.<br><br>
+		â–  íƒˆí‡´ í›„ì—ë„ ê²Œì‹œíŒ ì„œë¹„ìŠ¤ì— ë“±ë¡í•œ ê²Œì‹œë¬¼ì€ ê·¸ëŒ€ë¡œ ë‚¨ì•„ ìžˆìŠµë‹ˆë‹¤.<br>ì‚­ì œë¥¼ ì›í•˜ëŠ” ê²Œì‹œê¸€ì´ ìžˆë‹¤ë©´ ë°˜ë“œì‹œ íƒˆí‡´ ì „ ì‚­ì œí•˜ì‹œê¸° ë°”ëžë‹ˆë‹¤.<br><br>
+		â–  íƒˆí‡´ í›„ì—ëŠ” ì•„ì´ë””(${sessionScope.accountInfo.user_id }) ë¡œ ë‹¤ì‹œ ê°€ìž…í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.	<br><br><br>	
 	<label for="agree">
 		<input type="checkbox" id="agree" name="agree" onchange="aaa()">
-		¾È³» »çÇ×À» ¸ðµÎ È®ÀÎÇÏ¿´À¸¸ç, ÀÌ¿¡ µ¿ÀÇÇÕ´Ï´Ù.
+		ì•ˆë‚´ ì‚¬í•­ì„ ëª¨ë‘ í™•ì¸í•˜ì˜€ìœ¼ë©°, ì´ì— ë™ì˜í•©ë‹ˆë‹¤.
 	</label><br><br>		
   		<button type="button" id="checkButton" name="checkButton" disabled="disabled"
-  		 style="font-size: 10pt;" onclick="location.href='AccountDropController2'">È¸¿ø Å»Åð</button>	
+  		 style="font-size: 10pt;" onclick="location.href='AccountDropController2'">íšŒì› íƒˆí‡´</button>	
 	</form>
 </div>
 

@@ -1,38 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
 <div>
 	<form class="login">
-		<h2>¼öÁ¤µÈ My Page</h2><br><br>
-		<p style="font-size: 6px; text-align: left;">¾ÆÀÌµğ</p>
+		<h2>ìˆ˜ì •ëœ My Page</h2><br><br>
+		<p style="font-size: 6px; text-align: left;">ì•„ì´ë””</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_id }</p><br>
 
-		<p style="font-size: 6px; text-align: left;">ºñ¹Ğ¹øÈ£</p>
+		<p style="font-size: 6px; text-align: left;">ë¹„ë°€ë²ˆí˜¸</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_pw }</p><br>
 		
-		<p style="font-size: 6px; text-align: left;">ÀÌ¸§</p>
+		<p style="font-size: 6px; text-align: left;">ì´ë¦„</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_name }</p><br>
  		 		
-		<p style="font-size: 6px; text-align: left;">¼ºº°</p>
+		<p style="font-size: 6px; text-align: left;">ì„±ë³„</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_gender }</p><br>
   		
-		<p style="font-size: 6px; text-align: left;">ÁÖ¼Ò</p>
+		<p style="font-size: 6px; text-align: left;">ì£¼ì†Œ</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_addr }</p><br>
 
-		<p style="font-size: 6px; text-align: left;">¿¬¶ôÃ³</p>
+		<p style="font-size: 6px; text-align: left;">ì—°ë½ì²˜</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_phoneNumber }</p><br>
 
-		<p style="font-size: 6px; text-align: left;">³ªÀÌ</p>
+		<p style="font-size: 6px; text-align: left;">ë‚˜ì´</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_age }</p><br>
 							
-  		<br><button>¼öÁ¤ÇÏ±â</button>
+  		<br><button>ìˆ˜ì •í•˜ê¸°</button>
 	</form>
 </div>
 

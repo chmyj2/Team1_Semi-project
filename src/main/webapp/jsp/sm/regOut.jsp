@@ -9,7 +9,13 @@
 <body>
 
 
-님, 환영합니다.
+<div>
+	<form action="index.jsp" class="login" style="height:330px;">
+		<br><br><h2>가입을 환영합니다.</h2><br><br>
+		<button>홈으로</button>
+	</form>
+</div>
+
 
 </body>
 </html>

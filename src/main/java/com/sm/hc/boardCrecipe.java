@@ -12,6 +12,7 @@ public class boardCrecipe extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		request.setAttribute("contentPage", "jsp/sm/boardRecipe.jsp");
+		request.setAttribute("loginPage", "jsp/sm/loginBefore.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	
 	}

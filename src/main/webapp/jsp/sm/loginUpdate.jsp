@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="jsp/sm/reg.js"></script>
 <script type="text/javascript" src="jsp/sm/validCheck.js"></script>
@@ -14,40 +14,40 @@
 	<form action="InfoEditCotroller" method="post" class="login" name="updateForm" onsubmit="return update()">
 	
 		<h2>My Page</h2><br><br>
-		<p style="font-size: 6px; text-align: left;">¾ÆÀÌµğ</p>
+		<p style="font-size: 6px; text-align: left;">ì•„ì´ë””</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_id }</p><br>
 		
-		<p style="font-size: 6px; text-align: left;">ÇöÀç ºñ¹Ğ¹øÈ£</p>
+		<p style="font-size: 6px; text-align: left;">í˜„ì¬ ë¹„ë°€ë²ˆí˜¸</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_pw }</p><br>
 		
-		<p style="font-size: 6px; text-align: left;">º¯°æ ºñ¹Ğ¹øÈ£</p>
+		<p style="font-size: 6px; text-align: left;">ë³€ê²½ ë¹„ë°€ë²ˆí˜¸</p>
 		<p style="font-size: 6px; text-align: left;">
 		<input type="text" name="pw2"></p><br>
 		
-		<p style="font-size: 6px; text-align: left;">º¯°æ ºñ¹Ğ¹øÈ£ ÀçÈ®ÀÎ</p>
+		<p style="font-size: 6px; text-align: left;">ë³€ê²½ ë¹„ë°€ë²ˆí˜¸ ì¬í™•ì¸</p>
 		<p style="font-size: 6px; text-align: left;">
 		<input type="text" name="pw3"></p><br>
 		
-		<p style="font-size: 6px; text-align: left;">ÀÌ¸§</p>
+		<p style="font-size: 6px; text-align: left;">ì´ë¦„</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_name }</p><br>
  		 		
-		<p style="font-size: 6px; text-align: left;">¼ºº°</p>
+		<p style="font-size: 6px; text-align: left;">ì„±ë³„</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_gender }</p><br>
   		
-		<p style="font-size: 6px; text-align: left;">ÁÖ¼Ò</p>
+		<p style="font-size: 6px; text-align: left;">ì£¼ì†Œ</p>
 		<p style="font-size: 6px; text-align: left;">
 		<input type="text" name="addr" placeholder="${sessionScope.accountInfo.user_addr }"></p><br>
 
-		<p style="font-size: 6px; text-align: left;">¿¬¶ôÃ³</p>
+		<p style="font-size: 6px; text-align: left;">ì—°ë½ì²˜</p>
 		<p style="font-size: 6px; text-align: left;">
 		<input type="text" name="phoneNum" placeholder="${sessionScope.accountInfo.user_phoneNumber }" maxlength="11"></p><br>
 
-		<p style="font-size: 6px; text-align: left;">³ªÀÌ</p>
+		<p style="font-size: 6px; text-align: left;">ë‚˜ì´</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_age }</p><br>
 							
-  		<br><button>¼öÁ¤ÇÏ±â</button><br>
+  		<br><button>ìˆ˜ì •í•˜ê¸°</button><br>
   		<a href="AccountDropController">
-  		<p style="font-size: 6px; text-align: right; color: gray;">Å»ÅğÇÏ±â</p></a>
+  		<p style="font-size: 6px; text-align: right; color: gray;">íƒˆí‡´í•˜ê¸°</p></a>
 	</form>
 		
 </div>

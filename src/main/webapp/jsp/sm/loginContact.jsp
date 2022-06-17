@@ -1,18 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
 <div>
 	<form action="MyPageController" method="post" class="login" style="height:230px;">
-		<h5>º»ÀÎ È®ÀÎ</h5>
+		<h5>ë³¸ì¸ í™•ì¸</h5>
  		<input type="password" placeholder="User Password" name="pwContact">
-  		<button class="b1">È®ÀÎ</button><br>
+  		<button class="b1">í™•ì¸</button><br>
 	</form>
 </div>
 

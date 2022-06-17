@@ -23,7 +23,10 @@ create table board_tbl(
 board_num number(5) primary key,
 user_id varchar2(16 char) not null,
 board_title varchar2(50 char) not null,
-board_txt varchar2(300 char) not null
+board_txt varchar2(300 char) not null,
+board_img varchar2(500 char) not null,
+board_date date not null,
+board_visitcount number(6)
 );
 
 create table comment_tbl(
@@ -34,10 +37,12 @@ comment_txt varchar2(100 char) not null,
 parent_commentNum number(5) not null
 );
 
+--별점 테이블 (칼럼으로써 게시판 넘버 필요)
+
 
 
 --여기부터 수정
-drop table user_info_tbl cascade constraints purge;
+drop table board_tbl cascade constraints purge;
 
 
 --시퀀스 생성
@@ -45,12 +50,12 @@ create SEQUENCE user_cocktail_tbl_seq;
 create SEQUENCE board_tbl_seq;
 create SEQUENCE comment_tbl_seq;
 
-drop SEQUENCE cocktail_recipe_tbl_seq;
+drop SEQUENCE board_tbl_seq;
 -- 시퀀스명.nextval 로 사용
 
 insert into user_info_tbl values('Id','Pw','이름','여','주소','010-1234-5678','20');
 insert into user_cocktail_tbl values(user_cocktail_tbl_seq.nextval,'테스트이름','테스트술정보','테스트재료','테스트레시피','test.jpg','테스트태그','testId');
-insert into board_tbl values(board_tbl_seq.nextval,'testId','게시글제목','게시글내용');
+insert into board_tbl values(board_tbl_seq.nextval,'testId','게시글제목','게시글내용','aa.img', sysdate, 5);
 insert into comment_tbl values(comment_tbl_seq.nextval,'123','user_id','댓글내용','456');
 
 SELECT * FROM user_info_tbl;

@@ -12,6 +12,7 @@ public class boardCreview extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		request.setAttribute("contentPage", "jsp/sm/boardReview.jsp");
+		request.setAttribute("loginPage", "jsp/sm/loginBefore.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	
 	}
