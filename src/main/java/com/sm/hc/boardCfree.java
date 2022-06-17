@@ -13,7 +13,6 @@ public class boardCfree extends HttpServlet {
 	
 		AccountDAO.loginCheck(request);
 		request.setAttribute("contentPage", "jsp/sm/boardFree.jsp");
-//		request.setAttribute("loginPage", "jsp/sm/loginBefore.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	
 	}

@@ -16,9 +16,6 @@
 </table>
 <table border="1" id="tbl_reg">
 	<tr>
-		<td><input id="id" name="id" placeholder="아이디" style="width: 900px; height: 20px;"></td>
-	</tr>
-	<tr>
 		<td><input id="title" name="title" placeholder="제목" style="width: 900px; height: 20px;"></td>
 	</tr>
 	<tr>

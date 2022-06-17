@@ -29,6 +29,21 @@ public class AccountDAO {
 	}
 
 	
+	//로그인 되어있는지 확인 (게시판 접근)
+	public static boolean loginCheck2(HttpServletRequest req) {
+		HttpSession hs = req.getSession(); //세션 생성
+		Account a = (Account) hs.getAttribute("accountInfo");
+		
+		boolean isCorrect = false;
+		
+		if (a == null) {			
+		}else {
+			isCorrect = true;
+		}
+		return isCorrect;
+		
+	}
+	
 	
 	public static boolean login(HttpServletRequest request) {
 		
@@ -441,6 +456,10 @@ public class AccountDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
+		Account a = (Account)request.getSession().getAttribute("accountInfo");
+		String id = a.getUser_id();	
+		
+		
 		try {
 			request.setCharacterEncoding("utf-8"); //글자 깨짐 방지
 			String sql = "insert into board_tbl values(board_tbl_seq.nextval,?,?,?,?,sysdate)";
@@ -452,7 +471,6 @@ public class AccountDAO {
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory, 31457280, "utf-8", new DefaultFileRenamePolicy());
 
 			//값 받기 (타이틀,텍스트,이미지)
-			String id = mr.getParameter("id");
 			String title = mr.getParameter("title");
 			String txt = mr.getParameter("txt");
 			String file = mr.getFilesystemName("file");
@@ -460,13 +478,14 @@ public class AccountDAO {
 			System.out.println(id);
 			System.out.println(title);
 			System.out.println(txt);
-			System.out.println(file);
+			System.out.println(file);		
 			
 			pstmt.setString(1, id);
 			pstmt.setString(2, title);
 			pstmt.setString(3, txt);
 			pstmt.setString(4, file);
 			
+			System.out.println("됐냐?");
 			
 			//실행 해보기
 			if(pstmt.executeUpdate() == 1) {
@@ -484,7 +503,7 @@ public class AccountDAO {
 	}
 
 
-	//다 보여줌
+	//전체 조회(다 보여줌)
 	public static void getAllFree(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -519,13 +538,9 @@ public class AccountDAO {
 			}
 		
 	}
-		
+
 	
-	
-	
-	}
-	
-	
+}
 	
 
 	

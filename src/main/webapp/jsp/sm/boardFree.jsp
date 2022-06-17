@@ -18,14 +18,14 @@
 	</tr>
 </table>
 
-<table id="board_free2">
+<%-- <table id="board_free2">
 <c:forEach var="free" items="${frees }">
 	<tr class="f_tr1">
 		<td class="f_td1">${frees.f_board_title }</td>
 		<td class="f_td1"><fmt:formatDate value="${frees.board_date }" type="both" dateStyle="short" timeStyle="short"/></td>
 	</tr>
 </c:forEach>
-</table>
+</table> --%>
 
 
 </div>

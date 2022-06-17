@@ -25,8 +25,7 @@ user_id varchar2(16 char) not null,
 board_title varchar2(50 char) not null,
 board_txt varchar2(300 char) not null,
 board_img varchar2(500 char) not null,
-board_date date not null,
-board_visitcount number(6)
+board_date date not null
 );
 
 create table comment_tbl(
@@ -55,7 +54,7 @@ drop SEQUENCE board_tbl_seq;
 
 insert into user_info_tbl values('Id','Pw','이름','여','주소','010-1234-5678','20');
 insert into user_cocktail_tbl values(user_cocktail_tbl_seq.nextval,'테스트이름','테스트술정보','테스트재료','테스트레시피','test.jpg','테스트태그','testId');
-insert into board_tbl values(board_tbl_seq.nextval,'testId','게시글제목','게시글내용','aa.img', sysdate, 5);
+insert into board_tbl values(board_tbl_seq.nextval,'testId','게시글제목','게시글내용','aa.img', sysdate);
 insert into comment_tbl values(comment_tbl_seq.nextval,'123','user_id','댓글내용','456');
 
 SELECT * FROM user_info_tbl;
