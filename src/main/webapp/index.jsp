@@ -49,7 +49,7 @@
 </div>
     
     
-<!-- 콘텐츠 페이지 -->
+<!-- 콘텐츠 페이지1 -->
 	<div> <jsp:include page="${contentPage}"></jsp:include></div>
        
   
