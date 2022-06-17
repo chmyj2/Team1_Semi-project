@@ -13,15 +13,7 @@ import com.yj.drink_info_regController.DBManager;
 
 public class DrinkDAO {
 	public static void drink_Info_Update(HttpServletRequest request) {
-<<<<<<< HEAD
 
-		
-		
-		
-	
-		
-=======
->>>>>>> yjyj
 			
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -34,12 +26,10 @@ public class DrinkDAO {
 		String path = request.getSession().getServletContext().getRealPath("fileFolder");
 		
 		
-<<<<<<< HEAD
 		
 		
 		
-=======
->>>>>>> yjyj
+
 			MultipartRequest mr = new MultipartRequest(request, path, 20*1024*1024, "utf-8", new DefaultFileRenamePolicy());
 			String cocktail_name = mr.getParameter("cocktail_name");
 			String cocktail_info = mr.getParameter("cocktail_info");
@@ -50,12 +40,7 @@ public class DrinkDAO {
 			String cocktail_ingredient2 = "";
 			String cocktail_tag2 = "";
 			String cocktail_recipe2 = "";
-<<<<<<< HEAD
 
-								
-			
-=======
->>>>>>> yjyj
 			
 			if (cocktail_ingredient != null) {
 				for (String s : cocktail_ingredient) {
@@ -64,7 +49,7 @@ public class DrinkDAO {
 				}
 				
 			}else {
-				cocktail_ingredient2 = "재료 없음";
+				cocktail_ingredient2 = "�옱猷� �뾾�쓬";
 			}
 			
 			
@@ -74,7 +59,7 @@ public class DrinkDAO {
 					cocktail_tag2 += s + "!";
 				}	
 			}else {
-				cocktail_tag2 = "태그 없음";
+				cocktail_tag2 = "�깭洹� �뾾�쓬";
 			}				
 			
 			if (cocktail_recipe != null) {
@@ -84,9 +69,8 @@ public class DrinkDAO {
 				}
 				
 			}else {
-				cocktail_recipe2 = "태그 없음";
+				cocktail_recipe2 = "�깭洹� �뾾�쓬";
 			}
-<<<<<<< HEAD
 //	System.out.println("---------------------------");
 //		
 //			for (String c : cocktail_recipe) {
@@ -107,12 +91,10 @@ public class DrinkDAO {
 			
 			
 			
-			System.out.println("여기까지옴옴");
+			System.out.println("�뿬湲곌퉴吏��샂�샂");
 			
 			
-=======
 	
->>>>>>> yjyj
 			
 			pstmt.setString(1, cocktail_name);
 			pstmt.setString(2, cocktail_info);
@@ -121,23 +103,12 @@ public class DrinkDAO {
 			pstmt.setString(5, img);
 			pstmt.setString(6, cocktail_tag2);
 			
-<<<<<<< HEAD
-			
-			
-			
-			
-=======
 
->>>>>>> yjyj
 			if(pstmt.executeUpdate() == 1){
-				System.out.println("등록 성공");
+				System.out.println("�벑濡� �꽦怨�");
 			}
 			
-<<<<<<< HEAD
-			
-			
-=======
->>>>>>> yjyj
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {

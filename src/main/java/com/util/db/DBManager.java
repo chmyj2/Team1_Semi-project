@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class DBManager {
 	
-<<<<<<< HEAD
+
 	// DB 관련 작업을 할때 매번 연결코드를 쓴 이후 작업 해옴
 	// 반복되는 작업을 한번만 하기 위해서 (crud 반복작업)
 	// 그거 AOP 하자
@@ -34,7 +34,6 @@ public class DBManager {
 			
 		}
 	
-=======
 	//connect("jw");
 	public static Connection connnect(String who) throws SQLException, ClassNotFoundException
 	{
@@ -76,5 +75,4 @@ public class DBManager {
 			// TODO: handle exception
 		}
 	}
->>>>>>> WorkBranch/Develop
 }
