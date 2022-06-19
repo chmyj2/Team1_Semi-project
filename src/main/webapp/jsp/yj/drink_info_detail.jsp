@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -11,11 +12,13 @@
 <body>
 
 
+
+
 <form action="#">
 
 <table border="1">
 	<tr>
-		<td rowspan="11"><img alt="" src="fileFolder/${drink.cocktail_img }" ></td>
+		<td rowspan="11"><img alt="" src="fileFolder/${drink.cocktail_img }" style="width: 400px; height: 400px "></td>
 	</tr>
 	<tr>
 		<td><h3>OUR COCKTAILS</h3></td>
@@ -24,25 +27,45 @@
 		<td><h1>${drink.cocktail_name }</h1></td>
 	</tr>
 	<tr>
-		<td><h4>${drink.cocktail_info }</h4></td>
+		<td><h4><c:forTokens var="item" items="${drink.cocktail_info }" delims="\n">
+		${item }<br>
+</c:forTokens></h4></td>
 	</tr>
 	<tr>
 		<td><h5>INGREDIENTS</h5></td>
 	</tr>
 	<tr>
-		<td><h3>${drink.cocktail_ingredient }</h3></td>
+		<td><h3><c:forTokens var="item" items="${drink.cocktail_ingredient }" delims="!">
+		${item }<br>
+</c:forTokens></h3></td>
 	</tr>
 	<tr>
 		<td><h5>RECIPE</h5></td>
 	</tr>
 	<tr>
-		<td><h4>${drink.cocktail_recipe }</h4></td>
+		<td><h4><c:forTokens var="item" items="${drink.cocktail_recipe }" delims="@">
+		${item }<br>
+</c:forTokens></h4></td>
 	</tr>
 	<tr>
-		<td><h4>${drink.cocktail_tag }</h4></td>
+		<td><h5>TAG</h5></td>
+	</tr>
+	<tr>
+		<td><h4><c:forTokens var="item" items="${drink.cocktail_tag }" delims="!">
+		${item }<br>
+</c:forTokens></h4></td>
+	</tr>
+	<tr>
+		<td><h3>평점 : <c:set var="test" value="${starpoint.score }"/>
+${test+((test % 1 >0.5)?(1-(test%1))%1:-(test%1)) }</h3></td>
 	</tr>
 </table>
 </form>
+
+
+
+
+
 <form action="Star_regController">
 <div class="star-rating space-x-4 mx-auto">
 	<input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
@@ -55,13 +78,16 @@
 	<label for="2-stars" class="star">★</label>
 	<input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
 	<label for="1-star" class="star">★</label>
-	<input type="hidden" name="drink.cocktail_num" value="${drink.cocktail_num }">
-	<input type="hidden" name="user_id" value="세션id">
 </div>
 <input type="hidden" name="num" value="${drink.cocktail_num }">
 <input type="hidden" name="user_id" value="'세션id'">
 <button>별점주기</button>
  </form>   
+
+
+
+
+
 
 <%-- <c:if test="${세션아이디가 있으면 } "> 
             <h2> 

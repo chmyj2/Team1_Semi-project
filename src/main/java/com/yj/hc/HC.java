@@ -24,12 +24,4 @@ public class HC extends HttpServlet {
 	
 	}
 
-<<<<<<< HEAD
 }
-=======
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> yjyj
->>>>>>> WorkBranch/Develop

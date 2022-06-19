@@ -75,32 +75,35 @@ public class StarDao {
 		ResultSet rs = null;
 
 		try {			
-			String sql = "select * from cocktail_recipe_tbl";
+			String sql = "SELECT AVG(score) FROM star_point_tbl where product_num = ?";
 			con = DBManager.connect();
-			pstmt = con.prepareStatement(sql);			
+			pstmt = con.prepareStatement(sql);
+			
+			String num = request.getParameter("num");
+			pstmt.setString(1, num);
 			rs = pstmt.executeQuery();
 			
-//			java.util.ArrayList<StarPoint> s = new java.util.ArrayList<Drink>();
-//			
-//			
-//			while (rs.next()) {		
-//			Drink d = new Drink();
-//			
-//			d.setCocktail_num(rs.getString("cocktail_num")); 
-//			d.setCocktail_name(rs.getString("cocktail_name"));
-//			d.setCocktail_info(rs.getNString("cocktail_info"));
-//			d.setCocktail_ingredient(rs.getString("cocktail_ingredient"));
-//			d.setCocktail_recipe(rs.getString("cocktail_recipe"));
-//			d.setCocktail_img(rs.getString("cocktail_img"));
-//			d.setCocktail_tag(rs.getString("cocktail_tag"));
-//			
-//			
-//			
-//
-//			drinks.add(d);	
-//			}
-//			request.setAttribute("drinks",drinks);
-//						
+			
+			Star_point st = null;
+			
+			if (rs.next()) {
+				st = new Star_point();
+				st.setScore(rs.getDouble("AVG(SCORE)"));
+				
+				request.setAttribute("starpoint",st);
+				
+			}
+
+			
+			
+
+			
+						
+			
+			
+			
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
