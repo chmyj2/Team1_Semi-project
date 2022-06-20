@@ -8,17 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jw.DbUtil.CategoryDBManager;
-import com.jw.DbUtil.ProductDBManager;
 
-@WebServlet("/ProductRegController")
-public class ProductRegController extends HttpServlet {
+@WebServlet("/tagDeleteController")
+public class tagDeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CategoryDBManager.getAllTag(request);
-		request.setAttribute("contentPage", "jsp/jw/regProduct.jsp");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		CategoryDBManager.deleteTag(request);
+		response.sendRedirect("CategoryController");
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("ShoppingController");
-	}
 }

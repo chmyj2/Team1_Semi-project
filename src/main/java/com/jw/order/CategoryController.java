@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.jw.DbUtil.CartDBManager;
 import com.jw.DbUtil.CategoryDBManager;
 
-
 @WebServlet("/CategoryController")
 public class CategoryController extends HttpServlet {
 	

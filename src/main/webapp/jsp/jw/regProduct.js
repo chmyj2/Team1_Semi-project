@@ -1,3 +1,4 @@
+
 function createPopup()
 {	
 	window.open(
@@ -7,34 +8,99 @@ function createPopup()
         );
 }
 
-function tagAdder()
+
+function onSearchDiv()
 {
-	var tagName = prompt("태그의 이름을 입력해주세요");
-	
-	location.href = "tagRegController?name="+tagName+"&num=0&level=1"
+	const serachDiv = document.querySelector('.cSearchDiv');
+	const selectDiv = document.querySelector('.cSelectDiv');
+
+	serachDiv.style.display = 'block';
+	selectDiv.style.display = 'none';
 }
 
-var selectedNum  = 0;
-
-function tagSecondHAdder()
+function onSelectDiv()
 {
-	var tagName = prompt("태그의 이름을 입력해주세요");
+	const serachDiv = document.querySelector('.cSearchDiv');
+	const selectDiv = document.querySelector('.cSelectDiv');
 
-	location.href = "tagRegController?name="+tagName+"&num="+selectedNum+"&level=2"
-	
+	serachDiv.style.display = 'none';
+	selectDiv.style.display = 'block';
 }
 
-function selectCategory(Num)
+var selectedMainNum  = 0;
+var selectedMiddleNum = 0;
+var selectedSubNum = 0;
+
+var prevH2Name = null;
+var prevH3Name = null;
+
+
+function selectMainCategory(Num)
 {
 	var tempClass = "."+Num
-	const h2Div = document.querySelector(tempClass);
-	const h3Div = document.querySelector('.h3Div');
-	const secondButton = document.querySelector('.secondH');
+	const h2Div =  document.querySelector(tempClass);
+	const secondButton = document.querySelector('.MCategoryDiv');
 
-	selectedNum=Num;
+	selectedMainNum= Num;
+	
+	
+	if(prevH2Name)
+	{
+		const prevDiv =  document.querySelector(prevH2Name);
+		prevDiv.style.display = 'none'; 
+	}	
+	document.querySelector('.SubCategoryDiv').style.display = 'none';
 
-	if(selectedNum!= 0)
+	h2Div.style.display = 'block';
+
+	if(selectedMainNum!= 0)
 	{
 		secondButton.style.display = 'block';
 	}
+	
+	prevH2Name = tempClass;
+		
+	selectedCategory(Num);
+		
+
+}
+
+
+function selectMidCategory(Num)
+{
+	var tempClass = "."+Num
+	const thirdButton = document.querySelector('.SubCategoryDiv');
+
+	if(prevH3Name)
+	{
+		const prevDiv =  document.querySelector(prevH3Name);
+		prevDiv.style.display = 'none'; 
+	}
+	selectedMiddleNum= Num;
+	
+	const h3Div =  document.querySelector(tempClass);
+	h3Div.style.display = 'block';
+
+	if(selectedMiddleNum!= 0)
+	{
+		thirdButton.style.display = 'block';
+	}
+	prevH3Name = tempClass;
+	
+	selectedCategory(Num);
+
+
+}
+
+function selectSubCategory(Num)
+{
+	selectedSubNum = Num;
+	selectedCategory(Num);
+}
+
+
+function selectedCategory(CategoryNum)
+{
+		var categoryInput = document.getElementById("CategoryNum");
+	categoryInput.value = CategoryNum;
 }

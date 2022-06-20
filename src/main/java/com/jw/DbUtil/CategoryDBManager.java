@@ -138,17 +138,19 @@ public class CategoryDBManager {
 			
 			for (CategoryBean cb3 : tempThirdCategorys) {
 				for (CategoryBean cb2 : tempSecondCategorys) {
-					if(cb3.getParentNum() == cb2.getNum())
+					if(cb3.getParentNum().equals(cb2.getNum()))
 					{
 						cb2.addChild(cb3);
+						System.out.println("H3" + cb3.getName());
 					}
 				}
 			}
 			for (CategoryBean cb2 : tempSecondCategorys) {
 				for (CategoryBean cb : arrCategory) {
-					if(cb2.getParentNum() == cb.getNum())
+					if(cb2.getParentNum().equals(cb.getNum()))
 					{
 						cb.addChild(cb2);
+						System.out.println("H2 "+ cb2.getName());
 					}
 				}
 			}
@@ -198,6 +200,34 @@ public class CategoryDBManager {
 		} catch (Exception e) {
 			System.out.println(e);
 //			System.out.println("실패이유");
+		}finally {
+			DBManager.Close(con, pstmt, null);
+		}
+	}
+
+
+	public static void deleteTag(HttpServletRequest request) {
+		String sql = "delete categoryTbl where Num_PK = ?";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		System.out.println("왔냐");
+		try {
+			con = DBManager.connnect("jw");
+			System.out.println("뭐지");
+
+			String number = request.getParameter("num");
+			System.out.println(number);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, number);
+			
+			if(pstmt.executeUpdate() == 1)
+			{
+				System.out.println("성공");
+			}
+		}catch (Exception e) {
+			System.out.println(e);
 		}finally {
 			DBManager.Close(con, pstmt, null);
 		}

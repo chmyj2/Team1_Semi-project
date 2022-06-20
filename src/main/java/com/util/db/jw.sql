@@ -5,7 +5,7 @@ select * from categoryTbl;
 
 
 insert into categoryTbl values(category_Number_Seq.nextval,-1,null,1);
-delete categoryTbl where Name = 'null';
+delete categoryTbl where Name = 'Scotch Whisky';
 create table categoryTbl
 (
 	Num_PK 		VARCHAR2(8) primary key,
