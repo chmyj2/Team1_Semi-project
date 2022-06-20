@@ -51,6 +51,7 @@ create SEQUENCE comment_tbl_seq;
 
 drop SEQUENCE board_tbl_seq;
 -- 시퀀스명.nextval 로 사용
+--11111
 
 insert into user_info_tbl values('Id','Pw','이름','여','주소','010-1234-5678','20');
 insert into user_cocktail_tbl values(user_cocktail_tbl_seq.nextval,'테스트이름','테스트술정보','테스트재료','테스트레시피','test.jpg','테스트태그','testId');
