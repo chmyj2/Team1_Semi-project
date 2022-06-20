@@ -23,8 +23,8 @@ create table board_tbl(
 board_num number(5) primary key,
 user_id varchar2(16 char) not null,
 board_title varchar2(50 char) not null,
-board_txt varchar2(300 char) not null,
-board_img varchar2(500 char) not null,
+board_txt varchar2(1000 char) not null,
+board_img varchar2(500 char),
 board_date date not null
 );
 

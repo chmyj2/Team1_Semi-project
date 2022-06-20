@@ -136,3 +136,34 @@ function update(){
 	//update.submit();
 	return true;	
 }
+
+
+function postReg(){
+	let title = document.boardForm.title;
+	let txt = document.boardForm.txt;
+	
+	if(isEmpty(title)){
+		alert('제목을 입력하세요.')
+		title.focus();
+		title.value="";		
+		return false;
+	}
+	
+	if(isEmpty(txt)){
+		alert('내용을 입력하세요.')
+		txt.focus();
+		txt.value="";		
+		return false;
+	}
+	
+}
+
+//게시글 삭제 알림
+function deletePost(n){
+	let deleteOK = confirm('게시글을 삭제 할까요?')
+	console.log(deleteOK)
+	
+	if(deleteOK){
+		location.href='boardFreeDeleteC?No='+n
+	}
+}

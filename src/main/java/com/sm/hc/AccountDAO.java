@@ -1,4 +1,5 @@
 package com.sm.hc;
+import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,9 +22,9 @@ public class AccountDAO {
 		HttpSession hs = req.getSession(); //세션 생성
 		Account a = (Account) hs.getAttribute("accountInfo");
 		
-		if (a == null) {
+		if (a == null) {//로그인 안되어 있으면
 			req.setAttribute("loginPage", "jsp/sm/loginBefore.jsp");
-		}else {
+		}else {//로그인 되어 있으면
 			req.setAttribute("loginPage", "jsp/sm/loginAfter.jsp");
 		}
 	}
@@ -484,9 +485,7 @@ public class AccountDAO {
 			pstmt.setString(2, title);
 			pstmt.setString(3, txt);
 			pstmt.setString(4, file);
-			
-			System.out.println("됐냐?");
-			
+						
 			//실행 해보기
 			if(pstmt.executeUpdate() == 1) {
 				request.setAttribute("r", "등록 성공!");
@@ -510,7 +509,7 @@ public class AccountDAO {
 		ResultSet rs = null;
 				
 		try {			
-			String sql = "select * from board_tbl order by board_date desc";
+			String sql = "select * from board_tbl";
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);			
 			rs = pstmt.executeQuery();
@@ -520,13 +519,14 @@ public class AccountDAO {
 			
 			while (rs.next()) {	//한줄씩 내려가면서 반복			
 				f = new FreeBoard();
+				f.setBoard_num(rs.getString("board_num"));
+				f.setBoard_title(rs.getString("board_title"));
+				f.setBoard_txt(rs.getString("board_txt"));
+				f.setBoard_img(rs.getString("board_img"));
+				f.setBoard_date(rs.getDate("board_date"));
+				f.setUser_id(rs.getString("user_id"));
 			
-			f.setBoard_num(rs.getString("board_num"));
-			f.setBoard_title(rs.getString("board_num"));
-			f.setBoard_txt(rs.getString("board_txt"));
-			f.setBoard_img(rs.getString("board_img"));
-			
-			frees.add(f);
+				frees.add(f);
 			}
 			
 			request.setAttribute("frees",frees);
@@ -536,6 +536,135 @@ public class AccountDAO {
 			}finally {
 				DBManager.close(con, pstmt, rs);
 			}
+		
+	}
+
+	//게시글 정보 얻기
+	public static void getPost(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {			
+			String sql = "select * from board_tbl where board_num=?";
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);			
+			pstmt.setInt(1, Integer.parseInt(request.getParameter("No")));
+			rs = pstmt.executeQuery();
+			
+			FreeBoard f = null;
+			while (rs.next()) {	//한줄씩 내려가면서 반복			
+				f = new FreeBoard();
+				f.setBoard_num(rs.getString("board_num"));
+				f.setBoard_title(rs.getString("board_title"));
+				f.setBoard_txt(rs.getString("board_txt"));
+				f.setBoard_img(rs.getString("board_img"));
+				f.setBoard_date(rs.getDate("board_date"));
+				f.setUser_id(rs.getString("user_id"));
+
+				request.setAttribute("frees",f);
+			}
+
+								
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBManager.close(con, pstmt, rs);
+			}
+		
+	}
+
+	//게시글 수정
+	public static String updatePost(HttpServletRequest request) {
+		
+		Connection con = null; //연결 객체
+		PreparedStatement pstmt = null; //실행 도구
+		String sql = "update board_tbl set board_title=?, board_txt=?, board_img=? where board_num=?";
+
+		try {
+			request.setCharacterEncoding("utf-8");
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			
+			//파일 업로드
+			String saveDirectory = request.getServletContext().getRealPath("imgfile");
+			MultipartRequest mr = new MultipartRequest(request, saveDirectory, 31457280, "utf-8", new DefaultFileRenamePolicy());
+			
+			// 값 받기
+			String pretitle = mr.getParameter("pretitle"); //수정전
+			String title = mr.getParameter("title");
+			String pretxt = mr.getParameter("pretxt");
+			String txt = mr.getParameter("txt");
+			String prefile = mr.getParameter("prefile");
+			String file = mr.getFilesystemName("file");		
+			
+			if (title.equals("")) {
+				title = pretitle;
+			}
+			
+			if (txt.equals("")) {
+				txt = pretxt;
+			}
+			
+			if (file == null) {
+				file = prefile;
+			}
+			
+			if (!prefile.equals("") && file != null) {
+				File f = new File(saveDirectory+"/"+prefile);
+				f.delete();
+			}
+			
+			int number = Integer.parseInt(mr.getParameter("number"));
+			
+			
+			//값 입력받기
+			pstmt.setString(1, title);
+			pstmt.setString(2, txt);
+			pstmt.setString(3, file);
+			pstmt.setInt(4, number);
+			
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("수정 성공");		
+				return mr.getParameter("number");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}finally {
+			DBManager.close(con, pstmt, null);
+		}
+		return null;		
+		
+	}
+
+	//게시글 삭제
+	public static void deletePost(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "delete board_tbl where board_num=?";
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			
+			// ?를 채우려면 no 값을 하나 받아와야됨.
+			int no = Integer.parseInt(request.getParameter("No"));
+			
+			pstmt.setInt(1, no);
+			
+			//실행 해보기
+			if(pstmt.executeUpdate() == 1) {
+				System.out.println("삭제 성공");
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println("삭제 실패");
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
 		
 	}
 

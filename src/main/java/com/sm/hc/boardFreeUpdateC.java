@@ -1,4 +1,4 @@
-package com.yj.drink_info_regController;
+package com.sm.hc;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,24 +7,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/drink_Info_regController")
-public class drink_Info_regController extends HttpServlet {
+@WebServlet("/boardFreeUpdateC")
+public class boardFreeUpdateC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		request.setAttribute("contentPage", "jsp/yj/drink_Info_reg.jsp");
+		//게시글 수정 페이지 보여줘 (원래 값까지)
+		AccountDAO.loginCheck(request);
+		AccountDAO.getPost(request);
+		request.setAttribute("contentPage", "jsp/sm/free_board_update.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
-	
+		
+
 	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		DrinkDAO.drink_Info_Update(request);
-		request.setAttribute("contentPage", "jsp/yj/drink_Info_reg.jsp");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
-		
-		
 	
+		//게시글 수정하는 일
+		AccountDAO.loginCheck(request);
+		
+
+		
+		response.sendRedirect("boardFreeDetailC?No="+AccountDAO.updatePost(request));
+		
+		
 	
 	}
 
