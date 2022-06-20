@@ -1,0 +1,157 @@
+body {
+  background-color: rgb(240, 242, 241);
+  font-family: "Asap", sans-serif;
+}
+
+.login {
+  overflow: hidden;
+  background-color: white;
+  padding: 40px 30px 30px 30px;
+  border-radius: 10px;
+  /*position: static;*/
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  margin: 100px auto;
+  box-shadow: 5px 10px 10px rgba(2, 128, 144, 0.2);
+  text-align: center;
+}
+
+.login::before, .login::after {
+  content: "";
+  /* position: relative; */
+  width: 600px;
+  height: 600px;
+  border-top-left-radius: 40%;
+  border-top-right-radius: 45%;
+  border-bottom-left-radius: 35%;
+  border-bottom-right-radius: 40%;
+  z-index: -1;
+}
+.login::before {
+  left: 40%;
+  bottom: -130%;
+  background-color: rgba(69, 105, 144, 0.15);
+}
+.login::after {
+  left: 35%;
+  bottom: -125%;
+  background-color: rgba(2, 128, 144, 0.2);
+}
+.login > input {
+  font-family: "Asap", sans-serif;
+  display: block;
+  border-radius: 5px;
+  font-size: 16px;
+  background: white;
+  width: 100%;
+  border: 0;
+  padding: 10px 10px;
+  margin: 15px -10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.login > button {
+  font-family: "Asap", sans-serif;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  width: 100px;
+  border: 0;
+  padding: 10px 0;
+  /* margin-top: 10px;
+  margin-left: -5px; */
+  border-radius: 5px;
+  background-color: #1565c0;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.login > button:hover {
+ 	background: white;
+	color: black;
+	transition: all 0.5s ease;
+}
+
+
+
+
+
+
+/*드롭다운*/
+
+
+.dropdown{
+  position : relative;
+  display : inline-block;
+}
+
+.dropdown-content{
+  display : none;
+  position : absolute;
+  z-index : 3; /*다른 요소들보다 앞에 배치*/
+  border : 1px solid rgb(37, 37, 37);
+  border-radius : 4px;
+  background-color: #f5f5f5;
+  font-weight: 400;
+  color : rgb(37, 37, 37);
+  padding : 12px;
+  width :150px;
+  height: 150px;
+  text-align: center;
+  cursor : pointer;
+  font-size : 15px;
+  line-height : 40px;
+}
+
+.dropdown-content a{
+  display : block;
+}
+
+.dropdown-content a:hover{
+  background-color : #ececec
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+a:visited { color:gray; }
+
+
+
+/* 게시판 css */
+
+#tbl_board_list{
+	border : white solid 1px;
+	width: 100%;
+	height: 150px;
+	border-collapse: collapse;
+    border: none;
+}
+
+.f_tr1{
+	border-collapse: collapse;
+    border: none;
+}
+
+.f_tr1:hover {
+	background-color: #f4f4f4;
+	cursor: pointer;	
+}
+
+.f_td1{
+	text-align: left;
+	font-size:10pt;
+	width: 10%;
+}
+
+.f_td1:hover{
+	font-weight:600;
+}
+
