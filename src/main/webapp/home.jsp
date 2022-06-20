@@ -5,6 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script type="text/javascript">
+window.onload = function () {
+	 alert("로딩 완료");
+	}
+
+
+</script>
+
+
 </head>
 <body>
 

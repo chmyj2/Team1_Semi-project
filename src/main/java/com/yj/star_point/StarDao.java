@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.jasper.tagplugins.jstl.core.If;
+
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.yj.drink_info_CRUD.DBManager;
@@ -90,13 +92,30 @@ public class StarDao {
 				st = new Star_point();
 				st.setScore(rs.getDouble("AVG(SCORE)"));
 				
-				request.setAttribute("starpoint",st);
+				if(rs.getDouble("AVG(SCORE)") < 0.5){
+					
+					request.setAttribute("star","평점 없음" );
+					
+				} else if (rs.getDouble("AVG(SCORE)") >= 0.5 && rs.getDouble("AVG(SCORE)") < 1.5) {
+					request.setAttribute("star","★" );
+				}	else if (rs.getDouble("AVG(SCORE)") >= 1.5 && rs.getDouble("AVG(SCORE)") < 2.5) {
+					request.setAttribute("star","★★" );
+				}	else if (rs.getDouble("AVG(SCORE)") >= 2.5 && rs.getDouble("AVG(SCORE)") < 3.5) {
+					request.setAttribute("star","★★★" );
+				}	else if (rs.getDouble("AVG(SCORE)") >= 3.5 && rs.getDouble("AVG(SCORE)") < 4.5) {
+					request.setAttribute("star","★★★★" );
+				}	else if (rs.getDouble("AVG(SCORE)") >= 4.5) {
+					request.setAttribute("star","★★★★★" );
+				}
 				
-			}
+				
+			
+				request.setAttribute("starpoint",st);
 
 			
 			
-
+				}
+			
 			
 						
 			

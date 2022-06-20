@@ -211,8 +211,26 @@ menu박스 가운데정렬, 글자가운데 정렬 */
   color: white;
 }
 
+#contentJsp{
+	display: inline-block;
+	text-align:center;
+	width: 100%;
+}
 
-.footer{
+/* 유진아 뭘하는거야 */
+#body-wrapper {
+   	height: 100%;
+    position: relative;
+}
+#body-content {
+	min-height: 100%;
+    padding-bottom: 300px; /* footer의 높이 */
+}
+/* 유진아 뭘하는거야 */
+
+.footer {
+	position: absolute;	bottom:0px; left:0px;
+	width: 100%; 
 	height: 300px;
 	background-color: #0d47a1;
     }

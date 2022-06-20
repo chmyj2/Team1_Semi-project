@@ -15,6 +15,8 @@
 
 </head>
 <body>
+<div id="body-wrapper">
+<div id="body-content">
 <!-- 주석2 -->
 <!-- 로고 부분 -->
 <div class="nabar-brand">
@@ -51,18 +53,16 @@
     
     
 <!-- 콘텐츠 페이지1 -->
-	<div> <jsp:include page="${contentPage}"></jsp:include></div>
-       
-  
-
+<div id="contentJsp">
+	<div><jsp:include page="${contentPage}"></jsp:include></div>
+</div>   
+</div>
 
 <!-- 푸터 -->
 <div class="footer">
-        
        <div class="indexFooter">
        		<div class="indexFooterItem1">
        			WE WAMT TO GO HOME
-       			
        		</div>
        		<div class="indexFooterItem2">
 				Thank you for visiting our semi-project site. Please copy our semi - project site without permission.
@@ -80,10 +80,6 @@
         
 </div>
 
-
-
-
-
-
+</div>
 </body>
 </html>

@@ -9,6 +9,9 @@ pageEncoding="UTF-8"%>
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/star_point.css">
 </head>
+
+
+
 <body>
 
 
@@ -56,12 +59,10 @@ pageEncoding="UTF-8"%>
 </c:forTokens></h4></td>
 	</tr>
 	<tr>
-		<td><h3>평점 : <c:set var="test" value="${starpoint.score }"/>
-${test+((test % 1 >0.5)?(1-(test%1))%1:-(test%1)) }</h3></td>
+		<td><h3>평점 : ${star }</h3></td>
 	</tr>
 </table>
 </form>
-
 
 
 
