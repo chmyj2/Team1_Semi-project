@@ -1,25 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 </head>
+<script type="text/javascript" src="home.js" ></script>
 
 <body>
 
-	<h1>술등록</h1>
+
+	<h1>술 정보 수정</h1>
+	<h1>수정하고 싶은 술 : ${drink.cocktail_name }</h1>
 
 
-	<form name="form" action="drink_Info_regController" method="post"
-		enctype="multipart/form-data">
+	<form name="form" action="Drink_Info_Update_Controller" method="post" enctype="multipart/form-data">
 
 		<table style="background-color: gray">
 			<tr>
 				<td>술이름</td>
-				<td><input name="cocktail_name" style="width: 255px" ></td>
+				<td><input name="cocktail_name" value="${drink.cocktail_name }"></td>
 			</tr>
 			<tr>
 				<td>술 설명</td>
@@ -27,7 +28,12 @@
 			</tr>
 			<tr>
 				<td>술 이미지</td>
-				<td><input type="file" name="img"></td>
+				<td><input type="file" name="cocktail_img"></td>
+			</tr>
+			<tr>
+				<td>
+					<input type="hidden" name="cocktail_num" value="${param.num }">
+				</td>
 			</tr>
 		</table>
 		<table>
@@ -51,7 +57,7 @@
 							<td>재료</td>
 						</tr>
 						<tr>
-							<td><input name="cocktail_ingredient" style="width: 300px"></td>
+							<td><input name="cocktail_ingredient"  style="width: 300px"></td>
 						</tr>
 					</table>
 				</td>
@@ -68,6 +74,9 @@
 					</table>
 				</td>
 			</tr>
+			
+			
+			
 		</table>
 
 
@@ -91,57 +100,13 @@
 
 
 
-
 	<table border="1">
 		<tr>
-			<td><input type="button" name="button" value="확인"
+			<td><input type="button" name="button"  value="수정"
 				onClick="frmCheck();" style="text-align: center; width: 310px">
 			</td>
 		</tr>
 	</table>
-
-<c:forEach var="m" items="${drinks }">
-	<table id="" border="1">
-		<tr>
-			<td id="" colspan="2"><img id="" src="fileFolder/${m.cocktail_img}"></td>
-		</tr>
-		<tr>
-			<td>[술 이름]</td>
-			<td class="">${m.cocktail_name }</td>
-		</tr>
-		<tr>
-			<td>[술 설명]</td>
-			<td class="">${m.cocktail_info }</td>
-		</tr>
-		<tr>
-			<td>[술 재료]</td>
-			<td class="">${m.cocktail_ingredient }</td>
-		</tr>
-		<tr>
-			<td>[술 레시피]</td>
-			<td class="">${m.cocktail_recipe }</td>
-		</tr>
-		<tr>
-			<td>[술 태그]</td>
-			<td class="">${m.cocktail_tag }</td>
-		</tr>
-		
-			<td>
-			<button onclick="location.href='Drink_Info_Update_Controller?num=${m.cocktail_num}'">수정</button>
-			<button onclick="deleteDrinkInfo(${m.cocktail_num})">삭제</button>
-			</td>
-		</tr>
-	</table>
-	</c:forEach>	
-	
-
-
-
-
-
-
-
-
 
 </body>
 </html>

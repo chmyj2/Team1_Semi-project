@@ -7,14 +7,17 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/index.css">
 <link rel="stylesheet" href="css/home.css" media="screen">
+<link rel="stylesheet" href="css/ourCollection.css">
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <!-- JavaScript -->
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-<script type="text/javascript" src="" ></script>
+<script type="text/javascript" src="home.js" ></script>
 
 </head>
 <body>
-<!-- 주석 -->
+<div id="body-wrapper">
+<div id="body-content">
+<!-- 주석2 -->
 <!-- 로고 부분 -->
 <div class="nabar-brand">
 	<div class="item"></div>
@@ -25,7 +28,7 @@
     </div>
    <div class="item3">
     	<button class="custom-btn btn-11" onclick="location.href='LoginMainController'">Login</button><button onclick="location.href=
-    		'drink_Info_regController'">운영자전용 상품등록버튼</button>
+    		'Drink_Info_regController'">운영자전용 상품등록버튼</button>
    </div>
 </div>
   
@@ -34,7 +37,7 @@
 <!-- 메뉴바 -->  
 <div id="indexMenu">
         <ul>
-            <li><a href="#">OUR COLLECTION</a></li>
+            <li><a href="ourCollectionController">OUR COLLECTION</a></li>
            <li><a href="ShoppingController?name=Drink">COCKTAILS SALES</a></li>
             <li><a href="ShoppingController?name=Goods">GOODs SALES</a></li>
             <li><a href="#">OUR SOCIAL</a>
@@ -49,19 +52,17 @@
 </div>
     
     
-<!-- 콘텐츠 페이지 -->
-	<div> <jsp:include page="${contentPage}"></jsp:include></div>
-       
-  
-
+<!-- 콘텐츠 페이지1 -->
+<div id="contentJsp">
+	<div><jsp:include page="${contentPage}"></jsp:include></div>
+</div>   
+</div>
 
 <!-- 푸터 -->
 <div class="footer">
-        
        <div class="indexFooter">
        		<div class="indexFooterItem1">
        			WE WAMT TO GO HOME
-       			
        		</div>
        		<div class="indexFooterItem2">
 				Thank you for visiting our semi-project site. Please copy our semi - project site without permission.
@@ -79,7 +80,6 @@
         
 </div>
 
-
-
+</div>
 </body>
 </html>
