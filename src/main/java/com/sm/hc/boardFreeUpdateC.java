@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Drink_Info_DeleteController")
 public class Drink_Info_DeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//ì‚­ì œí•˜ëŠ” ì¼
+		//ï¿½ê¶˜ï¿½ì £ï¿½ë¸¯ï¿½ë’— ï¿½ì”ª
 		DrinkDAO.delete_drink_info(request);
 		
 		DrinkDAO.Get_All_drink_Info(request);
@@ -35,7 +35,7 @@ public class Drink_Info_DeleteController extends HttpServlet {
 public class boardFreeUpdateC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		//°Ô½Ã±Û ¼öÁ¤ ÆäÀÌÁö º¸¿©Áà (¿ø·¡ °ª±îÁö)
+		//ê²Œì‹œê¸€ ìˆ˜ì • íŽ˜ì´ì§€ ë³´ì—¬ì¤˜ (ì›ëž˜ ê°’ê¹Œì§€)
 		AccountDAO.loginCheck(request);
 		AccountDAO.getPost(request);
 		request.setAttribute("contentPage", "jsp/sm/free_board_update.jsp");
@@ -46,7 +46,7 @@ public class boardFreeUpdateC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		//°Ô½Ã±Û ¼öÁ¤ÇÏ´Â ÀÏ
+		//ê²Œì‹œê¸€ ìˆ˜ì •í•˜ëŠ” ì¼
 		AccountDAO.loginCheck(request);
 		
 
@@ -55,7 +55,7 @@ public class boardFreeUpdateC extends HttpServlet {
 		
 		
 	
->>>>>>>> origin/WorkBranch/sm:src/main/java/com/sm/hc/boardFreeUpdateC.java
+>>>>>>>> origin/WorkBranch/sm:src/main/java/com/sm/hc/boardFreeUpdateC.javass
 	}
 
 }
