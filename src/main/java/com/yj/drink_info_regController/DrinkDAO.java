@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.yj.drink_info_regController.DBManager;
+import com.util.db.*;
 
 
 public class DrinkDAO {
