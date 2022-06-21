@@ -23,7 +23,7 @@ public class InfoAccountC extends HttpServlet {
 	
 	
 	}
-
+//	주석
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
