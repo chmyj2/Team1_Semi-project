@@ -7,9 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sm.hc.AccountDAO;
+
 @WebServlet("/OrderController")
 public class OrderController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		AccountDAO.loginCheck(request);
 		request.setAttribute("contentPage", "jsp/jw/OrderPage.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);		
 	}
