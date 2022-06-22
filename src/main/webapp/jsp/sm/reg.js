@@ -167,3 +167,16 @@ function deletePost(n){
 		location.href='boardFreeDeleteC?No='+n
 	}
 }
+
+function winopen(){
+	let id = document.regForm.id;
+	
+	if(id.value==""){
+		alert('아이디를 입력하세요.')
+		id.focus();
+		return false;
+	}else{
+		window.open("jsp/sm/joinIdCheck.jsp?id="+document.regForm.id.value,"","width=500, height=300");
+	}
+	
+}
