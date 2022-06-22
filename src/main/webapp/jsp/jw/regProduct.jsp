@@ -16,16 +16,16 @@
 
 
 	<h1>상품등록</h1>
-	<div style = "width :80%; height:300px; border: 1px solid gold;" >
-	<h3>카테고리</h3>
-		<div>
-			<button id = "categorySearch" onclick = "onSearchDiv()">카테고리명으로 검색</button>
-			<button id = "categorySelect" onclick = "onSelectDiv()">카테고리명 선택</button>
-			<button type="button" onclick="createPopup()">카테고리추가</button>
+	<div class = "regPageCategoryDiv" >
+	<div class = "categoryTitleDiv">CATEGORY</div>
+		<div class = "categoryButtonsDiv">
+				<a id = "categorySearch " class= "shopButton" onclick = "onSearchDiv()">CATEGORY SEARCH</a>
+				<a id = "categorySelect" class= "shopButton" onclick = "onSelectDiv()">CATEGORY SELECT</a>
+				<a class= "shopButton shoButton-Gray"  onclick="createPopup()">ADD CATEGORY</a>
 		</div>
 		
 		<div class = "cSearchDiv">
-			<input placeholder = "카테고리명 입력">
+			<input class = "categorySearchInput" placeholder = "카테고리명 입력">
 		</div>
 		
 		
@@ -72,46 +72,89 @@
 		<!-- cSelectDiv -->
 	</div>
 	
-	<div style = "width :80%; height:300px; border: 1px solid gold;">
-		<h1>상품명</h1>
+	<div class = "regProductNameDiv">
+		<div class = "categoryTitleDiv">상품명</div>
 			<div>
-				<input>
+				<input class = "ProductNameInput">
 			</div>
 	</div>
 	
-	<div>
+	<div class = "regPageCategoryDiv">
+		<div class = "categoryTitleDiv">판매가</div>
+		
+		<div class = "priceSettingDiv">
+			<div>
+				<div class = "rdgPageDiv">
+					판매가
+				</div>
+				<input class = "PriceInput">
+			</div>
+			
+			<div>
+				<div class = "rdgPageDiv">
+					공급가
+				</div>
+				<input class = "PriceInput">
+			</div>
+			
+			<div>
+				<div class = "rdgPageDiv"> 
+					할인여부
+				</div>
+				Yes Or No
+			</div>
+			
+			<div>
+				<div class = "rdgPageDiv"> 
+					할인명
+				</div>
+				<input class = "PriceInput">
+			</div>
+			
+		
 		<div>
-			<h1>판매가</h1>
+				<div class = "rdgPageDiv"> 
+				전체할인가
+				</div>
+				<input class = "PriceInput">
 		</div>
 		
 		<div>
-			판매가<input>
+				<div class = "rdgPageDiv"> 
+				부가세
+				</div>
+				과세상품/면세상품/영세상품
 		</div>
-		<div>
-			할인명
-		</div>
-		<div>
-			할인여부
-		</div>
-		<div>
-			전체할인가
-		</div>
-		<div>
-			부가세
 		</div>
 	</div>
 	
-	<div>
-		<h1>재고수량</h1>
+	<div class = "regProductNameDiv">
+		<div class = "categoryTitleDiv">재고수량	</div>
+			<div>
+				<input class = "ProductNameInput">
+			</div>
 	</div>
 	
-	<div>
-		<h1>상품이미지</h1>
-		<div>
-			대표이미지
+	<div class = "regProductNameDiv">
+		<div class = "categoryTitleDiv">재고수량	</div>
+			<div>
+				<input class = "ProductNameInput">
+			</div>
+	</div>
+	
+	
+	<div class = "regProductImgDiv">
+		<div class = "categoryTitleDiv">상품이미지</div>
+		<div style = "height : 40%">
+			<div style = "float:left">
+				대표이미지
+			</div>
+			<div style = "float:left">
+				<div>이런느낌?</div>
+			</div>
 		</div>
 		<div>
-			추가이미지
+				추가이미지
 		</div>
 	</div>
 	

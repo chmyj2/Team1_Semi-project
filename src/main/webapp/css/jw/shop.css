@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+
+.regPageCategoryDiv
+{
+	text-align: left;
+	width :80%; 
+	height: 500px; 
+	border: 2px solid #212492;
+	margin:0 auto;
+}
+
+
+.categoryTitleDiv
+{
+	background-color: #212492;
+	font-size: 30px;
+	color : white;
+	border: 1px solid #212492;
+	height : 50px;
+}
+
+.categorySearchInput
+{
+	width : 90%;
+	height: 30px;
+	font-size: 16px;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+.categoryButtonsDiv
+{
+	margin-top : 20px;
+	margin-left : 20px;
+	
+}
+
+.shopButton
+{
+	padding: 0 16px;
+	
+	display:inline-block;
+	width : 20%;
+	height: 50px;
+	border : 1px solid transparent;
+	color : white;
+
+	line-height: 51px;	
+	background-color: #212492;
+	border-radius:4px;
+	cursor : pointer;
+	
+	touch-action : manipulation;
+	text-align: center;
+	vertical-align : middle;
+		
+	font-weight:400;
+	font-size: 1.2vw;
+	
+	font-family: DiageoAGRegularCnd;
+}
+
+
+
+.priceSettingDiv
+{
+	margin-left: 20px;
+	margin-top: 20px;
+}
+.shoButton-Gray
+{
+	background-color: gray;
+}
+
+.regProductNameDiv
+{
+	text-align: left;
+	margin:0 auto;
+	margin-top : 50px;
+	width :80%; 
+	height:150px; 
+	border: 2px solid #212492;
+}
+.rdgPageDiv
+{
+	display:inline-block;
+	text-align: center;
+	
+	width : 20%;
+	height: 50px;
+	border : 1px solid transparent;
+	color : white;
+
+	line-height: 51px;	
+	background-color: #212492;
+}
+.ProductNameInput
+{
+	margin-top: 40px;
+	margin-left: 20px;
+	width : 90%;
+	height: 30px;
+	font-size: 16px;
+}
+.PriceInput
+{
+	display:inline-block;
+	padding-bottom:10px;
+	width:30%;
+	height:50px;
+	border : 2px solid #212492;
+	vertical-align: top;
+}
+
+.regProductImgDiv
+{
+	text-align: left;
+	margin:0 auto;
+	margin-top : 50px;
+	width :80%; 
+	height:300px; 
+	border: 2px solid #212492;
+}
