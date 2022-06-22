@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css/index.css">
 <link rel="stylesheet" href="css/home.css" media="screen">
 <link rel="stylesheet" href="css/ourCollection.css">
+<link rel="stylesheet" href="css/jw.shop.css">
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <!-- JavaScript -->
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
@@ -27,8 +28,8 @@
     	</a>
     </div>
    <div class="item3">
-    	<button class="custom-btn btn-11" onclick="location.href='LoginMainController'">Login</button><button onclick="location.href=
-    		'Drink_Info_regController'">운영자전용 상품등록버튼</button>
+   		<jsp:include page="${ loginPage}"></jsp:include>
+    	<button onclick="location.href='Drink_Info_regController'">운영자전용 상품등록버튼</button>
    </div>
 </div>
   
