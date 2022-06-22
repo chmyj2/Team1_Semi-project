@@ -10,10 +10,13 @@
 </head>
 <body>
 
-<div>
-	<form action="RegAccountC" method="post" name="regForm" onsubmit="return call()" class="login">
+<div class="login" style="text-align: left; width:450px;">
+	<form action="RegAccountC" method="post" name="regForm" onsubmit="return call()">
+		
 		<p style="font-size: 6px; text-align: left;">아이디 [ 한글 불가 | 5글자 이상 ]</p>
 		<input type="text" placeholder="아이디" name="id" style="width:150px;">
+		<input type="button" value="중복확인" class="dup" onclick="winopen()">
+		<br>
 		
 		<p style="font-size: 6px; text-align: left;">비밀번호 [ 영어 대소문자 숫자 | 3글자 이상 ]</p>
  		<input type="text" placeholder="패스워드" name="pw1" style="width:150px;">

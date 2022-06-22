@@ -509,7 +509,7 @@ public class AccountDAO {
 		ResultSet rs = null;
 				
 		try {			
-			String sql = "select * from board_tbl";
+			String sql = "select * from board_tbl order by board_date desc";
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);			
 			rs = pstmt.executeQuery();
@@ -668,6 +668,98 @@ public class AccountDAO {
 		
 	}
 
+	
+
+	//게시판-게시글 검색 기능
+	public static void searchPost(HttpServletRequest request) {
+	
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String board_title = request.getParameter("searchField");
+			String sql ="";
+			
+			if(board_title.equals("board_title")) {
+			 sql = "select * from board_tbl where board_title LIKE ?";
+			}
+			if(board_title.equals("board_txt")) {
+			 sql = "select * from board_tbl where board_txt LIKE ?";
+			}
+			if(board_title.equals("user_id")) {
+			 sql = "select * from board_tbl where user_id LIKE ?";
+			}
+			
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			
+			String searchText = request.getParameter("searchText");
+			
+			pstmt.setString(1, '%'+searchText+'%');
+			
+			rs = pstmt.executeQuery();
+			
+			ArrayList<postSearch> posts = new ArrayList<postSearch>();
+			postSearch p = null;
+			
+			while (rs.next()) {
+				p = new postSearch();
+				p.setBoard_num(rs.getString("board_num"));
+				p.setBoard_title(rs.getString("board_title"));
+				p.setUser_id(rs.getString("user_id"));
+				p.setBoard_date(rs.getDate("board_date"));
+				
+				posts.add(p);
+			}
+			
+			request.setAttribute("posts",posts);	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+		
+		
+	}
+
+	//아이디 중복 체크
+	public static void joinIdCheck(HttpServletRequest request) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int result = -1;
+		try {
+			request.setCharacterEncoding("UTF-8");
+			
+			String sql = "select user_id from user_info_tbl where user_id=?";
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			
+			String id = request.getParameter("userid");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){	
+				result = 0;
+			}else{
+				result = 1;
+			}
+
+			System.out.println("아이디 중복체크결과 : "+result);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+		
+		
+
+	}
 	
 }
 	
