@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/login.css">
 <link rel="stylesheet" href="css/home.css" media="screen">
 <link rel="stylesheet" href="css/ourCollection.css">
 <link rel="stylesheet" href="css/star_point.css">
