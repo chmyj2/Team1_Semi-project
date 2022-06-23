@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.yj.drink_info_CRUD.DBManager;
+import com.util.db.DBManager;
 
 
 public class DrinkDAO {
@@ -25,13 +25,13 @@ public class DrinkDAO {
 		ResultSet rs = null;
 		
 		try {
-		con = DBManager.connect();
+		con = DBManager.connnect("yj");
 		String sql = "insert into cocktail_recipe_tbl values(cocktail_recipe_tbl_seq.nextval,?,?,?,?,?,?)";
 		pstmt = con.prepareStatement(sql);
 		String path = request.getSession().getServletContext().getRealPath("fileFolder");
 		
 		
-		
+		System.out.println(path);
 		
 		
 			MultipartRequest mr = new MultipartRequest(request, path, 20*1024*1024, "utf-8", new DefaultFileRenamePolicy());
@@ -116,7 +116,7 @@ public class DrinkDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				DBManager.close(con, pstmt, rs);
+				DBManager.Close(con, pstmt, rs);
 			}
 			
 		
@@ -130,7 +130,7 @@ public class DrinkDAO {
 
 				try {			
 					String sql = "select * from cocktail_recipe_tbl";
-					con = DBManager.connect();
+					con = DBManager.connnect("yj");
 					pstmt = con.prepareStatement(sql);			
 					rs = pstmt.executeQuery();
 					
@@ -158,7 +158,7 @@ public class DrinkDAO {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}finally {
-					DBManager.close(con, pstmt, rs);
+					DBManager.Close(con, pstmt, rs);
 				}
 				
 			}
@@ -174,7 +174,7 @@ public class DrinkDAO {
 		
 		try {			
 			String sql = "select * from cocktail_recipe_tbl where cocktail_num=?";
-			con = DBManager.connect();
+			con = DBManager.connnect("yj");
 			pstmt = con.prepareStatement(sql);			
 			
 			int num = Integer.parseInt(request.getParameter("num"));
@@ -204,7 +204,7 @@ public class DrinkDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			DBManager.close(con, pstmt, rs);
+			DBManager.Close(con, pstmt, rs);
 		}
 }
 
@@ -219,7 +219,7 @@ public class DrinkDAO {
 		PreparedStatement pstmt = null;
 		try {
 			String sql = "update cocktail_recipe_tbl set cocktail_name = ?, cocktail_info=?, cocktail_ingredient =? ,cocktail_recipe = ?, cocktail_img = ?, cocktail_tag = ? where cocktail_num = ?";
-			con = DBManager.connect();
+			con = DBManager.connnect("yj");
 			pstmt = con.prepareStatement(sql);
 			
 			
@@ -310,7 +310,7 @@ public class DrinkDAO {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}finally {
-					DBManager.close(con, pstmt, null);
+					DBManager.Close(con, pstmt, null);
 				}
 				
 			
@@ -326,7 +326,7 @@ public class DrinkDAO {
 		
 		try {
 			String sql = "delete cocktail_recipe_tbl where cocktail_num=?";
-			con = DBManager.connect();
+			con = DBManager.connnect("yj");
 			pstmt = con.prepareStatement(sql);
 			
 			int no = Integer.parseInt(request.getParameter("PKnum"));
@@ -342,7 +342,7 @@ public class DrinkDAO {
 			e.printStackTrace();
 			request.setAttribute("r", "정보 삭제 오류");
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManager.Close(con, pstmt, null);
 		}
 		
 		
@@ -358,7 +358,7 @@ public class DrinkDAO {
 
 		try {			
 			String sql = "select * from cocktail_recipe_tbl where cocktail_name like ? or cocktail_ingredient LIKE ?";
-			con = DBManager.connect();
+			con = DBManager.connnect("yj");
 			pstmt = con.prepareStatement(sql);
 			
 			String num = request.getParameter("selected_cocktail");
@@ -393,7 +393,7 @@ public class DrinkDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			DBManager.close(con, pstmt, rs);
+			DBManager.Close(con, pstmt, rs);
 		}
 		
 	}

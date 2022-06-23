@@ -13,7 +13,7 @@
 	<h1>술등록</h1>
 
 
-	<form name="form" action="drink_Info_regController" method="post"
+	<form name="form" action="Drink_Info_regController" method="post"
 		enctype="multipart/form-data">
 
 		<table style="background-color: gray">

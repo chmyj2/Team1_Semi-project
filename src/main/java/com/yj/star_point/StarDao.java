@@ -10,8 +10,8 @@ import org.apache.jasper.tagplugins.jstl.core.If;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.yj.drink_info_CRUD.DBManager;
 import com.yj.drink_info_CRUD.Drink;
+import com.util.db.DBManager;
 
 public class StarDao {
 
@@ -22,7 +22,7 @@ public class StarDao {
 		PreparedStatement pstmt = null;
 		
 		try {
-		con = DBManager.connect();
+		con = DBManager.connnect("yj");
 		String sql = "insert into star_point_tbl values(star_point_tbl_seq.nextval,?,?,?)";
 		pstmt = con.prepareStatement(sql);
 		
@@ -63,7 +63,7 @@ public class StarDao {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				DBManager.close(con, pstmt, null);
+				DBManager.Close(con, pstmt, null);
 			}
 			
 		
@@ -78,7 +78,7 @@ public class StarDao {
 
 		try {			
 			String sql = "SELECT AVG(score) FROM star_point_tbl where product_num = ?";
-			con = DBManager.connect();
+			con = DBManager.connnect("yj");
 			pstmt = con.prepareStatement(sql);
 			
 			String num = request.getParameter("num");
@@ -126,7 +126,7 @@ public class StarDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			DBManager.close(con, pstmt, rs);
+			DBManager.Close(con, pstmt, rs);
 		}
 		
 	}

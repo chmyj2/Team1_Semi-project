@@ -7,13 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sm.hc.AccountDAO;
+
 
 
 
 @WebServlet("/Drink_Info_regController")
 public class Drink_Info_regController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		AccountDAO.loginCheck(request);
 		DrinkDAO.Get_All_drink_Info(request);
 		
 		
@@ -30,7 +32,7 @@ public class Drink_Info_regController extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		AccountDAO.loginCheck(request);
 		DrinkDAO.drink_Info_Reg(request);
 		DrinkDAO.Get_All_drink_Info(request);
 		request.setAttribute("contentPage", "jsp/yj/drink_Info_reg.jsp");

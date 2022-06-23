@@ -21,24 +21,17 @@
 </form>
 	</div>
 
-<table>
-<tr>
-
-<table class="OurCocktail_Tbl">
-	<tr>
-	<td colspan="10"></td>
-		<c:forEach var="m" items="${drinks}" varStatus="status">
-			<c:if test="${status.index%4==0}">
-				</tr><tr>
-			</c:if>
-    	<td class="OurCocktail_Td"><a href="Drink_Info_DetailController?num=${m.cocktail_num}"><img alt="" src="fileFolder/${m.cocktail_img}" style="width: 170px; height: 230px"></a></td>
-    	<td class="OurCocktail_Td2">${m.cocktail_name}</td>
-		</c:forEach>
-	</tr>
-</table>
-</tr>
-</table>
-
+<c:forEach var="m" items="${drinks}" varStatus="status">
+		<table class="OurCocktail_Tbl" width='150px;' height='250px' style="float: left; vertical-align: middle;">
+			<tr>
+				<td class="OurCocktail_Td"><a href="Drink_Info_DetailController?num=${m.cocktail_num}">
+				<img alt="" src="fileFolder/${m.cocktail_img}"style="max-width:150px;"></a></td>
+				</tr>
+			<tr style="height:auto;">
+				<td class="OurCocktail_Td2">${m.cocktail_name}</td>
+			</tr>
+		</table>
+	</c:forEach>
 
 
 

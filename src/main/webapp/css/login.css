@@ -79,7 +79,7 @@ body {
 
 
 
-/*µå·Ó´Ù¿î*/
+/*ï¿½ï¿½Ó´Ù¿ï¿½*/
 
 
 .dropdown{
@@ -90,7 +90,7 @@ body {
 .dropdown-content{
   display : none;
   position : absolute;
-  z-index : 3; /*´Ù¸¥ ¿ä¼Òµéº¸´Ù ¾Õ¿¡ ¹èÄ¡*/
+  z-index : 3; /*ï¿½Ù¸ï¿½ ï¿½ï¿½Òµéº¸ï¿½ï¿½ ï¿½Õ¿ï¿½ ï¿½ï¿½Ä¡*/
   border : 1px solid rgb(37, 37, 37);
   border-radius : 4px;
   background-color: #f5f5f5;
@@ -125,7 +125,7 @@ a:visited { color:gray; }
 
 
 
-/* °Ô½ÃÆÇ css */
+/* ï¿½Ô½ï¿½ï¿½ï¿½ css */
 
 #tbl_board_list{
 	border : white solid 1px;

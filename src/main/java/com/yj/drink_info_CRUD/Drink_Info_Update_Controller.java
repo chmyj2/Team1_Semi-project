@@ -7,12 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sm.hc.AccountDAO;
 import com.yj.drink_info_CRUD.DrinkDAO;
 
 @WebServlet("/Drink_Info_Update_Controller")
 public class Drink_Info_Update_Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		AccountDAO.loginCheck(request);
 			DrinkDAO.getDrinkInfo(request);
 			request.setAttribute("contentPage", "jsp/yj/drink_info_update.jsp");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -27,7 +28,7 @@ public class Drink_Info_Update_Controller extends HttpServlet {
 	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		AccountDAO.loginCheck(request);
 		DrinkDAO.drink_info_Update(request);
 
 		DrinkDAO.Get_All_drink_Info(request);
