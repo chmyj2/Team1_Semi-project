@@ -11,8 +11,23 @@ import com.sm.hc.AccountDAO;
 
 @WebServlet("/HC")
 public class HC extends HttpServlet {
+	private boolean tf;
+	
+	public HC() {
+		tf = true;
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(tf) {
+			request.getSession().setAttribute("firstReq", "1");
+			tf = false;
+		}else {
+			request.getSession().setAttribute("firstReq", "0");
+			
+		}
+		
+		
 		AccountDAO.loginCheck(request);
+		
 		request.setAttribute("contentPage", "home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

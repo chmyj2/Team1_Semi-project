@@ -13,7 +13,7 @@ import com.yj.drink_info_CRUD.DrinkDAO;
 @WebServlet("/Drink_Info_Update_Controller")
 public class Drink_Info_Update_Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AccountDAO.loginCheck(request);
+			AccountDAO.loginCheck(request);
 			DrinkDAO.getDrinkInfo(request);
 			request.setAttribute("contentPage", "jsp/yj/drink_info_update.jsp");
 			request.getRequestDispatcher("index.jsp").forward(request, response);

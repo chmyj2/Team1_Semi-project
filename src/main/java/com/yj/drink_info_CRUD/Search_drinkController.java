@@ -12,7 +12,6 @@ import com.sm.hc.AccountDAO;
 @WebServlet("/Search_drinkController")
 public class Search_drinkController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		AccountDAO.loginCheck(request);
 		DrinkDAO.searched_drink(request);
 		request.setAttribute("contentPage", "jsp/yj/search_drink_list.jsp");
@@ -24,6 +23,10 @@ public class Search_drinkController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		AccountDAO.loginCheck(request);
+		DrinkDAO.searched_drink(request);
+		request.setAttribute("contentPage", "jsp/yj/search_drink_reg_list.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	
 	
 	

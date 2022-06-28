@@ -19,16 +19,20 @@
 
 		<table style="background-color: gray">
 			<tr>
+				<td colspan="2"><img src="fileFolder/${drink.cocktail_img}" style="width: 200px; height: 200px"> </td>
+			</tr>
+			<tr>
 				<td>술이름</td>
 				<td><input name="cocktail_name" value="${drink.cocktail_name }"></td>
 			</tr>
 			<tr>
 				<td>술 설명</td>
-				<td><textarea name="cocktail_info"></textarea></td>
+				<td><textarea name="cocktail_info">${drink.cocktail_info }</textarea></td>
 			</tr>
 			<tr>
 				<td>술 이미지</td>
-				<td><input type="file" name="cocktail_img"></td>
+				<td><input type="hidden" name="cocktail_img" value="${drink.cocktail_img }"><br>
+				<input type="file" name="cocktail_img2" id="cocktail_img2"></td>
 			</tr>
 			<tr>
 				<td>

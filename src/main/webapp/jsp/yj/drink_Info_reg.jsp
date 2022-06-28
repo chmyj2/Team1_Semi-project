@@ -10,7 +10,25 @@
 
 <body>
 
-	<h1>술등록</h1>
+	
+	<div class="ourCollectionInput_div">
+		<form action="Search_drinkController" id="ourCollectionInput_form" method="post"> 
+			<div>
+				<h1 class="ourCollectionInput_h1">SEARCH</h1>
+			</div>
+			<div style="background-color: #0d47a1" >
+				<input class="ourCollectionInput" name="selected_cocktail" placeholder="SEARCH" type="search">
+				<button id="ourCollectionBtn">GO</button>
+			</div>
+		</form>
+	</div>
+
+	<table>
+		<tr>
+			<td><h1>술 정보 등록</h1></td>
+		</tr>
+	</table>
+	
 
 
 	<form name="form" action="Drink_Info_regController" method="post"
@@ -18,15 +36,15 @@
 
 		<table style="background-color: gray">
 			<tr>
-				<td>술이름</td>
+				<td>DRINK NAME</td>
 				<td><input name="cocktail_name" style="width: 255px" ></td>
 			</tr>
 			<tr>
-				<td>술 설명</td>
+				<td>DRINK INFO</td>
 				<td><textarea name="cocktail_info"></textarea></td>
 			</tr>
 			<tr>
-				<td>술 이미지</td>
+				<td>DRINK IMG</td>
 				<td><input type="file" name="img"></td>
 			</tr>
 		</table>
@@ -36,7 +54,7 @@
 					<table id="addTable3"
 						style="background-color: yellow; width: 318px">
 						<tr>
-							<td>레시피</td>
+							<td>RECIPE</td>
 						</tr>
 						<tr>
 							<td><input name="cocktail_recipe" style="width: 300px"></td>
@@ -48,7 +66,7 @@
 				<td>
 					<table id="addTable" style="background-color: red; width: 318px">
 						<tr>
-							<td>재료</td>
+							<td>INGREDIENTS</td>
 						</tr>
 						<tr>
 							<td><input name="cocktail_ingredient" style="width: 300px"></td>
@@ -60,7 +78,7 @@
 				<td>
 					<table id="addTable2" style="background-color: green; width: 318px">
 						<tr>
-							<td>태그</td>
+							<td>TAGS</td>
 						</tr>
 						<tr>
 							<td><input name="cocktail_tag" style="width: 300px"></td>
@@ -85,7 +103,6 @@
 		</tr>
 	</table>
 
-	</table>
 
 
 
@@ -100,44 +117,60 @@
 		</tr>
 	</table>
 
-<c:forEach var="m" items="${drinks }">
-	<table id="" border="1">
-		<tr>
-			<td id="" colspan="2"><img id="" src="fileFolder/${m.cocktail_img}"></td>
-		</tr>
-		<tr>
-			<td>[술 이름]</td>
-			<td class="">${m.cocktail_name }</td>
-		</tr>
-		<tr>
-			<td>[술 설명]</td>
-			<td class="">${m.cocktail_info }</td>
-		</tr>
-		<tr>
-			<td>[술 재료]</td>
-			<td class="">${m.cocktail_ingredient }</td>
-		</tr>
-		<tr>
-			<td>[술 레시피]</td>
-			<td class="">${m.cocktail_recipe }</td>
-		</tr>
-		<tr>
-			<td>[술 태그]</td>
-			<td class="">${m.cocktail_tag }</td>
-		</tr>
-		
-			<td>
-			<button onclick="location.href='Drink_Info_Update_Controller?num=${m.cocktail_num}'">수정</button>
-			<button onclick="deleteDrinkInfo(${m.cocktail_num})">삭제</button>
-			</td>
-		</tr>
-	</table>
-	</c:forEach>	
+
+
+
+
 	
 
-
-
-
+<c:forEach var="m" items="${drinks }">
+<table border="1" style="height: 100px;width: 600px">
+	<tr>
+		<td rowspan="11"><img alt=""src="fileFolder/${m.cocktail_img}" style="width: 300px;height: 100"></td>
+	</tr>
+	<tr>
+		<td>DRINK NAME</td>
+	</tr>
+	<tr>
+		<td>${m.cocktail_name }</td>
+	</tr>
+	<tr>
+		<td><c:forTokens var="item" items="${m.cocktail_info }" delims="\n">
+		${item }
+</c:forTokens></td>
+	</tr>
+	<tr>
+		<td>INGREDIENTS</td>
+	</tr>
+	<tr>
+		<td><c:forTokens var="item" items="${m.cocktail_ingredient }" delims="!">
+		${item }<br>
+</c:forTokens></td>
+	</tr>
+	<tr>
+		<td>RECIPE</td>
+	</tr>
+	<tr>
+		<td><c:forTokens var="item" items="${m.cocktail_recipe }" delims="@">
+		${item }
+</c:forTokens></td>
+	</tr>
+	<tr>
+		<td>TAG</td>
+	</tr>
+	<tr>
+		<td><c:forTokens var="item" items="${m.cocktail_tag }" delims="!">
+		${item }<br>
+</c:forTokens></td>
+	</tr>
+	<tr>
+			<td>
+			<button onclick="location.href='Drink_Info_Update_Controller?num=${m.cocktail_num}'">수정</button>
+			<button onclick="deleteDrinkInfo(${m.cocktail_num},'${m.cocktail_img}')">삭제</button>
+			</td>
+		</tr>
+</table>
+	</c:forEach>	
 
 
 

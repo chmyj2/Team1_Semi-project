@@ -94,16 +94,15 @@ public class StarDao {
 				
 				if(rs.getDouble("AVG(SCORE)") < 0.5){
 					
-					request.setAttribute("star","평점 없음" );
-					
+					request.setAttribute("star","☆☆☆☆☆" );
 				} else if (rs.getDouble("AVG(SCORE)") >= 0.5 && rs.getDouble("AVG(SCORE)") < 1.5) {
-					request.setAttribute("star","★" );
+					request.setAttribute("star","★☆☆☆☆" );
 				}	else if (rs.getDouble("AVG(SCORE)") >= 1.5 && rs.getDouble("AVG(SCORE)") < 2.5) {
-					request.setAttribute("star","★★" );
+					request.setAttribute("star","★★☆☆☆" );
 				}	else if (rs.getDouble("AVG(SCORE)") >= 2.5 && rs.getDouble("AVG(SCORE)") < 3.5) {
-					request.setAttribute("star","★★★" );
+					request.setAttribute("star","★★★☆☆" );
 				}	else if (rs.getDouble("AVG(SCORE)") >= 3.5 && rs.getDouble("AVG(SCORE)") < 4.5) {
-					request.setAttribute("star","★★★★" );
+					request.setAttribute("star","★★★★☆" );
 				}	else if (rs.getDouble("AVG(SCORE)") >= 4.5) {
 					request.setAttribute("star","★★★★★" );
 				}
