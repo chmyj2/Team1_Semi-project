@@ -1,0 +1,51 @@
+@charset "EUC-KR";
+
+.board_td_title{
+	font-size: 20pt;
+	font-weight: 600;
+}
+
+.btn-success{
+height: 30px;
+width: 100px;
+border-radius: 5px;
+border: 1px solid gray;
+transition-duration: 0.4s;
+background-color: white;
+color: gray;
+}
+
+.btn-success:hover{
+background-color: rgba(2,126,251,1);
+color: white;
+}
+
+.btn-success2{
+	height: 25px;
+	border-radius: 5px;
+	border: 1px solid gray;
+	transition-duration: 0.4s;
+	background-color: white;
+	color: gray;
+	margin-bottom:20px;
+}
+
+.btn-success2:hover{
+background-color: rgba(2,126,251,1);
+color: white;
+}
+
+.btn-success3{
+	height: 25px;
+	width: 65px;
+	border-radius: 5px;
+	border: 1px solid gray;
+	transition-duration: 0.4s;
+	background-color: white;
+	color: gray;
+}
+
+.btn-success3:hover{
+background-color: rgba(2,126,251,1);
+color: white;
+}

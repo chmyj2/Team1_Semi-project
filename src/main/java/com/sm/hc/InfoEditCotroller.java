@@ -11,14 +11,7 @@ import com.sm.hc.AccountDAO;
 
 @WebServlet("/InfoEditCotroller")
 public class InfoEditCotroller extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//해당 회원 정보 가져오기
-		AccountDAO.loginCheck(request);
-				
-		request.setAttribute("contentPage", "account/update.jsp");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
-				
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 	
 	}
 

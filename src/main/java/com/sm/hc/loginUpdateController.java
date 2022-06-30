@@ -24,7 +24,6 @@ public class loginUpdateController extends HttpServlet {
 	
 		// 넘겨받은 값들로 수정하는 일
 		AccountDAO.updateAccount(request);
-		System.out.println("왜?");
 		AccountDAO.login(request);
 		AccountDAO.loginCheck(request);
 				

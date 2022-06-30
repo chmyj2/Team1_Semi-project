@@ -46,10 +46,8 @@
             <li><a href="ShoppingController?name=Goods">GOODs SALES</a></li>
             <li><a href="#">OUR SOCIAL</a>
                 <ul>
-                    <li><a href="boardCfree">자유게시판</a></li>
-                    <li><a href="boardCrecipe">레시피 게시판</a></li>
-                    <li><a href="boardCreview">후기 게시판</a></li>
-                    <li><a href="boardCqa">Q&A 게시판</a></li>
+                    <li><a href="boardCfree">OUR SPACE</a></li>
+                    <li><a href="boardCqa">Q&A</a></li>
                 </ul>
             </li>
         </ul>

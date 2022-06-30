@@ -7,12 +7,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/boardCreview")
-public class boardCreview extends HttpServlet {
+@WebServlet("/commentDeleteC")
+public class commentDeleteC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		request.setAttribute("contentPage", "jsp/sm/boardReview.jsp");
-		request.setAttribute("loginPage", "jsp/sm/loginBefore.jsp");
+		//코멘트 삭제
+		AccountDAO.loginCheck(request);
+		AccountDAO.deleteComment(request);
+		AccountDAO.getPost(request);
+		AccountDAO.getComment(request);
+		
+		//삭제하고 여기로
+		request.setAttribute("contentPage", "jsp/sm/free_board_detail.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	
 	}

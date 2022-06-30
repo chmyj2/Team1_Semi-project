@@ -12,7 +12,9 @@ public class boardCfree extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		AccountDAO.loginCheck(request);
+		
 		AccountDAO.getAllFree(request);
+		AccountDAO.paging(1, request);
 		request.setAttribute("contentPage", "jsp/sm/boardFree.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	
