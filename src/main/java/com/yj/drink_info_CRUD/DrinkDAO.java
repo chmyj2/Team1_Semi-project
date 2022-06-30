@@ -4,6 +4,7 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,13 +16,41 @@ import com.util.db.DBManager;
 
 
 public class DrinkDAO {
-	public static void drink_Info_Reg(HttpServletRequest request) {
-
-		
-		
-		
 	
-		
+	
+	java.util.ArrayList<Drink> drinks;
+	
+	private static final DrinkDAO DDAO = new DrinkDAO();
+	
+	
+	public DrinkDAO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	public static DrinkDAO getDdao() {
+		return DDAO;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public void drink_Info_Reg(HttpServletRequest request) {
+
 			
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -126,7 +155,7 @@ public class DrinkDAO {
 			
 		}
 
-	public static void Get_All_drink_Info(HttpServletRequest request) {
+	public void Get_All_drink_Info(HttpServletRequest request) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
@@ -137,7 +166,7 @@ public class DrinkDAO {
 					pstmt = con.prepareStatement(sql);			
 					rs = pstmt.executeQuery();
 					
-					java.util.ArrayList<Drink> drinks = new java.util.ArrayList<Drink>();
+					drinks = new ArrayList<Drink>();
 					
 					
 					while (rs.next()) {		
@@ -170,7 +199,7 @@ public class DrinkDAO {
 	
 	
 	
-	public static void getDrinkInfo(HttpServletRequest request) {
+	public void getDrinkInfo(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -217,7 +246,7 @@ public class DrinkDAO {
 	
 	
 	
-	public static void drink_info_Update(HttpServletRequest request) {
+	public void drink_info_Update(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -274,21 +303,20 @@ public class DrinkDAO {
 					cocktail_recipe2 = "태그 없음";
 				}
 		
-//			
-//				for (String c : cocktail_recipe) {
-//					System.out.println(c);
-//				}
-//				System.out.println(cocktail_ingredient2);
-//				System.out.println(cocktail_tag2);
-//				System.out.println(cocktail_name);
-//				
-//				System.out.println(cocktail_info);
-//					for (String s : cocktail_ingredient) {
-//						System.out.println(s);
-//					}
-//				System.out.println(cocktail_recipe);
-//				
-//				System.out.println(img);
+			
+				for (String c : cocktail_recipe) {
+					System.out.println(c);
+				}
+				System.out.println(cocktail_ingredient2);
+				System.out.println(cocktail_tag2);
+				System.out.println(cocktail_name);
+				
+				System.out.println(cocktail_info);
+					for (String s : cocktail_ingredient) {
+						System.out.println(s);
+					}
+				
+				System.out.println(img);
 				
 
 			
@@ -336,7 +364,7 @@ public class DrinkDAO {
 	
 }
 
-	public static void delete_drink_info(HttpServletRequest request) {
+	public void delete_drink_info(HttpServletRequest request) {
 
 		
 		Connection con = null;
@@ -377,7 +405,65 @@ public class DrinkDAO {
 	}
 
 
-	public static void searched_drink(HttpServletRequest request) {
+	public void searched_drink(HttpServletRequest request) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {			
+			request.setCharacterEncoding("UTF-8");
+			
+			String sql = "select * from cocktail_recipe_tbl where upper(cocktail_name) like ? OR upper(cocktail_tag) LIKE ?";
+			con = DBManager.connnect("yj");
+			pstmt = con.prepareStatement(sql);
+			
+			String num =request.getParameter("selected_cocktail");
+			String numC = num.toUpperCase();
+			
+			pstmt.setString(1, '%' + numC + '%');
+			pstmt.setString(2, '%' + numC + '%');
+			
+			System.out.println(numC);
+			rs = pstmt.executeQuery();
+			
+			drinks = new ArrayList<Drink>();
+			
+			
+				while (rs.next()) {		
+					Drink d = new Drink();
+			
+			d.setCocktail_num(rs.getString("cocktail_num")); 
+			d.setCocktail_name(rs.getString("cocktail_name"));
+			d.setCocktail_info(rs.getNString("cocktail_info"));
+			d.setCocktail_ingredient(rs.getString("cocktail_ingredient"));
+			d.setCocktail_recipe(rs.getString("cocktail_recipe"));
+			d.setCocktail_img(rs.getString("cocktail_img"));
+			d.setCocktail_tag(rs.getString("cocktail_tag"));
+			
+			drinks.add(d);	
+			}
+			request.setAttribute("drinks",drinks);
+			request.setAttribute("contentPage", "jsp/yj/search_drink_list.jsp"); 
+				
+			
+			
+			
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.Close(con, pstmt, rs);
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	public void searched_drink2(HttpServletRequest request) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -395,15 +481,13 @@ public class DrinkDAO {
 			pstmt.setString(1, '%' + num + '%');
 			pstmt.setString(2, '%' + num + '%');
 			
-			System.out.println(num);
 			
 			rs = pstmt.executeQuery();
 			
-			java.util.ArrayList<Drink> drinks = new java.util.ArrayList<Drink>();
+			drinks = new ArrayList<Drink>();
 			
-			
-			while (rs.next()) {		
-			Drink d = new Drink();
+				while (rs.next()) {		
+					Drink d = new Drink();
 			
 			d.setCocktail_num(rs.getString("cocktail_num")); 
 			d.setCocktail_name(rs.getString("cocktail_name"));
@@ -419,6 +503,14 @@ public class DrinkDAO {
 			drinks.add(d);	
 			}
 			request.setAttribute("drinks",drinks);
+			request.setAttribute("contentPage", "jsp/yj/drink_Info_reg.jsp");
+				
+				
+				
+				
+				
+			
+			
 						
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -427,7 +519,66 @@ public class DrinkDAO {
 		}
 		
 	}
+	
+	
+	
+	
 
+	public void paging(int page, HttpServletRequest request) {
+
+		request.setAttribute("curPageNo", page);
+
+        //전체 페이지 수 계산
+        int cnt = 5; //한페이지당 보여줄 글 갯수
+        int total = drinks.size(); //총 데이터의 갯수
+        
+        int pageCount = (int)Math.ceil((double)total/cnt); //전체 페이지 수 계산
+        request.setAttribute("pageCount", pageCount);
+        
+        
+        int start = total - (cnt * (page - 1)); //역순연산 //6  //3
+        
+        int end = ((page == pageCount) ? -1 : start - (cnt+1)); //2  //-1
+        
+        ArrayList<Drink> items = new ArrayList<Drink>();
+
+        //        ---------------------------------------
+        if (total==0) {
+        	request.setAttribute("drinks", items);	
+        	request.setAttribute("drinksResult", "검색결과 없습니다.");	
+        	
+		} else if (total>=1) {			
+			
+			for (int i = start-1; i > end; i--) {
+				items.add(drinks.get(i));
+				request.setAttribute("drinks", items);	
+			}
+			
+			
+		}
+        
+//        System.out.println("total : " + total);
+//        System.out.println("pageCount : " + pageCount);
+//        System.out.println("start : " + start);
+//        System.out.println("end : " + end);
+//        
+//        for (Drink drink : items) {
+//        	System.out.println(drink);
+//			
+//		}
+//        
+		
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 		

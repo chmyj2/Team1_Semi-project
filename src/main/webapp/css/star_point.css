@@ -16,15 +16,26 @@
 .star-rating label {
   -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 2.3px;
-  -webkit-text-stroke-color: #2b2a29;
+  -webkit-text-stroke-color: #88c95e;
   cursor: pointer;
 }
  
 .star-rating :checked ~ label {
-  -webkit-text-fill-color: #2845d4;
+  -webkit-text-fill-color: #88c95e;
 }
  
 .star-rating label:hover,
 .star-rating label:hover ~ label {
-  -webkit-text-fill-color: #5e76ff;
+  -webkit-text-fill-color:#88c95e;
 }
+
+
+
+
+
+.btnLightBlue {
+  background: #5DC8CD;
+}
+
+
+

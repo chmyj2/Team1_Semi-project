@@ -16,14 +16,9 @@ import com.sm.hc.AccountDAO;
 public class Drink_Info_regController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountDAO.loginCheck(request);
-		DrinkDAO.Get_All_drink_Info(request);
-		
-		
-//		if (DrinkDAO.makeInterest(request) == 1) {
-//			request.setAttribute("contentPage", "account/info.jsp");
-//		}else {
-//			request.setAttribute("contentPage", "home.jsp");
-//		}
+		DrinkDAO m = DrinkDAO.getDdao();
+		m.Get_All_drink_Info(request);
+		m.paging(1, request);
 		
 		
 		request.setAttribute("contentPage", "jsp/yj/drink_Info_reg.jsp");
@@ -33,8 +28,11 @@ public class Drink_Info_regController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		AccountDAO.loginCheck(request);
-		DrinkDAO.drink_Info_Reg(request);
-		DrinkDAO.Get_All_drink_Info(request);
+		DrinkDAO m = DrinkDAO.getDdao();
+		m.drink_Info_Reg(request);
+		m.Get_All_drink_Info(request);
+		m.paging(1, request);
+		
 		request.setAttribute("contentPage", "jsp/yj/drink_Info_reg.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 		

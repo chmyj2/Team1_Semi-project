@@ -33,7 +33,7 @@ pageEncoding="UTF-8"%>
 		<td class="drink_detail_star">${star } <fmt:formatNumber value="${starpoint.score }" pattern="0.00" /> </td>
 	</tr>
 	<tr>
-		<td><c:forTokens var="item" items="${drink.cocktail_info }" delims="\n">
+		<td class="drink_detail_page_txt"><c:forTokens var="item" items="${drink.cocktail_info }" delims="\n">
 		${item }
 </c:forTokens></td>
 	</tr>
@@ -41,7 +41,7 @@ pageEncoding="UTF-8"%>
 		<td class="drink_detail_page_title">INGREDIENTS</td>
 	</tr>
 	<tr>
-		<td><c:forTokens var="item" items="${drink.cocktail_ingredient }" delims="!">
+		<td class="drink_detail_page_txt"><c:forTokens var="item" items="${drink.cocktail_ingredient }" delims="!">
 		${item }<br>
 </c:forTokens></td>
 	</tr>
@@ -49,7 +49,7 @@ pageEncoding="UTF-8"%>
 		<td class="drink_detail_page_title">RECIPE</td>
 	</tr>
 	<tr>
-		<td><c:forTokens var="item" items="${drink.cocktail_recipe }" delims="@">
+		<td class="drink_detail_page_txt"><c:forTokens var="item" items="${drink.cocktail_recipe }" delims="@">
 		${item }<br>
 </c:forTokens></td>
 	</tr>
@@ -64,26 +64,30 @@ pageEncoding="UTF-8"%>
 </table>
 
 
-
-
-
 <form action="Star_regController">
-<div class="star-rating space-x-4 mx-auto">
-    <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
-    <label for="5-stars" class="star pr-4">★</label>
-    <input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
-    <label for="4-stars" class="star">★</label>
-    <input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
-    <label for="3-stars" class="star">★</label>
-    <input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
-    <label for="2-stars" class="star">★</label>
-    <input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
-    <label for="1-star" class="star">★</label>
-</div>
-<input type="hidden" name="num" value="${drink.cocktail_num }">
-<input type="hidden" name="user_id" value="'세션id'">
-<button>별점주기</button>
- </form>
+<table class="drink_detail_page_table2">
+	<tr>
+		<td>
+			<div class="star-rating space-x-4 mx-auto">
+    		<input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
+    		<label for="5-stars" class="star pr-4">★</label>
+    		<input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
+    		<label for="4-stars" class="star">★</label>
+    		<input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
+    		<label for="3-stars" class="star">★</label>
+    		<input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
+    		<label for="2-stars" class="star">★</label>
+    		<input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
+    		<label for="1-star" class="star">★</label>
+			</div>
+			<input type="hidden" name="num" value="${drink.cocktail_num }">
+			<input type="hidden" name="user_id" value="'세션id'"></td>
+		<td><button class="drink_detail_page_btn_green">별점주기</button></td>
+	</tr>
+</table>
+</form>		
+
+
 
 
  

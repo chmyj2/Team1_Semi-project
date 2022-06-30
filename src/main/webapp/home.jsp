@@ -19,26 +19,16 @@ $(function() {
 		if(firstReq == 1){
          modal('my_modal');
 		}else {
-			$(".asd").remove();
+			$(".background").remove();
   			$("#my_modal").css("display","none");
 			
 		}
-		
-			
-        
-         
-         
-         
-         
          
 	
          $(".modal_close_btn").click(function() {
 			location.href = "https://www.google.com/search?q=%EC%9E%BC%EB%AF%BC%EC%9D%B4&tbm=isch&ved=2ahUKEwiY1cWU0sX4AhVKXZQKHWD3AnUQ2-cCegQIABAA&oq=%EC%9E%BC%EB%AF%BC%EC%9D%B4&gs_lcp=CgNpbWcQDDIECCMQJzILCAAQgAQQsQMQgwEyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABFAAWABg7AhoAHAAeACAAWWIAWWSAQMwLjGYAQCqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=_HG1YpjnN8q60QTg7ouoBw&bih=628&biw=1055#imgrc=lvusybt365Vr0M";
 		})
 	 
-		
-		
-		
 		
 		
 		
@@ -60,7 +50,7 @@ $(function() {
         	 let age = 2022 - year + 1 ; 
         	 
 			if (age >= 20) {
-				$(".asd").remove();
+				$(".background").remove();
       			$("#my_modal").css("display","none");
       			 swal(
       				      '<b style="color:#0d47a1;">SUCCESS.</b>',
@@ -71,12 +61,12 @@ $(function() {
       				  
 		
 			}else {
-				$(".asd").css("z-index","2");
+				$(".background").css("z-index","2");
 				$("#my_modal").css("display","none");
 				
 				swal('<b style="color:#CD1039;">WARNING.</b>','성인만 이용 가능합니다.', 'warning').then(function name() {
 					$("#my_modal").css("display","block");
-					$(".asd").css( "backgroundColor",'rgba(0,0,0,0.4)');
+					$(".background").css( "backgroundColor",'rgba(0,0,0,0.4)');
 				})
 				
 			}
@@ -154,6 +144,8 @@ $(function() {
 
 </head>
 <body>
+
+
 	<input id="firstReq" type="hidden" value="${sessionScope.firstReq }">
 
 	
@@ -222,7 +214,7 @@ $(function() {
 
                 // 모달 div 뒤에 희끄무레한 레이어
                 var bg = document.createElement('div');
-                bg.classList.add('asd');
+                bg.classList.add('background');
                 
                 bg.setStyle({
                     position: 'fixed',

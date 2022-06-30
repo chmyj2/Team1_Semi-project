@@ -16,7 +16,7 @@ public class Drink_Info_DetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		AccountDAO.loginCheck(request);
-		DrinkDAO.getDrinkInfo(request);
+		DrinkDAO.getDdao().getDrinkInfo(request);
 		StarDao.star_point_cal(request);
 		request.setAttribute("contentPage", "jsp/yj/drink_info_detail.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);

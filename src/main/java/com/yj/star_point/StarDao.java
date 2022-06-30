@@ -27,29 +27,15 @@ public class StarDao {
 		pstmt = con.prepareStatement(sql);
 		
 		
-		
-		
 		String cocktail_num = request.getParameter("num");
 		String userId = request.getParameter("user_id");
 		int rating = Integer.parseInt(request.getParameter("rating"));
 
-								
-			
-
-			System.out.println(cocktail_num);			
-			System.out.println(userId);
-			System.out.println(rating);
-			
-			
-			
-			
 			
 			
 			pstmt.setString(1, cocktail_num);
 			pstmt.setString(2, userId);
 			pstmt.setInt(3, rating);
-			
-			
 			
 			
 			

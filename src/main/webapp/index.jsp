@@ -32,7 +32,6 @@
     </div>
    <div class="item3">
    		<jsp:include page="${ loginPage}"></jsp:include>
-    	<button onclick="location.href='Drink_Info_regController'">운영자전용 상품등록버튼</button>
    </div>
 </div>
   
@@ -43,13 +42,11 @@
         <ul>
             <li><a href="ourCollectionController">OUR COLLECTION</a></li>
            <li><a href="ShoppingController?name=Drink">COCKTAILS SALES</a></li>
-            <li><a href="ShoppingController?name=Goods">GOODs SALES</a></li>
+            <li><a href="ShoppingController?name=Goods">GOODS SALES</a></li>
             <li><a href="#">OUR SOCIAL</a>
                 <ul>
-                    <li><a href="boardCfree">자유게시판</a></li>
-                    <li><a href="boardCrecipe">레시피 게시판</a></li>
-                    <li><a href="boardCreview">후기 게시판</a></li>
-                    <li><a href="boardCqa">Q&A 게시판</a></li>
+                   <li><a href="boardCfree">OUR SPACE</a></li>
+                    <li><a href="boardCqa">Q&A</a></li>
                 </ul>
             </li>
         </ul>
@@ -66,7 +63,7 @@
 <div class="footer">
        <div class="indexFooter">
        		<div class="indexFooterItem1">
-       			WE WAMT TO GO HOME
+       			WE WANT TO GO HOME
        		</div>
        		<div class="indexFooterItem2">
 				Thank you for visiting our semi-project site. Please copy our semi - project site without permission.

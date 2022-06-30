@@ -7,12 +7,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.empty_txt{
+margin-top: 100px;
+height: 400px;
+text-align: center;
+font-size: 30pt;
+
+}
+
+.go_back > a{
+text-decoration: none;
+color: gray;
+font-size: 15px;
+}
 
 
+
+</style>
 
 </head>
 
 <body>
+
+
+
 
 <div class="main1">
 	<ul>
@@ -74,7 +93,22 @@
 	</div>
 	
 	
-
+<c:if test="${empty drinks}">
+		
+			<div class="empty_txt">
+				<div style=>
+					검색 결과가 없습니다.
+				</div>
+				<div class="go_back">
+					<a href="javascript:history.back();">목록으로 돌아가기</a>
+				</div>
+			</div>
+</c:if>		
+		
+		
+		
+		
+		
 
 <c:forEach var="m" items="${drinks}" varStatus="status">
 		<table class="OurCocktail_Tbl" width='150px;' height='250px' style="float: left; vertical-align: middle;">

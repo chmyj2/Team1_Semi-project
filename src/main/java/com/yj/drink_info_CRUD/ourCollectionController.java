@@ -13,7 +13,7 @@ import com.sm.hc.AccountDAO;
 public class ourCollectionController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountDAO.loginCheck(request);
-		DrinkDAO.Get_All_drink_Info(request);
+		DrinkDAO.getDdao().Get_All_drink_Info(request);
 		request.setAttribute("contentPage", "jsp/yj/ourCollection.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	

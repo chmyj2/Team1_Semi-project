@@ -412,7 +412,7 @@
 				<h1 class="ourCollectionInput_h1">FIND YOUR FLAVOR</h1>
 			</div>
 			<div style="background-color: #0d47a1" >
-				<input  class="ourCollectionInput" id="ourCollectionInput" name="selected_cocktail" placeholder="SEARCH" type="">
+				<input  class="ourCollectionInput" id="ourCollectionInput" name="selected_cocktail" placeholder="SEARCH">
 				<input id="ourCollectionBtn" type="submit" value="GO">
 			</div>
 		</form>
