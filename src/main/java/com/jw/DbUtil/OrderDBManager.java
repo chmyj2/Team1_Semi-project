@@ -21,7 +21,7 @@ public class OrderDBManager {
 		String[] nums 	=  request.getParameterValues("orderNum");
 		
 		
-		
+		//asdf
 		HashMap<String, Integer> mapStr = new HashMap<String, Integer>();
 		
 		String sql = "select * from productTbl where Num_PK IN (";
