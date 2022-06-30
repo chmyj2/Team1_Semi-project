@@ -5,9 +5,7 @@ body { font-family: sans-serif; }
 /* prevent vertical scroll bar glitch */
 html { overflow-y: scroll; }
 
-.carousel {
-  background: #EEE;
-}
+
 
 .carousel-cell {
   width: 100%;

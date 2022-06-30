@@ -9,18 +9,21 @@ import java.sql.SQLException;
 public class DBManager {
 	
 
-	// DB °ü·Ã ÀÛ¾÷À» ÇÒ¶§ ¸Å¹ø ¿¬°áÄÚµå¸¦ ¾´ ÀÌÈÄ ÀÛ¾÷ ÇØ¿È
-	// ¹Ýº¹µÇ´Â ÀÛ¾÷À» ÇÑ¹ø¸¸ ÇÏ±â À§ÇØ¼­ (crud ¹Ýº¹ÀÛ¾÷)
-	// ±×°Å AOP ÇÏÀÚ
+	// DB ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½Ò¶ï¿½ ï¿½Å¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµå¸¦ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ ï¿½Ø¿ï¿½
+	// ï¿½Ýºï¿½ï¿½Ç´ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ (crud ï¿½Ýºï¿½ï¿½Û¾ï¿½)
+	// ï¿½×°ï¿½ AOP ï¿½ï¿½ï¿½ï¿½
 
-		// DB ÀÛ¾÷ ½Ã¿¡´Â ¾îÂ·µç ¿¬°á ÇØ¾ßµÊ
+		// DB ï¿½Û¾ï¿½ ï¿½Ã¿ï¿½ï¿½ï¿½ ï¿½ï¿½Â·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¾ßµï¿½
 		public static Connection connect() throws SQLException, ClassNotFoundException {		
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String url="jdbc:oracle:thin:@localhost:1521:xe";
 			return DriverManager.getConnection(url, "sm", "sm");
+			
+			
+			
 		}
 		
-		// ´ÝÀ»°Ô ¸¹Àºµ¥ ÇÑ¹ø¿¡ ´Ý±â
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½Ý±ï¿½
 		public static void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
 			try {
 				if (rs != null) {
@@ -55,9 +58,11 @@ public class DBManager {
 			pw="sm";
 		}
 		else if(who.equals("yj"))
+			
 		{
 			
-			return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", id, pw);
+			String url ="jdbc:oracle:thin:@db202204301707_medium?TNS_ADMIN=/Users/choeyongjun/Wallet_DB202204301707";
+	        return DriverManager.getConnection(url, "CYJ", "YJ802soldesk");
 		}
 		
 		

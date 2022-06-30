@@ -12,9 +12,8 @@ import com.util.db.*;
 
 
 public class DrinkDAO {
-	public static void drink_Info_Update(HttpServletRequest request) {
 
-			
+	public static void drink_Info_Update(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sm.hc.AccountDAO;
 import com.yj.drink_info_CRUD.DrinkDAO;
 
 @WebServlet("/Star_regController")
@@ -15,8 +16,9 @@ public class Star_regController extends HttpServlet {
 	
 	
 	// 별점 db에 등록하는일
+		AccountDAO.loginCheck(request);
 		StarDao.star_reg(request);
-		DrinkDAO.getDrinkInfo(request);
+		DrinkDAO.getDdao().getDrinkInfo(request);
 		StarDao.star_point_cal(request);
 		request.setAttribute("contentPage", "jsp/yj/drink_info_detail.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
