@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<div>
+ <div>
 	<form action="MyPageController" class="login">
 		<h2>My Page</h2><br><br>
 		<p style="font-size: 6px; text-align: left;">아이디</p>
@@ -34,7 +34,7 @@
 							
   		<br><button>수정하기</button>
 	</form>
-</div>
+</div> 
 
 
 

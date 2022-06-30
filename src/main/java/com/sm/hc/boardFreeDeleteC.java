@@ -15,6 +15,7 @@ public class boardFreeDeleteC extends HttpServlet {
 		AccountDAO.loginCheck(request);
 		AccountDAO.deletePost(request);
 		AccountDAO.getAllFree(request);
+		AccountDAO.paging(1, request);
 		
 		
 		//게시글 불러온 다음 여기로~!

@@ -179,7 +179,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 	
 /* 메뉴 4 들어갔을때 */
 #indexMenu > ul > li > ul {
-	width:550px;
+	width:350px;
 	display:none;
 	position: absolute;
 	font-size:14px;

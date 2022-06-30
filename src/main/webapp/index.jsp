@@ -45,7 +45,7 @@
             <li><a href="ShoppingController?name=Goods">GOODS SALES</a></li>
             <li><a href="#">OUR SOCIAL</a>
                 <ul>
-                   <li><a href="boardCfree">OUR SPACE</a></li>
+                    <li><a href="boardCfree">OUR SPACE</a></li>
                     <li><a href="boardCqa">Q&A</a></li>
                 </ul>
             </li>

@@ -7,13 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/boardCrecipe")
-public class boardCrecipe extends HttpServlet {
+
+@WebServlet("/BoardPageC")
+public class BoardPageC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		request.setAttribute("contentPage", "jsp/sm/boardRecipe.jsp");
-		request.setAttribute("loginPage", "jsp/sm/loginBefore.jsp");
+		int p = Integer.parseInt(request.getParameter("p")); //받은 파라미터 값
+		
+		AccountDAO.loginCheck(request);
+		AccountDAO.getAllFree(request);
+		AccountDAO.paging(p, request);
+		
+		request.setAttribute("contentPage", "jsp/sm/boardFree.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
+	
+	
 	
 	}
 

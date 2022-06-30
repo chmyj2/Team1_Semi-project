@@ -18,7 +18,9 @@ function call(){
 	
 	
 	if(containKR(id)||lessThan(id,5)||isEmpty(id)){
-		alert('아이디를 입력하세요.')
+		//alert('아이디를 입력하세요.')
+		swal("아이디를 입력해주세요.", "Please Enter The id").then(function() {
+        })
 		id.focus();
 		id.value="";		
 		return false;
@@ -27,44 +29,66 @@ function call(){
 	if(lessThan(pw1,3)||notContain(pw1,"QWERTYUIOPASDFGHJKLZXCVBNM")||
 	notContain(pw1,"qwertyuiopasdfghjklzxcvbnm")||
 	notContain(pw1,"1234567890")||isEmpty(pw1)){
-		alert('패스워드를 입력하세요');
+		//alert('패스워드를 입력하세요');
+		swal("패스워드를 입력해주세요.", "Please Enter The password").then(function() {
+        })
 		pw1.focus();
 		pw1.value="";
 		return false;
 	}
 	
 	if(matchPW(pw1,pw2)){
-		alert('비밀번호가 일치하지 않습니다.')
+		//alert('비밀번호가 일치하지 않습니다.');
+		swal("비밀번호가 일치하지 않습니다.", "Please match the password").then(function() {
+        })
 		pw2.focus();
 		pw2.value="";
 		return false;
 	}
 	
 	if(isEmpty(name)){
-		alert('이름을 입력하세요.')
+		//alert('이름을 입력하세요.')
+		swal("이름을 입력해주세요.", "Please Enter The name").then(function() {
+        })
 		name.focus();
 		name.value="";		
 		return false;
 	}
 	
 	if(isEmpty(addr)){
-		alert('주소를 입력하세요.')
+		//alert('주소를 입력하세요.')
+		swal("주소를 입력해주세요.", "Please Enter The address").then(function() {
+        })
 		addr.focus();
 		addr.value="";		
 		return false;
 	}
 	
 	if(!notContain(phoneNum,"-")||isEmpty(phoneNum)){
-		alert('연락처를 입력하세요.')
+		//alert('연락처를 입력하세요.')
+		swal("연락처를 입력해주세요.", "Please Enter The Phone number").then(function() {
+        })
 		phoneNum.focus();
 		phoneNum.value="";		
 		return false;
 	}
 	
 	if(isEmpty(birth)||isNotNumber(birth)){
-		alert('출생연도를 입력하세요.')
+		//alert('출생연도를 입력하세요.')
+		swal("출생연도를 입력해주세요.", "Please Enter The year of birth").then(function() {
+        })
 		birth.focus();
 		birth.value="";		
+		return false;
+	}
+	
+	//출생연도 예외처리
+	if(matchBirth(birth)){
+		//alert('입력할 수 없는 값입니다.')
+		swal("입력할 수 없는 값입니다.", "The value cannot be entered").then(function() {
+        })
+		birth.focus();
+		birth.value="";
 		return false;
 	}
 	
@@ -76,14 +100,18 @@ function loginform(){
 	let pw = document.loginForm.pw;
 	
 	if(isEmpty(id)){
-		alert('아이디를 입력하세요.')
+		//alert('아이디를 입력하세요.')
+		swal("아이디를 입력해주세요.", "Please Enter The id").then(function() {
+        })
 		id.focus();
 		id.value="";		
 		return false;
 	}
 	
 	if(isEmpty(pw)){
-		alert('비밀번호를 입력하세요.')
+		//alert('비밀번호를 입력하세요.')
+		swal("패스워드를 입력해주세요.", "Please Enter The password").then(function() {
+        })
 		pw.focus();
 		pw.value="";		
 		return false;
@@ -99,35 +127,45 @@ function update(){
 	let phoneNum = document.updateForm.phoneNum;
 		
 	if(isEmpty(pw2)){
-		alert('빈칸을 입력하세요.')
+		//alert('빈칸을 입력하세요.')
+		swal("패스워드를 입력해주세요.", "Please enter a blank").then(function() {
+        })
 		pw2.focus();
 		pw2.value="";		
 		return false;
 	}
 	
 	if(isEmpty(pw3)){
-		alert('빈칸을 입력하세요.')
+		//alert('빈칸을 입력하세요.')
+		swal("빈칸을 입력해주세요.", "Please enter a blank").then(function() {
+        })
 		pw3.focus();
 		pw3.value="";		
 		return false;
 	}
 	
 	if(matchPW(pw2,pw3)){
-		alert('비밀번호가 일치하지 않습니다.')
+		//alert('비밀번호가 일치하지 않습니다.');
+		swal("비밀번호가 일치하지 않습니다.", "Please match the password").then(function() {
+        })
 		pw3.focus();
 		pw3.value="";
 		return false;
 	}
 	
 	if(isEmpty(addr)){
-		alert('빈칸을 입력하세요.')
+		//alert('빈칸을 입력하세요.')
+		swal("빈칸을 입력해주세요.", "Please enter a blank").then(function() {
+        })
 		addr.focus();
 		addr.value="";		
 		return false;
 	}
 	
 	if(!notContain(phoneNum,"-")||isEmpty(phoneNum)){
-		alert('연락처를 입력하세요.')
+		//alert('연락처를 입력하세요.')
+		swal("연락처를 입력해주세요.", "Please Enter The Phone number").then(function() {
+        })
 		phoneNum.focus();
 		phoneNum.value="";		
 		return false;
@@ -143,14 +181,18 @@ function postReg(){
 	let txt = document.boardForm.txt;
 	
 	if(isEmpty(title)){
-		alert('제목을 입력하세요.')
+		//alert('제목을 입력하세요.')
+		swal("제목을 입력해주세요.", "Please Enter The title").then(function() {
+        })
 		title.focus();
 		title.value="";		
 		return false;
 	}
 	
 	if(isEmpty(txt)){
-		alert('내용을 입력하세요.')
+		//alert('내용을 입력하세요.')
+		swal("내용을 입력해주세요.", "Please Enter The textarea").then(function() {
+        })
 		txt.focus();
 		txt.value="";		
 		return false;
@@ -158,25 +200,107 @@ function postReg(){
 	
 }
 
+
 //게시글 삭제 알림
 function deletePost(n){
-	let deleteOK = confirm('게시글을 삭제 할까요?')
-	console.log(deleteOK)
+	swal.fire({
+	title: '삭제하시겠습니까?',
+	text: "삭제하면 복구할 수 없습니다.",
+	icon: 'warning',
+	showCancelButton: true,
+	confirmButtonColor: '#3085d6',
+	cancelButtonColor: '#d33',
+	confirmButtonText: 'Delete'
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire('삭제되었습니다!','Your file has been deleted.','삭제 성공.'
+    ).then(function(){
+      location.href='boardFreeDeleteC?boardNum='+n})
+  }
+})	
 	
-	if(deleteOK){
-		location.href='boardFreeDeleteC?No='+n
-	}
 }
 
-function winopen(){
-	let id = document.regForm.id;
-	
-	if(id.value==""){
-		alert('아이디를 입력하세요.')
-		id.focus();
-		return false;
-	}else{
-		window.open("jsp/sm/joinIdCheck.jsp?id="+document.regForm.id.value,"","width=500, height=300");
-	}
-	
+//댓글 삭제 알림
+function deleteComment(n,k){
+	swal.fire({
+	title: '삭제하시겠습니까?',
+	text: "삭제하면 복구할 수 없습니다.",
+	icon: 'warning',
+	showCancelButton: true,
+	confirmButtonColor: '#3085d6',
+	cancelButtonColor: '#d33',
+	confirmButtonText: 'Delete'
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire('삭제되었습니다!','Your comment has been deleted.','삭제 성공.'
+    ).then(function(){
+      location.href='commentDeleteC?commentNum='+n+'&boardNum='+k})
+  }
+})	
 }
+
+//댓글 수정창 띄우기
+function commentEdit(Num){
+		
+		var tempClass = "."+Num;		
+		const editBtn =  document.querySelector(tempClass);
+		
+		
+		if(editBtn.style.display=='block'){
+			editBtn.style.display = 'none';
+		} else {
+			editBtn.style.display = 'block';
+		}		
+	}
+
+//댓글 수정
+function commentReg(boardNum, commentNum, commentId){
+
+	var commentTxt = document.getElementById(commentId);
+
+	/*alert('boardNum='+boardNum)
+	alert('commentNum='+commentNum)
+	alert('commentTxt='+commentTxt.value)*/
+	
+	location.href="commentUpdateC?boardNum="+boardNum+"&commentNum="+commentNum+"&commentTxt="+commentTxt.value;
+}
+	
+
+//댓글 수정 (No=게시물, Yes=댓글)
+/*function editComment(n,k){
+	let editOK = confirm('댓글을 수정 할까요?')
+	console.log(editOK)
+	
+	if(editOK){
+		location.href='commentUpdateC?Yes='+n+'&No='+k;
+	}
+}*/
+
+//댓글 수정
+/*function editComment(n,k){
+	swal.fire({
+	title: '수정하시겠습니까?',
+	text: "댓글을 수정합니다",
+	icon: 'warning',
+	showCancelButton: true,
+	confirmButtonColor: '#3085d6',
+	cancelButtonColor: '#d33',
+	confirmButtonText: 'Delete'
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire('수정되었습니다!','Your file has been deleted.','수정 성공.'
+    ).then(function(){
+      location.href='commentUpdateC?Yes='+n+'&No='+k})
+  }
+})	
+}*/
+
+//검색창 빈칸 입력시 알림
+/* function seaSubmit() {
+    var inputVal = document.getElementById( 'seaBtn' ).value;
+    if (inputVal == "") {
+        alert('얼럿');
+        return false;
+    }
+  }*/

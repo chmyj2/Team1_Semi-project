@@ -82,3 +82,10 @@ function notContain(input, set){
 function isNotNumber(input){
 	return isNaN(input.value); //자바스크립스 숫자 내장 함수.
 }
+
+//연령제한
+function matchBirth(input){	
+	if(input.value > 1950 && input.value < 2003){
+		return false;
+	}return true;
+}
