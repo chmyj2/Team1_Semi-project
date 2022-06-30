@@ -3,4 +3,9 @@ package com.jw.DbUtil;
 
 //내 전용 DB유틸 관리자
 public class jwDBManager {
+	public static String getUserID()
+	{
+		
+		return "yorunohosi";
+	}
 }

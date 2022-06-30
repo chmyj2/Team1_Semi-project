@@ -1,46 +1,50 @@
 package com.jw.DbUtil;
 
 public class OrderBean {
-	
-
-
 	private int num;
 	private String userId;
 	private int productNum;
 	private int productQuantity;
+	private String reciever;
 	private String inputDate;
 	private String state;
 	private String Address;
 	private String paymentState;
-	private String csState;
 	private int ProductPrice;
-	private int totalProductPrice;
 	private int deliveryPrice;
 	private int totalPrice;
-	private String DiscountCode;
+	
+	
 	public OrderBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public OrderBean(int num, String userId, int productNum, int productQuantity, String date, String state,
-			String address, String paymentState, String csState, int productPrice, int totalProductPrice,
-			int deliveryPrice, int totalPrice, String discountCode) {
+	
+	public OrderBean(int num, String userId, int productNum, int productQuantity, String reciever, String inputDate,
+			String state, String address, String paymentState, int productPrice, int deliveryPrice, int totalPrice) {
 		super();
 		this.num = num;
 		this.userId = userId;
 		this.productNum = productNum;
 		this.productQuantity = productQuantity;
-		this.inputDate = date;
+		this.reciever = reciever;
+		this.inputDate = inputDate;
 		this.state = state;
 		Address = address;
 		this.paymentState = paymentState;
-		this.csState = csState;
 		ProductPrice = productPrice;
-		this.totalProductPrice = totalProductPrice;
 		this.deliveryPrice = deliveryPrice;
 		this.totalPrice = totalPrice;
-		DiscountCode = discountCode;
 	}
+
+	public String getReciever() {
+		return reciever;
+	}
+
+	public void setReciever(String reciever) {
+		this.reciever = reciever;
+	}
+
 	public int getNum() {
 		return num;
 	}
@@ -65,11 +69,11 @@ public class OrderBean {
 	public void setProductQuantity(int productQuantity) {
 		this.productQuantity = productQuantity;
 	}
-	public String getDate() {
+	public String getInputDate() {
 		return inputDate;
 	}
-	public void setDate(String date) {
-		this.inputDate = date;
+	public void setInputDate(String inputDate) {
+		this.inputDate = inputDate;
 	}
 	public String getState() {
 		return state;
@@ -89,23 +93,11 @@ public class OrderBean {
 	public void setPaymentState(String paymentState) {
 		this.paymentState = paymentState;
 	}
-	public String getCsState() {
-		return csState;
-	}
-	public void setCsState(String csState) {
-		this.csState = csState;
-	}
 	public int getProductPrice() {
 		return ProductPrice;
 	}
 	public void setProductPrice(int productPrice) {
 		ProductPrice = productPrice;
-	}
-	public int getTotalProductPrice() {
-		return totalProductPrice;
-	}
-	public void setTotalProductPrice(int totalProductPrice) {
-		this.totalProductPrice = totalProductPrice;
 	}
 	public int getDeliveryPrice() {
 		return deliveryPrice;
@@ -119,10 +111,5 @@ public class OrderBean {
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-	public String getDiscountCode() {
-		return DiscountCode;
-	}
-	public void setDiscountCode(String discountCode) {
-		DiscountCode = discountCode;
-	}
+	
 }

@@ -6,6 +6,21 @@ select * from categoryTbl;
 
 insert into categoryTbl values(category_Number_Seq.nextval,-1,null,1);
 delete categoryTbl where Name = 'Scotch Whisky';
+
+
+insert into user_info_tbl values('yorunohosi','a0624124!@$','이준우','남','경기도 고양시 일산동구 성현로','010-8985-4474',27);
+select * from user_info_tbl;
+
+create table user_info_tbl(
+user_id varchar2(16 char) primary key,
+user_pw varchar2(30 char) not null,
+user_name varchar2(20 char) not null,
+user_gender char(1 char) not null,
+user_addr varchar2(100 char) not null,
+user_phoneNumber varchar2(100 char) not null,
+user_age number(3) not null
+);
+
 create table categoryTbl
 (
 	Num_PK 		VARCHAR2(8) primary key,
@@ -21,27 +36,30 @@ drop table ProductTbl cascade constraint purge;
 drop sequence Product_Number_Seq;
 create sequence Product_Number_Seq;
 
+drop table ProductTbl cascade constraint purge;
+
+delete productTbl;
+select * from productTbl;
+select * from productTbl where Num_PK IN ('P41','P61')
 create table productTbl
 (
-	Num_PK 	 		Number(8) 			primary key,
-	CategorytNum 	Number(8) 			not null,
+	Num_PK 	 		VARCHAR2(8 char) 	primary key,
+	CategorytNum 	VARCHAR2(8 char)	not null,
 	Name 			varchar2(45 char) 	not null,
 	Price 			Number(10) 			not null,
-	Supply_price 	Number(10) 			not null,
 	VAT 			Number(10) 			not null,
-	Margin 			Number(10) 			not null,
-	Surcharge 		Number(10),
 	Contents 	 	varchar2(400 char) 	not null,
 	Thumbnail  		varchar2(40 char) 	not null,
 	Img1  	 		varchar2(40 char),
 	Img2  	 		varchar2(40 char),
 	Img3  			varchar2(40 char),
 	Tag 		 	varchar2(100 char),
-	OnExhibition 	varchar2(1 char) 	CONSTRAINT exhibitionCheck CHECK (OnExhibition  IN(1)) not null,
-	OnDiscount 		varchar2(1 char) 	CONSTRAINT DiscountCheck CHECK (OnDiscount IN('Y', 'N')) not null,
-	DiscountCode 	varchar2(8 char),
+	OnSale 			varchar2(1 char),
+	OnExhibition 	varchar2(1 char),
 	Stock 	 		Number(5) 			not null
 );
+
+
 create table DiscountInfoTbl
 (
 	Discount_Code 		varchar2(20 char),
@@ -55,33 +73,39 @@ create table DiscountInfoTbl
 	Discount_Rate 		number(3),
 	Discount_Amount 	number(10) 
 )
+drop table OrderTbl cascade constraint purge;
+drop sequence Order_Number_Seq
+create sequence Order_Number_Seq;
 create table OrderTbl
 (
-	Order_Num 				NUMBER(8) 			PRIMARY KEY,
-	Order_UserId 			varchar(16 char) 	not null,
-	Order_ProductNumber 	NUMBER(8) 			not null,
+	Order_Num 				varchar2(8 char)	PRIMARY KEY,
+	Order_UserId 			varchar2(16 char) 	not null,
+	Order_Reciever			varchar2(16 char) 	not null,
+	Order_PhoneNumber		varchar2(20 char) 	not null,
+	Order_ProductNumber 	varchar2(8 char) 	not null,
 	Order_productQuantity 	NUMBER(4) 			not null,
 	Order_Date 				date 				not null,
 	Order_State 			VARCHAR2(10 char) 	not null,
 	Order_Address 			VARCHAR2(100 char) 	not null,
 	Order_DeliveryState 	VARCHAR2(20 char) 	not null,
 	Order_PaymentState 		VARCHAR2(20 char) 	not null,
-	Order_CSState 			VARCHAR2(20 char) 	not null,
 	Order_ProductPrice 		NUMBER(10) 			not null,
-	Order_TotalProductPrice NUMBER(10) 			not null,
 	Order_DeliveryPrice 	NUMBER(5) 			not null,
 	Order_TotalPrice 		NUMBER(10) 			not null,
-	Order_DiscountCode 		VARCHAR2(20 char)
+	parentOrder				varchar2(8 char)
 );
 
-create sequence Cart_Number_Seq;
 drop sequence Cart_Number_Seq
+create sequence Cart_Number_Seq;
+drop table cartTbl cascade constraint purge;
 
+delete cartTbl
+select * from  cartTbl
 create table cartTbl
 (
-	Cart_Number 			Number(8) 		PRIMARY KEY,
-	Cart_userID 			varchar(16 char) not null,
-	Cart_Product_Num 		Number(8) 		not null,
+	Cart_Number 			varchar2(8 char) 		PRIMARY KEY,
+	Cart_userID 			varchar2(16 char) not null,
+	Cart_Product_Num 		varchar2(8 char) 		not null,
 	Cart_ProductQuantity 	Number(4) 		not null,
 	Cart_Date 				date 			not null
 );

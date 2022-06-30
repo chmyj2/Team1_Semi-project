@@ -13,59 +13,9 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class ProductDBManager {
-	private static void setPstmt(PreparedStatement pstmt, MultipartRequest mr) throws SQLException
-	{
-		String title 		= mr.getParameter("title");
-		String actor 		= mr.getParameter("actor");
-		String file  		= mr.getFilesystemName("file");
-		String story 		= mr.getParameter("story");
-		int num 			= Integer.parseInt(mr.getParameter("title"));
-		int categoryNum 	= Integer.parseInt(mr.getParameter("title"));
-		String name 		= mr.getParameter("title");
-		int price			= Integer.parseInt(mr.getParameter("title"));;
-		int supplyPrice		= Integer.parseInt(mr.getParameter("title"));;
-		int vat				= Integer.parseInt(mr.getParameter("title"));;
-		int margin			= Integer.parseInt(mr.getParameter("title"));;
-		int surcharge		= Integer.parseInt(mr.getParameter("title"));;
-		String content  	= mr.getParameter("title"); 
-		String Thumbnail 	= mr.getParameter("title");
-		String img1 		= mr.getParameter("title");
-		String img2 		= mr.getParameter("title");
-		String img3 		= mr.getParameter("title");
-		String tags  		= mr.getParameter("title");
-		String onExhibition = mr.getParameter("title");
-		String onDiscount 	= mr.getParameter("title");
-		String DiscountCode = mr.getParameter("title");
-		int Stock			= Integer.parseInt(mr.getParameter("title"));;
-				
-		int indexCtn = 1;
-		pstmt.setString(indexCtn++, title);
-		pstmt.setString(indexCtn++, actor);
-		pstmt.setString(indexCtn++, file);
-		pstmt.setString(indexCtn++, story);
-		pstmt.setInt(indexCtn++, num);
-		pstmt.setInt(indexCtn++, categoryNum);
-		pstmt.setString(indexCtn++, name);
-		pstmt.setInt(indexCtn++, price);
-		pstmt.setInt(indexCtn++, supplyPrice);
-		pstmt.setInt(indexCtn++, vat);
-		pstmt.setInt(indexCtn++, margin);
-		pstmt.setInt(indexCtn++, surcharge);
-		pstmt.setString(indexCtn++, content);
-		pstmt.setString(indexCtn++, Thumbnail);
-		pstmt.setString(indexCtn++, img1);
-		pstmt.setString(indexCtn++, img2);
-		pstmt.setString(indexCtn++, img3);
-		pstmt.setString(indexCtn++, tags);
-		pstmt.setString(indexCtn++, onExhibition);
-		pstmt.setString(indexCtn++, onDiscount);
-		pstmt.setString(indexCtn++, DiscountCode);
-		pstmt.setInt(indexCtn++, Stock);	
-	}
 	
-	
+
 	public static void regProducts(HttpServletRequest request) {
-		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -75,12 +25,11 @@ public class ProductDBManager {
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory,1024*1024*30,
 					"utf-8",new DefaultFileRenamePolicy());
 			
+			String sql = "insert into productTbl values ('P'||Product_Number_Seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			con = DBManager.connnect("jw");
 			
-			String sql = "insert into movie_test values (Product_Number_Seq.nextval,"
-					+ " ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-			con = DBManager.connnect("jw");			
 			pstmt = con.prepareStatement(sql);
-			setPstmt(pstmt, mr);
+			setPstmt(pstmt,mr);
 			
 			if(pstmt.executeUpdate()==1) {
 				System.out.println("등록성공");
@@ -103,18 +52,16 @@ public class ProductDBManager {
 		
 		try
 		{
-			String sql = "select * from cartTbl where num_Pk = ?";
+			String sql = "select * from productTbl where Num_PK = ?";
 			con = DBManager.connnect("jw");
 			pstmt = con.prepareStatement(sql);
 			
+			pstmt.setString(1, request.getParameter("num"));
 			rs = pstmt.executeQuery();
-			pstmt.setInt(1, Integer.parseInt(request.getParameter("num")));
-			ArrayList<ProductBean> arrProduct = new ArrayList<ProductBean>();
 			if(rs.next())
 			{
-				arrProduct.add(ProductBeanSet(rs));
+				request.setAttribute("product", ProductBeanSet(rs));	
 			}
-			request.setAttribute("product", arrProduct);	
 		}catch (Exception e) {
 			System.out.println(e);
 		}
@@ -128,10 +75,9 @@ public class ProductDBManager {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
 		try
 		{
-			String sql = "select * from cartTbl";
+			String sql = "select * from productTbl";
 			con = DBManager.connnect("jw");
 			pstmt = con.prepareStatement(sql);
 			
@@ -141,10 +87,8 @@ public class ProductDBManager {
 			{
 				arrProduct.add(ProductBeanSet(rs));
 			}
-			
-			request.setAttribute("reviews", arrProduct);
-		
-			
+			request.setAttribute("products", arrProduct);
+			System.out.println("조회성공");
 		}catch (Exception e) {
 			System.out.println(e);
 		}
@@ -155,27 +99,77 @@ public class ProductDBManager {
 
 	private static ProductBean ProductBeanSet(ResultSet rs) throws SQLException {
 		ProductBean pb = new ProductBean();
-		
-		pb.setNum(rs.getInt("Num_PK"));;
-		pb.setCategoryNum(rs.getInt("CategorytNum"));
+		pb.setNum(rs.getString("Num_PK"));;
+		pb.setCategoryNum(rs.getString("CategorytNum"));
 		pb.setName(rs.getString("Name"));
 		pb.setPrice(rs.getInt("Price"));
-		pb.setSupplyPrice(rs.getInt("Supply_price"));
 		pb.setVat(rs.getInt("VAT"));
-		pb.setMargin(rs.getInt("Margin"));
-		pb.setSurcharge(rs.getInt("surcharge"));
 		pb.setContent(rs.getString("Contents"));
 		pb.setThumbnail(rs.getString("Thumbnail"));
 		pb.setImg1("Img1");
 		pb.setImg2("Img2");
 		pb.setImg3("Img3");
 		ArrayList<String> arrTemp = new ArrayList<String>();
-		arrTemp.add(rs.getString("Tag"));
+		String[] arrStrTemp = rs.getString("Tag").split("#");
+
+		for (String str : arrStrTemp) {
+			if(!str.equals(""))
+			{
+				arrTemp.add(str);							
+			}
+		}
+		
 		pb.setTags(arrTemp);
 		pb.setOnExhibition(rs.getString("OnExhibition"));
-		pb.setOnDiscount(rs.getString("OnDiscount"));
-		pb.setDiscountCode(rs.getString("DiscountCode"));
 		pb.setStock(rs.getInt("Stock"));
 		return pb;
 	}	
+	
+	private static void setPstmt(PreparedStatement pstmt, MultipartRequest mr) throws SQLException
+	{
+		String categoryNum 	= mr.getParameter("categoryNum");
+		String name 		= mr.getParameter("name");
+		int price		= Integer.parseInt(mr.getParameter("price"));
+		int vat			= Integer.parseInt(mr.getParameter("onVAT"));
+		String content  	= mr.getParameter("content"); 
+		String Thumbnail 	= mr.getFilesystemName("thumbNail");
+		String img1 		= mr.getFilesystemName("img1");
+		String img2 		= mr.getFilesystemName("img2");
+		String img3 		= mr.getFilesystemName("img3");
+		String tags  		= mr.getParameter("tags");
+		String onExhibition = mr.getParameter("onExhibition");
+		String onSale		= mr.getParameter("onSale");
+		int Stock			= Integer.parseInt(mr.getParameter("stock"));
+		
+		
+		System.out.println(categoryNum);
+		System.out.println(name);
+		System.out.println(price);
+		System.out.println(vat);
+		System.out.println(content);
+		System.out.println(Thumbnail);
+		System.out.println(img1);
+		System.out.println(img2);
+		System.out.println(img3);
+		System.out.println(tags);
+		System.out.println(onExhibition);
+		System.out.println(onSale);
+		System.out.println(Stock);
+		
+		
+		pstmt.setString(1, categoryNum);
+		pstmt.setString(2, name);
+		pstmt.setInt(3, price);
+		pstmt.setInt(4, vat);
+		pstmt.setString(5, content);
+		pstmt.setString(6, Thumbnail);
+		pstmt.setString(7, img1);
+		pstmt.setString(8, img2);
+		pstmt.setString(9, img3);
+		pstmt.setString(10, tags);
+		pstmt.setString(11, onSale);
+		pstmt.setString(12, onExhibition);
+		pstmt.setInt(13, Stock);	
+	}
+	
 }

@@ -7,15 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="jsp/jw/regProduct.js" ></script>
 </head>
 <body>
 
-
-
-
-
 	<h1>상품등록</h1>
+	<form action = "ProductRegController" method = "post" enctype="multipart/form-data">
 	<div class = "regPageCategoryDiv" >
 	<div class = "categoryTitleDiv">CATEGORY</div>
 		<div class = "categoryButtonsDiv">
@@ -27,6 +23,7 @@
 		<div class = "cSearchDiv">
 			<input class = "categorySearchInput" placeholder = "카테고리명 입력">
 		</div>
+			<input id ="categoryInputId" name ="categoryNum" value="" type = "hidden">
 		
 		
 		
@@ -75,7 +72,7 @@
 	<div class = "regProductNameDiv">
 		<div class = "categoryTitleDiv">상품명</div>
 			<div>
-				<input class = "ProductNameInput">
+				<input name = "name" class = "ProductNameInput">
 			</div>
 	</div>
 	
@@ -85,159 +82,180 @@
 		<div class = "priceSettingDiv">
 			<div>
 				<div class = "rdgPageDiv">
-					판매가
+					판매가격
 				</div>
-				<input class = "PriceInput">
-			</div>
-			
-			<div>
-				<div class = "rdgPageDiv">
-					공급가
-				</div>
-				<input class = "PriceInput">
+				<input name = "price" class = "PriceInput">
 			</div>
 			
 			<div>
 				<div class = "rdgPageDiv"> 
 					할인여부
 				</div>
-				Yes Or No
+				O  <input type = "radio" name = "onDiscount" value= "Y">
+				X  <input type = "radio" name = "onDiscount" value= "N">	
 			</div>
 			
 			<div>
 				<div class = "rdgPageDiv"> 
 					할인명
 				</div>
-				<input class = "PriceInput">
+				<input name = "discountName" class = "PriceInput">
 			</div>
 			
-		
 		<div>
 				<div class = "rdgPageDiv"> 
 				전체할인가
 				</div>
-				<input class = "PriceInput">
+				<input name = "discountPrice" class = "PriceInput">
 		</div>
 		
 		<div>
 				<div class = "rdgPageDiv"> 
 				부가세
 				</div>
-				과세상품/면세상품/영세상품
+				과세  <input type = "radio" name = "onVAT" value= "10">
+				면세  <input type = "radio" name = "onVAT" value= "0">		
 		</div>
-		</div>
+	</div>
 	</div>
 	
 	<div class = "regProductNameDiv">
 		<div class = "categoryTitleDiv">재고수량	</div>
 			<div>
-				<input class = "ProductNameInput">
-			</div>
-	</div>
-	
-	<div class = "regProductNameDiv">
-		<div class = "categoryTitleDiv">재고수량	</div>
-			<div>
-				<input class = "ProductNameInput">
+				<input name ="stock" class = "ProductNameInput">
 			</div>
 	</div>
 	
 	
 	<div class = "regProductImgDiv">
-		<div class = "categoryTitleDiv">상품이미지</div>
-		<div style = "height : 40%">
-			<div style = "float:left">
-				대표이미지
+		<div class = "categoryTitleDiv">대표 이미지</div>
+		
+		<div class = "regProductImgSubDiv">
+			<div class = "imgExpDiv">
+				<div class = "thumLabelDiv">
+				<label class ="thumLabel" for="chooseThumb">대표이미지 추가</label>
+				<input type="file" name = "thumbNail" class="thumbUpload" id = "chooseThumb" accept ="image/*" onchange = "dropThumbFile.handleFiles(this.files)">
+				</div>
 			</div>
-			<div style = "float:left">
-				<div>이런느낌?</div>
-			</div>
-		</div>
-		<div>
-				추가이미지
-		</div>
-	</div>
-	
-	
-	<div>
-		<h1>태그머</h1>
-	</div>
-	
-	<div>
-		<h1>진열여부</h1>
-	</div>
-	
-	<div>
-		<h1>판매여부</h1>
-	</div>
-	
-	
-	
-	<!-- 
-	<form action="ProductRegController"  method = "post" enctype="multipart/form-data">
-		<table id = "productTbl">
-			<tr>
-				<td>상품 이름</td>
-				<td><input name = title></td>
-			</tr>
-			<tr>
-				<td>카테고리</td>
-			</tr>
-			<tr>
-			<td><input></td>
-			</tr>
-			<tr>
-				<td>할인여부</td>
-				<td><input type="radio" name="Discount" value="Y"> O 
-				<input type="radio" name="Discount" value="N"> X</td>
-			</tr>
 			
-			<tr>
-				<td>판매가</td>
-				<td><input name = "price"></td>	
-			</tr>
-			<tr>
-				<td>원가</td>
-				<td><input name = "supply_price"></td>
-			</tr>
-			<tr>
-				<td>대표 이미지</td> 
-				<td> <input type="file" name = "file"></td> 
-			</tr>
-			<tr>
-				<td>이미지1</td> 
-				<td> <input type="file" name = "file1"></td> 
-			</tr>
-			<tr>
-				<td>이미지2</td> 
-				<td> <input type="file" name = "file2"></td> 
-			</tr>
-			<tr>
-				<td>이미지3</td> 
-				<td> <input type="file" name = "file3"></td> 
-			</tr>
-			<tr>
-				<td>상세내용</td>
-				<td><textarea name = "exp" style = "width:1500px; height:500px"></textarea></td>
-			</tr>
-			<tr>
-				<td>해시태그</td>
-				<td><input name = "tag"></td>
-			</tr>
-			<tr>
-				<td>상품재고</td>
-				<td><input type = "number" value = "1"></td>
-			</tr>
-			<tr>
-				<td>상품공개</td>
-				<td><input type="radio" name="Exhibition" value="Y"> 공개 
-				<input type="radio" name="Exhibition" value="N"> 비공개 </td>
-			</tr>
-			<tr>
-				<td colspan="2"><button>등록</button></td>
-			</tr>
-	</table>
+			
+			<div class = "imgAddFrame">
+				<div id = "dropThumb" class = "thumbUploadBox">
+				 <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image">
+   				 <p class="message">Drag files to upload</p>
+    			 <img src="" alt="미리보기 이미지" class="previewThumb">
+				</div>
+			</div>		
+		</div>
+	</div>
+
+	<div class = "regProductImgDiv">
+		<div class = "categoryTitleDiv">이미지1</div>
+		
+		<div class = "regProductImgSubDiv">
+			<div class = "imgExpDiv">
+				<div class = "thumLabelDiv">
+				<label class ="thumLabel" for="chooseImg1">이미지1 추가</label>
+				<input type="file" name = "img1" class="thumbUpload" id = "chooseImg1" accept ="image/*" onchange = "dropPreviewImg.handleFiles(this.files)">
+				</div>
+			</div>
+			
+			
+			<div class = "imgAddFrame">
+				<div id = "dropImg1" class = "thumbUploadBox">
+				 <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image">
+   				 <p class="message">Drag files to upload</p>
+    			 <img src="" alt="미리보기 이미지" class="previewImg1 previewThumb">
+				</div>
+			</div>		
+		</div>
+	</div>
+	
+	<div class = "regProductImgDiv">
+		<div class = "categoryTitleDiv">이미지2</div>
+		
+		<div class = "regProductImgSubDiv">
+			<div class = "imgExpDiv">
+				<div class = "thumLabelDiv">
+				<label class ="thumLabel" for="chooseImg2">이미지2 추가</label>
+				<input type="file" name = "img2" class="thumbUpload" id = "chooseImg2" accept ="image/*" onchange = "dropPreviewImg2.handleFiles(this.files)">
+				</div>
+			</div>
+			
+			
+			<div class = "imgAddFrame">
+				<div id = "dropImg2" class = "thumbUploadBox">
+				 <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image">
+   				 <p class="message">Drag files to upload</p>
+    			 <img src="" alt="미리보기 이미지" class="previewImg2 previewThumb">
+				</div>
+			</div>		
+		</div>
+	</div>
+
+	<div class = "regProductImgDiv">
+		<div class = "categoryTitleDiv">이미지3</div>
+		
+		<div class = "regProductImgSubDiv">
+			<div class = "imgExpDiv">
+				<div class = "thumLabelDiv">
+				<label class ="thumLabel" for="chooseImg3">이미지3 추가</label>
+				<input type="file" name = "img3" class="thumbUpload" id = "chooseImg3" accept ="image/*" onchange = "dropPreviewImg3.handleFiles(this.files)">
+				</div>
+			</div>
+			
+			
+			<div class = "imgAddFrame">
+				<div id = "dropImg3" class = "thumbUploadBox">
+				 <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image">
+   				 <p class="message">Drag files to upload</p>
+    			 <img src="" alt="미리보기 이미지" class="previewImg3 previewThumb">
+				</div>
+			</div>		
+		</div>
+	</div>
+	
+	
+	
+
+	
+	<div class = "regProductImgDiv">
+		<div class = "categoryTitleDiv"> 내용을 입력해주세요</div>
+		
+		<div> 
+		<textarea name = "content" style = "width : 100%; height:550px; font-size: 40px;"> 상품 설명</textarea>
+		</div>
+		
+	</div>
+	
+	
+	<div class = "regProductNameDiv">
+		<div class = "categoryTitleDiv">태그</div>
+		<div> <input name = "tags" class = "ProductNameInput"></div>
+	</div>
+	
+	<div class = "regProductNameDiv">
+		<div class = "categoryTitleDiv">진열여부</div>
+		<div>
+			공개  <input type = "radio" name = "onExhibition" value= "Y">
+			비공개 <input type = "radio" name = "onExhibition" value= "N">
+		</div>
+	</div>
+	
+	<div class = "regProductNameDiv"> 
+		<div class = "categoryTitleDiv" >판매여부</div>
+			<div>
+				판매  <input type = "radio" name = "onSale" value= "Y">
+				판매중지 <input type = "radio" name = "onSale" value= "N">
+			</div>
+		</div>
+	<div>
+		<button>등록</button>
+	</div>
 	</form>
-	 -->
+	
+	
 </body>
+<script type="text/javascript" src="jsp/jw/regProduct.js" ></script>
+<script type="text/javascript" src="jsp/jw/imageUpload/imageUpload.js" ></script>
 </html>

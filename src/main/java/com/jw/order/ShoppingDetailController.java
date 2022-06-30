@@ -14,7 +14,7 @@ import com.sm.hc.AccountDAO;
 public class ShoppingDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountDAO.loginCheck(request);
-		ProductDBManager.getAllProduct(request);
+		ProductDBManager.getProduct(request);
 		request.setAttribute("contentPage", "jsp/jw/shopDetail.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

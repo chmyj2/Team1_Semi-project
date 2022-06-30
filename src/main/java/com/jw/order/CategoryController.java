@@ -16,7 +16,7 @@ public class CategoryController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountDAO.loginCheck(request);
-		CategoryDBManager.printAllTag();
+		//CategoryDBManager.printAllTag();
 		CategoryDBManager.getAllTag(request);
 		request.getRequestDispatcher("jsp/jw/PopTagAdder.jsp").forward(request, response);
 	}

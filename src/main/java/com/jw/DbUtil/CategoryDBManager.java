@@ -141,7 +141,6 @@ public class CategoryDBManager {
 					if(cb3.getParentNum().equals(cb2.getNum()))
 					{
 						cb2.addChild(cb3);
-						System.out.println("H3" + cb3.getName());
 					}
 				}
 			}
@@ -150,7 +149,6 @@ public class CategoryDBManager {
 					if(cb2.getParentNum().equals(cb.getNum()))
 					{
 						cb.addChild(cb2);
-						System.out.println("H2 "+ cb2.getName());
 					}
 				}
 			}
@@ -169,6 +167,7 @@ public class CategoryDBManager {
 	
 	
 	public static void regTag(HttpServletRequest request) {
+
 		String sql = "insert into categoryTbl values('A'||category_Number_Seq.nextval,?,?,?)";
 		Connection con = null;
 		PreparedStatement pstmt = null;

@@ -7,23 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jw.DbUtil.CategoryDBManager;
-import com.jw.DbUtil.ProductDBManager;
-import com.sm.hc.AccountDAO;
+import com.jw.DbUtil.CartDBManager;
 
-@WebServlet("/ProductRegController")
-public class ProductRegController extends HttpServlet {
+@WebServlet("/CartAdderController")
+public class CartAdderController extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AccountDAO.loginCheck(request);
-		CategoryDBManager.getAllTag(request);
-		request.setAttribute("contentPage", "jsp/jw/regProduct.jsp");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		CartDBManager.regCart(request);
+		response.sendRedirect("jsp/jw/CartRegComplete.jsp");	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductDBManager.regProducts(request);
-		
-		
-		response.sendRedirect("ShoppingController");
 	}
+
 }

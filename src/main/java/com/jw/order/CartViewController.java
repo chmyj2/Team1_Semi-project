@@ -15,6 +15,7 @@ public class CartViewController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountDAO.loginCheck(request);
+		CartDBManager.getAllCartUseUserId(request);
 		request.setAttribute("contentPage", "jsp/jw/CartView.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
