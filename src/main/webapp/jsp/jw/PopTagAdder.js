@@ -14,7 +14,6 @@ var prevH3Name = null;
 function tagSecondAdder()
 {
 	var tagName = prompt("태그의 이름을 입력해주세요");
-
 	location.href = "tagRegController?name="+tagName+"&num="+selectedNum+"&level=2";		
 }
 function tagThirdAdder()
@@ -31,7 +30,7 @@ function deleteTag(Num)
 
 function selectH2Category(Num)
 {
-	var tempClass = "."+Num
+	var tempClass = "."+Num;
 	const h2Div =  document.querySelector(tempClass);
 	const secondButton = document.querySelector('.h2Div');
 

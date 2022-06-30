@@ -1,4 +1,3 @@
-
 function createPopup()
 {	
 	window.open(
@@ -34,6 +33,7 @@ var selectedSubNum = 0;
 var prevH2Name = null;
 var prevH3Name = null;
 
+		var categoryInput = document.getElementById("categoryInputId");
 
 function selectMainCategory(Num)
 {
@@ -42,7 +42,7 @@ function selectMainCategory(Num)
 	const secondButton = document.querySelector('.MCategoryDiv');
 
 	selectedMainNum= Num;
-	
+	categoryInput.value = Num;
 	
 	if(prevH2Name)
 	{
@@ -77,7 +77,8 @@ function selectMidCategory(Num)
 		prevDiv.style.display = 'none'; 
 	}
 	selectedMiddleNum= Num;
-	
+	categoryInput.value = Num;
+
 	const h3Div =  document.querySelector(tempClass);
 	h3Div.style.display = 'block';
 
@@ -88,13 +89,12 @@ function selectMidCategory(Num)
 	prevH3Name = tempClass;
 	
 	selectedCategory(Num);
-
-
 }
 
 function selectSubCategory(Num)
 {
 	selectedSubNum = Num;
+	categoryInput.value = Num;
 	selectedCategory(Num);
 }
 
