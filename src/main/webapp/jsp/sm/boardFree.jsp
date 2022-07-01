@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/login.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
 <script type="text/javascript" src="jsp/sm/reg.js"></script>
 <script type="text/javascript" src="jsp/sm/validCheck.js"></script>
@@ -22,6 +23,7 @@
   }
 </script>
 <style type="text/css">
+
 /* 슬라이더 */
 .main1 li{
     position: relative;
@@ -148,8 +150,7 @@ color: white;
 
 </style>
 </head>
-<body>
-
+<body style="background-color: rgb(240, 242, 241);">
 <!-- 슬라이더 -->
 	<div class="main1">
 	<ul>
@@ -234,7 +235,7 @@ color: white;
 </table><br><hr><br><br>
 
 <table id="tbl_board_list">
-<c:if test=""></c:if>
+<%-- <c:if test=""></c:if> --%>
 <c:forEach var="f" items="${frees }">
 	<tr class="f_tr1" onclick="location.href='boardFreeDetailC?boardNum=${f.board_num }'">
 		<td class="f_td1" style="width:2%;">${f.board_num }</td>

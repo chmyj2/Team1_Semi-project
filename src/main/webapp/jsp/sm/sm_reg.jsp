@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="reg.css">
+<link rel="stylesheet" href="css/login.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="jsp/sm/reg.js"></script>
@@ -21,7 +22,7 @@ $(function(){
 		    type : 'post', // 타입 (get, post, put 등등)
 		    url : 'jsp/sm/idCheck.jsp', // 요청할 서버url
 		    dataType : 'json', // 데이터 타입 (html, xml, json, text 등등)
-		    data : { // 보낼 데이터 (Object , String, Array)의 내용을 담아라
+		    data : { // 보낼 데이터 (Object , String, Array)의 내용을 담는다
 		      "id" : inputId},
 		    success : function(result) { // 결과 성공 콜백함수
 		        console.log(result.r); // 1,0
@@ -48,6 +49,7 @@ $(function(){
 
 </script>
 <style type="text/css">
+
 p{
 	font-size: 9pt;
 	text-align: left;
@@ -77,8 +79,7 @@ button:hover {
 }
 </style>
 </head>
-<body>
-
+<body style="background-color: rgb(240, 242, 241);">
 <div class="login">
 	<form action="RegAccountC" method="post" name="regForm" onsubmit="return call()">	
 		<table style="text-align: left; width:350px;">

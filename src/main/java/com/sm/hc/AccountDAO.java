@@ -15,19 +15,11 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.util.db.DBManager;
 
 
-//계정 관련 db 작업 처리하는 M모델
+//계정 관련 db 작업 처리
 public class AccountDAO {
 	
 	private static ArrayList<FreeBoard> frees;
 	private static ArrayList<Comment> comments;
-	
-	
-//	private static ArrayList<FreeBoard> frees;
-	
-	
-	
-
-
 
 	//세션 유지되면 유지된 상태로 페이지 보여줌
 	public static void loginCheck(HttpServletRequest req) {
@@ -667,16 +659,14 @@ public class AccountDAO {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 			
-			// ?를 채우려면 no 값을 하나 받아와야됨.
 			int boardNum = Integer.parseInt(request.getParameter("boardNum"));
 			
 			pstmt.setInt(1, boardNum);
 			
-			//실행 해보기
+			//실행
 			if(pstmt.executeUpdate() == 1) {
 				System.out.println("삭제 성공");
 			}
-			
 			
 		} catch (Exception e) {
 			System.out.println(e);
@@ -744,43 +734,33 @@ public class AccountDAO {
 	}
 
 	//아이디 중복 체크
-	public static void joinIdCheck(HttpServletRequest request) {
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try {
-			request.setCharacterEncoding("UTF-8");
-			String sql = "select user_id from user_info_tbl where user_id=?";			
-			String id = request.getParameter("id");
-			
-			con = DBManager.connect();
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()){
-				request.setAttribute("message", "중복입니다.");
-				request.setAttribute("id", id);
-				request.setAttribute("joinButton", "아이디 재입력");//아이디창 공백으로
-			}else{
-				request.setAttribute("message", "사용 가능합니다.");
-				request.setAttribute("id", id);
-				request.setAttribute("joinButton", "아이디 사용하기");//아이디 창에 그대로 들어가게
-			}
-
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(con, pstmt, null);
-		}
-		
-		
-
-	}
+	/*
+	 * public static void joinIdCheck(HttpServletRequest request) {
+	 * 
+	 * Connection con = null; PreparedStatement pstmt = null; ResultSet rs = null;
+	 * 
+	 * try { request.setCharacterEncoding("UTF-8"); String sql =
+	 * "select user_id from user_info_tbl where user_id=?"; String id =
+	 * request.getParameter("id");
+	 * 
+	 * con = DBManager.connect(); pstmt = con.prepareStatement(sql);
+	 * 
+	 * pstmt.setString(1, id); rs = pstmt.executeQuery();
+	 * 
+	 * if(rs.next()){ request.setAttribute("message", "중복입니다.");
+	 * request.setAttribute("id", id); request.setAttribute("joinButton",
+	 * "아이디 재입력");//아이디창 공백으로 }else{ request.setAttribute("message", "사용 가능합니다.");
+	 * request.setAttribute("id", id); request.setAttribute("joinButton",
+	 * "아이디 사용하기");//아이디 창에 그대로 들어가게 }
+	 * 
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); } finally { DBManager.close(con,
+	 * pstmt, null); }
+	 * 
+	 * 
+	 * 
+	 * }
+	 */
 
 
 	//게시판 페이징
@@ -795,8 +775,8 @@ public class AccountDAO {
 		int pageCount = (int)Math.ceil((double)total/cnt); //전체 페이지 수 계산
 		request.setAttribute("pageCount", pageCount);
 		
-		int start = total - (cnt * (page-1)); //역순연산 //6  //3
-		int end = (page == pageCount) ? -1 : start - (cnt+1); //2  //-1
+		int start = total - (cnt * (page-1)); //역순연산
+		int end = (page == pageCount) ? -1 : start - (cnt+1);
 		
 		ArrayList<FreeBoard> items = new ArrayList<FreeBoard>();
 		for (int i = start-1; i > end; i--) {

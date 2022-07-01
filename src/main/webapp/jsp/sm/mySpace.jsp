@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/login.css">
 <style type="text/css">
+
 html {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -147,7 +148,7 @@ html {
 </style>
 <script type="text/javascript" src="jsp/sm/jquery.js"></script>
 </head>
-<body>
+<body style="background-color: rgb(240, 242, 241);">
 
 <script type="text/javascript">
 $(function() {

@@ -5,11 +5,12 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/login.css">
 <link rel="stylesheet" href="css/board.css">
 <script type="text/javascript" src="jsp/sm/reg.js"></script>
 <script type="text/javascript" src="jsp/sm/validCheck.js"></script>
 </head>
-<body>
+<body style="background-color: rgb(240, 242, 241);">
 
 <form action="FreeRegC" method="post" enctype="multipart/form-data" 
 class="login" name="boardForm" onsubmit="return postReg()" style="height:500px; width:1000px;">

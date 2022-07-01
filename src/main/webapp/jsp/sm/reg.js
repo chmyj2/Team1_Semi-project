@@ -191,7 +191,7 @@ function postReg(){
 	
 	if(isEmpty(txt)){
 		//alert('내용을 입력하세요.')
-		swal("내용을 입력해주세요.", "Please Enter The textarea").then(function() {
+		swal("내용을 입력해주세요.", "Please Enter The text").then(function() {
         })
 		txt.focus();
 		txt.value="";		
@@ -213,7 +213,7 @@ function deletePost(n){
 	confirmButtonText: 'Delete'
 }).then((result) => {
   if (result.isConfirmed) {
-    Swal.fire('삭제되었습니다!','Your file has been deleted.','삭제 성공.'
+    Swal.fire('삭제되었습니다!','Your post has been deleted.','삭제 성공.'
     ).then(function(){
       location.href='boardFreeDeleteC?boardNum='+n})
   }
@@ -258,49 +258,6 @@ function commentEdit(Num){
 function commentReg(boardNum, commentNum, commentId){
 
 	var commentTxt = document.getElementById(commentId);
-
-	/*alert('boardNum='+boardNum)
-	alert('commentNum='+commentNum)
-	alert('commentTxt='+commentTxt.value)*/
 	
 	location.href="commentUpdateC?boardNum="+boardNum+"&commentNum="+commentNum+"&commentTxt="+commentTxt.value;
 }
-	
-
-//댓글 수정 (No=게시물, Yes=댓글)
-/*function editComment(n,k){
-	let editOK = confirm('댓글을 수정 할까요?')
-	console.log(editOK)
-	
-	if(editOK){
-		location.href='commentUpdateC?Yes='+n+'&No='+k;
-	}
-}*/
-
-//댓글 수정
-/*function editComment(n,k){
-	swal.fire({
-	title: '수정하시겠습니까?',
-	text: "댓글을 수정합니다",
-	icon: 'warning',
-	showCancelButton: true,
-	confirmButtonColor: '#3085d6',
-	cancelButtonColor: '#d33',
-	confirmButtonText: 'Delete'
-}).then((result) => {
-  if (result.isConfirmed) {
-    Swal.fire('수정되었습니다!','Your file has been deleted.','수정 성공.'
-    ).then(function(){
-      location.href='commentUpdateC?Yes='+n+'&No='+k})
-  }
-})	
-}*/
-
-//검색창 빈칸 입력시 알림
-/* function seaSubmit() {
-    var inputVal = document.getElementById( 'seaBtn' ).value;
-    if (inputVal == "") {
-        alert('얼럿');
-        return false;
-    }
-  }*/

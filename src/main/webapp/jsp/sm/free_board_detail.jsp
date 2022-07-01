@@ -7,6 +7,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/login.css">
 <link rel="stylesheet" href="css/board.css">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript" src="jsp/sm/reg.js"></script>
@@ -16,14 +17,14 @@
 $(function(){
 	
 	$("#updateCBtn").click(function(){
-		var ccc = $("#comment_txt").val();
+		var commentTxt = $("#commentTxt").val();
 		let boardNum = $("#boardNum").val();//게시글
 		let commentNum = $("#commentNum").val();//댓글
 		
 		
-		if (ccc=="") {			
+		if (commentTxt=="") {			
 			alert("내용을 입력하세요");
-			ccc.focus();
+			commentTxt.focus();
 		}
 		
 		
@@ -35,8 +36,9 @@ $(function(){
 });
 
 </script>
+
 </head>
-<body>
+<body style="background-color: rgb(240, 242, 241);">
 
 <div class="login" style="height:100%; width:1000px; text-align: left;">
 
@@ -107,11 +109,6 @@ $(function(){
 				<input type="hidden" class="commentNum" id="commentNum" name="commentNum" value="${c.comment_num }">
 				<button class="btn-success2" onclick="commentEdit('d${c.comment_num }')">수정</button>
 				<button class="btn-success2" type="button" onclick="deleteComment(${c.comment_num },'${frees.board_num }')">삭제</button>
-				 <%-- <div class="d${c.comment_num }" style="display:none;">
-					<textarea placeholder="댓글을 입력해 주세요." name="comment_txt" id="comment_txt" 
-					style="width: 200px; height: 30px; border: none; resize: none;"></textarea>
-					<button class="btn-success2" id="updateCBtn">확인</button></div> --%>
-		
 					
 			</c:if>
 		</td>

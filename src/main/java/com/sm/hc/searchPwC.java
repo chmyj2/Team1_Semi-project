@@ -7,10 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.util.db.SMDBExport;
+
 @WebServlet("/searchPwC")
 public class searchPwC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		//SMDBExport.DBReader("C:\\ksm\\pjWorkspace\\SemiProject\\", "comment_tbl", 5);
+		
 		//비번 찾기
 		AccountDAO.loginCheck(request);
 				
