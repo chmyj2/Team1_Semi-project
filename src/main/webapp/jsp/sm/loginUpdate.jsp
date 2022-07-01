@@ -5,12 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/login.css">
 <script type="text/javascript" src="jsp/sm/reg.js"></script>
 <script type="text/javascript" src="jsp/sm/validCheck.js"></script>
-
 </head>
-<body>
-
+<body style="background-color: rgb(240, 242, 241);">
 <div>
 	<form action="InfoEditCotroller" method="post" class="login" name="updateForm" onsubmit="return update()">
 	

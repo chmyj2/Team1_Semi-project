@@ -1,7 +1,5 @@
-body {
-  background-color: rgb(240, 242, 241);
-  font-family: "Asap", sans-serif;
-}
+
+
 
 .login {
   overflow: hidden;
@@ -155,9 +153,8 @@ a:visited { color:gray; }
 
 .f_td1{
 	text-align: left;
-	font-size:12pt;
+	font-size:13pt;
 	width: 10%;
-	font-size: 12pt;
 }
 
 

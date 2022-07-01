@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/login.css">
 <style>
   .answer {
     display: none;
@@ -41,7 +42,7 @@
   
 </style>
 </head>
-<body>
+<body style="background-color: rgb(240, 242, 241);">
 	<div class="login" style="height:100%; width: 1000px;">
 		<span id="faq-title">자주 묻는 질문(FAQ)</span><br><br><br>
 		<div class="faq-content">

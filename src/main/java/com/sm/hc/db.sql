@@ -8,17 +8,6 @@ user_phoneNumber varchar2(100 char) not null,
 user_age number(3) not null
 );
 
-create table user_cocktail_tbl(
-cocktail_num number(5) primary key,
-cocktail_name varchar2(20 char) not null,
-cocktail_info varchar2(300 char) not null,
-cocktail_ingredient varchar2(200 char) not null,
-cocktail_recipe varchar2(300 char) not null,
-cocktail_img varchar2(500 char) not null,
-cocktail_tag varchar2(30 char),
-user_id varchar2(16 char) not null
-);
-
 create table board_tbl(
 board_num number(5) primary key,
 user_id varchar2(16 char) not null,
@@ -30,12 +19,31 @@ board_date date not null
 
 create table comment_tbl(
 comment_num number(5) primary key,
-board_num number(5) not null, --게시물 안에 들어갈때 게시물(넘버)를 다시 넘겨줌
+board_num number(5) not null,
 user_id varchar2(16 char) not null,
 comment_txt varchar2(100 char) not null,
 comment_date date not null
 );
 --parent_commentNum number(5), --대댓글???
+
+create table star_point_tbl(
+    STAR_POINT number(10) PRIMARY key,
+    product_num number(10) not null,
+    user_id varchar2(60 char)not null,
+    SCORE number(10)not null
+);
+
+create table cocktail_recipe_tbl(
+    cocktail_num number(10) PRIMARY key,
+    cocktail_name varchar2(30 char)not null,
+    cocktail_info varchar2(200 char)not null,
+    cocktail_ingredient varchar2(60 char)not null,
+    cocktail_recipe varchar2(200 char)not null,
+    cocktail_img varchar2(500 char)not null,
+    cocktail_tag varchar2(50 char)not null
+
+);
+
 
 --테이블 컬럼 추가
 alter table board_tbl add board_category varchar2(50 char);
@@ -71,3 +79,8 @@ insert into board_tbl values(board_tbl_seq.nextval,'testId2','게시글제목2','게시
 delete from user_info_tbl where user_id = '';
 
 update board_tbl set user_id = 'ADMIN' where board_num = '29';
+
+
+
+--
+

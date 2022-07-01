@@ -28,13 +28,14 @@ public class FreeRegC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		//AccountDAO.loginCheck(request);
+		AccountDAO.loginCheck(request);
 		
 		//글 등록하는 일
 		AccountDAO.regFree(request);
 		
 		//글 모두 보여줌
 		AccountDAO.getAllFree(request);
+		AccountDAO.paging(1, request);
 		//AccountDAO.getAllFree(request);
 		
 		//다 보여주고 나면 여기로

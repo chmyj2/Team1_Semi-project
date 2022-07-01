@@ -7,9 +7,9 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/login.css">
 </head>
-<body>
-
+<body style="background-color: rgb(240, 242, 241);">
 <form class="login" style="height:500px; width:1000px;">
 <table id="tbl_board_title">
 	<tr style="font-weight: 1000;">
@@ -28,9 +28,11 @@
 
 	<tr class="f_tr1">
 		<td class="f_td1" style="width:5%;">${p.board_num }</td>
-		<td class="f_td1" style="width:30%; text-align: center;" onclick="location.href='boardFreeDetailC?boardNum=${p.board_num }'">${p.board_title }</td>
+		<td class="f_td1" style="width:30%; text-align: center;" 
+		onclick="location.href='boardFreeDetailC?boardNum=${p.board_num }'">${p.board_title }</td>
 		<td class="f_td1">${p.user_id }</td>
-		<td class="f_td1"><fmt:formatDate value="${p.board_date }" type="both" dateStyle="short" timeStyle="short"/></td>
+		<td class="f_td1"><fmt:formatDate value="${p.board_date }" 
+		type="both" dateStyle="short" timeStyle="short"/></td>
 	</tr>
 </c:forEach>
 </table>
