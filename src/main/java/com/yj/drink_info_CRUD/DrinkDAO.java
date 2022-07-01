@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
@@ -557,16 +559,21 @@ public class DrinkDAO {
 			
 		}
         
-//        System.out.println("total : " + total);
-//        System.out.println("pageCount : " + pageCount);
-//        System.out.println("start : " + start);
-//        System.out.println("end : " + end);
-//        
-//        for (Drink drink : items) {
-//        	System.out.println(drink);
-//			
-//		}
-//        
+		
+	}
+
+	
+	
+	
+
+	public static void makecookie(HttpServletRequest request,HttpServletResponse response) {
+		
+		String aaa = "1";
+		Cookie cookie = new Cookie("c", aaa);
+	    cookie.setMaxAge(60 * 60);
+	    cookie.setPath("/");
+	    response.addCookie(cookie);
+	    
 		
 	}
 

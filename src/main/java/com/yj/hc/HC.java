@@ -8,24 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sm.hc.AccountDAO;
+import com.yj.drink_info_CRUD.DrinkDAO;
 
 @WebServlet("/HC")
 public class HC extends HttpServlet {
 	
-	private boolean tf;
-	
-	public HC() {
-		tf = true;
-	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(tf) {
-			request.getSession().setAttribute("firstReq", "1");
-			tf = false;
-		}else {
-			request.getSession().setAttribute("firstReq", "0");
-			
-		}
 		
 		
 		AccountDAO.loginCheck(request);
@@ -33,7 +22,6 @@ public class HC extends HttpServlet {
 		request.setAttribute("contentPage", "home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
-//	주석
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}

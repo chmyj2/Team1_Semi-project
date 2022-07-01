@@ -33,17 +33,20 @@ pageEncoding="UTF-8"%>
 		<td class="drink_detail_star">${star } <fmt:formatNumber value="${starpoint.score }" pattern="0.00" /> </td>
 	</tr>
 	<tr>
-		<td class="drink_detail_page_txt"><c:forTokens var="item" items="${drink.cocktail_info }" delims="\n">
-		${item }
-</c:forTokens></td>
+		<td class="drink_detail_page_txt">
+			<c:forTokens var="item" items="${drink.cocktail_info }" delims="\n">
+				${item }
+			</c:forTokens></td>
 	</tr>
 	<tr>
 		<td class="drink_detail_page_title">INGREDIENTS</td>
 	</tr>
 	<tr>
-		<td class="drink_detail_page_txt"><c:forTokens var="item" items="${drink.cocktail_ingredient }" delims="!">
-		${item }<br>
-</c:forTokens></td>
+		<td class="drink_detail_page_txt">
+			<c:forTokens var="item" items="${drink.cocktail_ingredient }" delims="!">
+				${item }<br>
+			</c:forTokens>
+		</td>
 	</tr>
 	<tr>
 		<td class="drink_detail_page_title">RECIPE</td>
