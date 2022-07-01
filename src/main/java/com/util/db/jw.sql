@@ -8,7 +8,7 @@ insert into categoryTbl values(category_Number_Seq.nextval,-1,null,1);
 delete categoryTbl where Name = 'Scotch Whisky';
 
 select * from productTbl 
-
+s
 insert into productTbl values ('P823','A220','잭다니엘','50000','0','특유의 맛이 진한 테네시 위스키 잭다니엘
 
 초심자 추천 안함','Jack Daniels1.jpg','null','null','null','#위스키 #테네시','Y','Y','500');
