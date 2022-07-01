@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+.orderMain
+{ 
+	width : 60%;
+	margin: 0 auto;
+}
+
+.orderTitle
+{
+	font-size: 24px;
+	text-align: left;
+}
+
+.orderTableDiv
+{
+	margin: 0 auto;
+	margin-top :30px;
+	
+}
+
+.orderTbl
+{
+	margin: 0 auto;
+	width : 100%;	
+	border : 1px solid black;
+	border-collapse: collapse;
+	font-size :18px;
+	font-weight: 600;
+}
+
+
+.orderTbl th, td
+{
+	border : 1px solid black;
+}
+
+.orderTbl input
+{
+	height : 40px;
+	font-size: 20px;
+}
+
+.orderTd1
+{
+	
+	width: 20%;
+	height: 60px;
+	text-align: right;
+	padding-right: 10px;
+	color : white;
+	background-color: #212492;	
+}
+
+.orderTd2
+{
+	text-align: left;
+	padding-left: 20px;
+	color: #212492;
+}
+
+.addrInput
+{
+	width: 400px;
+}
+
+.orderBtnLabel
+{
+	margin-top :30px;
+	margin-bottom :30px;
+	
+	display: inline-block;
+	width : 200px;
+	height : 100px;
+	line-height: 100px;
+	font-size:24px;	
+	background-color:#212492;
+	
+	color:white;
+	border-radius:25px;
+}
+
+
+.orderBtnLabel:hover
+{
+	background-color: #1c1ffd;
+}

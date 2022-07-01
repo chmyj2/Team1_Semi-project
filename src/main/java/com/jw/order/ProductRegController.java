@@ -22,8 +22,6 @@ public class ProductRegController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductDBManager.regProducts(request);
-		
-		
 		response.sendRedirect("ShoppingController");
 	}
 }

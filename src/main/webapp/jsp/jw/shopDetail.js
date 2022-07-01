@@ -17,3 +17,14 @@ function goCartView()
 {
 		location.href = "CartViewController";
 }
+
+function quantityChange(quantity, price)
+{
+	document.getElementById("totalPrice").innerHTML= quantity.value*price;
+}
+
+
+function goOrderController()
+{
+	location.href = "OrderViewController";
+}

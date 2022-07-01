@@ -10,7 +10,9 @@
 <link rel="stylesheet" href="css/home.css" media="screen">
 <link rel="stylesheet" href="css/ourCollection.css">
 <link rel="stylesheet" href="css/star_point.css">
-<link rel="stylesheet" href="css/jw.shop.css">
+<link rel="stylesheet" href="css/jw/shop.css">
+<link rel="stylesheet" href="css/jw/orderPage.css">
+
 
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <!-- JavaScript -->
