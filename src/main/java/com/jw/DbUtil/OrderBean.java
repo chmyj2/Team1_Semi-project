@@ -1,16 +1,17 @@
 package com.jw.DbUtil;
 
 public class OrderBean {
-	private int num;
+	private String num;
 	private String userId;
-	private int productNum;
+	private String productNum;
 	private int productQuantity;
 	private String reciever;
 	private String inputDate;
 	private String state;
-	private String Address;
+	private String address;
 	private String paymentState;
-	private int ProductPrice;
+	private int productPrice;
+	private String deliveryState;
 	private int deliveryPrice;
 	private int totalPrice;
 	
@@ -19,9 +20,11 @@ public class OrderBean {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public OrderBean(int num, String userId, int productNum, int productQuantity, String reciever, String inputDate,
-			String state, String address, String paymentState, int productPrice, int deliveryPrice, int totalPrice) {
+
+
+	public OrderBean(String num, String userId, String productNum, int productQuantity, String reciever,
+			String inputDate, String state, String address, String paymentState, int productPrice, int deliveryPrice,
+			int totalPrice) {
 		super();
 		this.num = num;
 		this.userId = userId;
@@ -30,86 +33,140 @@ public class OrderBean {
 		this.reciever = reciever;
 		this.inputDate = inputDate;
 		this.state = state;
-		Address = address;
+		this.address = address;
 		this.paymentState = paymentState;
-		ProductPrice = productPrice;
+		this.productPrice = productPrice;
 		this.deliveryPrice = deliveryPrice;
 		this.totalPrice = totalPrice;
 	}
+
+	public String getDeliveryState() {
+		return deliveryState;
+	}
+
+
+	public void setDeliveryState(String deliveryState) {
+		this.deliveryState = deliveryState;
+	}
+	public String getNum() {
+		return num;
+	}
+
+
+	public void setNum(String num) {
+		this.num = num;
+	}
+
+
+	public String getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+
+	public String getProductNum() {
+		return productNum;
+	}
+
+
+	public void setProductNum(String productNum) {
+		this.productNum = productNum;
+	}
+
+
+	public int getProductQuantity() {
+		return productQuantity;
+	}
+
+
+	public void setProductQuantity(int productQuantity) {
+		this.productQuantity = productQuantity;
+	}
+
 
 	public String getReciever() {
 		return reciever;
 	}
 
+
 	public void setReciever(String reciever) {
 		this.reciever = reciever;
 	}
 
-	public int getNum() {
-		return num;
-	}
-	public void setNum(int num) {
-		this.num = num;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	public int getProductNum() {
-		return productNum;
-	}
-	public void setProductNum(int productNum) {
-		this.productNum = productNum;
-	}
-	public int getProductQuantity() {
-		return productQuantity;
-	}
-	public void setProductQuantity(int productQuantity) {
-		this.productQuantity = productQuantity;
-	}
+
 	public String getInputDate() {
 		return inputDate;
 	}
+
+
 	public void setInputDate(String inputDate) {
 		this.inputDate = inputDate;
 	}
+
+
 	public String getState() {
 		return state;
 	}
+
+
 	public void setState(String state) {
 		this.state = state;
 	}
+
+
 	public String getAddress() {
-		return Address;
+		return address;
 	}
+
+
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
+
+
 	public String getPaymentState() {
 		return paymentState;
 	}
+
+
 	public void setPaymentState(String paymentState) {
 		this.paymentState = paymentState;
 	}
+
+
 	public int getProductPrice() {
-		return ProductPrice;
+		return productPrice;
 	}
+
+
 	public void setProductPrice(int productPrice) {
-		ProductPrice = productPrice;
+		this.productPrice = productPrice;
 	}
+
+
 	public int getDeliveryPrice() {
 		return deliveryPrice;
 	}
+
+
 	public void setDeliveryPrice(int deliveryPrice) {
 		this.deliveryPrice = deliveryPrice;
 	}
+
+
 	public int getTotalPrice() {
 		return totalPrice;
 	}
+
+
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	
+	
 	
 }

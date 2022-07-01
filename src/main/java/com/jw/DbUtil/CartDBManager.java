@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -100,18 +102,48 @@ public class CartDBManager {
 			
 			rs = pstmt.executeQuery();
 
-			ArrayList<CartBean> arrCartBean = new ArrayList<CartBean>();
+			HashMap<String, Integer> mapStr = new HashMap<String, Integer>();
 			while(rs.next())
 			{
-				arrCartBean.add(cartBeanSet(rs));
-
+				mapStr.put(rs.getString("Cart_Product_Num"), rs.getInt("Cart_ProductQuantity"));
 			}
+			pstmt.close();
+			rs.close();
+			//한번 끝
+			sql = "select * from productTbl where Num_PK IN (";
 			
+			Iterator<String> keys = mapStr.keySet().iterator();
+			while(keys.hasNext())
+			{
+				String key = keys.next();
+				
+				if(!keys.hasNext())
+				{
+					sql+= "'"+key+"')";
+					break;
+				}
+				sql+="'"+key+"',";
+			}
+			System.out.println(sql);
+			
+		
 
-			request.setAttribute("cartDetail", arrCartBean);				
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			ArrayList<SmallOrderBean> arrOB = new ArrayList<SmallOrderBean>();
 			
-			
-			
+			while(rs.next())
+			{
+				String productNum = rs.getString("Num_PK");
+				int quantity = mapStr.get(productNum);
+				String productName = rs.getString("Name");
+				String productPrice = rs.getString("Price");
+				String thumbnail  =  rs.getString("Thumbnail");
+				
+				arrOB.add(new SmallOrderBean(productNum,quantity,productName,productPrice, thumbnail));
+			}
+
+			request.setAttribute("order", arrOB);
 		}catch (Exception e) {
 			System.out.println(e);
 		}
@@ -153,6 +185,33 @@ public class CartDBManager {
 		}
 		return null;
 		
+	}
+
+	public static void deleteCartUseProduct(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try
+		{
+			String sql = "delete cartTbl where Cart_Product_Num = ?" ;
+			con = DBManager.connnect("jw");
+			pstmt = con.prepareStatement(sql);
+			
+
+			pstmt.setString(1, request.getParameter("productNum"));
+						
+			if(pstmt.executeUpdate()==1) {
+				System.out.println("등록성공");
+				request.setAttribute("result", "등록 성공");
+			}
+			return;
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		finally {
+			DBManager.Close(con, pstmt, rs);
+			
+		}
 	}
 	
 }

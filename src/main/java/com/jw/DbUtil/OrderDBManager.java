@@ -15,6 +15,8 @@ import com.util.db.DBManager;
 
 public class OrderDBManager {
 
+	private static String parentName = null;
+
 	
 	public static void orderMidPoint(HttpServletRequest request)
 	{
@@ -93,16 +95,20 @@ public class OrderDBManager {
 		try {
 
 			String sql = "insert into OrderTbl values (Order_Number_Seq.nextval"
-					+ "?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ ",?,?,?,?,?,sysdate,?,?,?,?,?,?,?)";
 
 			con = DBManager.connnect("jw");
 			
 			pstmt = con.prepareStatement(sql);
-			setPstmt(pstmt,request);
+			String[] product = request.getParameterValues("product");
+
+			for (String pd : product) {
+			setPstmt(pstmt,request,pd);
 			
 			if(pstmt.executeUpdate()==1) {
 				System.out.println("등록성공");
 				request.setAttribute("r", "등록 성공");
+			}
 			}
 			
 		} catch (Exception e) {
@@ -113,21 +119,28 @@ public class OrderDBManager {
 		}
 	}
 	
-	private static void setPstmt(PreparedStatement pstmt, HttpServletRequest request) throws SQLException {
-		pstmt.setString(1, request.getParameter("UserId"));
+	private static void setPstmt(PreparedStatement pstmt, HttpServletRequest request, String pd) throws SQLException {
+		
+			
+		
+		String[] splitPd = pd.split(",");
+		String productNum = splitPd[0];
+		int productQuantity = Integer.parseInt(splitPd[1]);
+		int productPrice = Integer.parseInt(splitPd[2]);
+		String userID = request.getParameter("userID");
+		pstmt.setString(1, userID);
 		pstmt.setString(2, request.getParameter("Reciever"));
 		pstmt.setString(3, request.getParameter("PhoneNumber"));
-		pstmt.setString(4, request.getParameter("ProductNumber"));
-		pstmt.setString(5, request.getParameter("Quantity"));
-		pstmt.setString(6, "sysdate");
-		pstmt.setString(7, "주문확인중");
-		pstmt.setString(8, request.getParameter("Address"));
-		pstmt.setString(9, "주문확인중");
-		pstmt.setString(10, "결제대기");
-		pstmt.setString(11, request.getParameter("ProductPrice"));
-		pstmt.setString(12, request.getParameter("DeliveryPrice"));
-		pstmt.setString(13, request.getParameter("TotalPrice"));
-	}
+		pstmt.setString(4, productNum);
+		pstmt.setInt(5, productQuantity);
+		pstmt.setString(6, "주문확인중");
+		pstmt.setString(7, request.getParameter("Address"));
+		pstmt.setString(8, "주문확인중");
+		pstmt.setString(9, "결제대기");
+		pstmt.setString(10, splitPd[2]);
+		pstmt.setString(11, request.getParameter("DeliveryPrice"));
+		pstmt.setInt(12, productPrice*productQuantity);
+		}
 
 
 	public static void getUser(HttpServletRequest request)
@@ -139,13 +152,7 @@ public class OrderDBManager {
 		try
 		{
 			
-			String userID =request.getParameter("userID");
-			String Reciever	=request.getParameter("Reciever");
-			String Address =request.getParameter("Address");
-			String PhoneNumber =request.getParameter("PhoneNumber");
-			String[] product = request.getParameterValues("product");
-			String DeliveryPrice =request.getParameter("DeliveryPrice");
-						
+	
 			
 			String sql = "select * from user_info_tbl where user_id = ?";
 			con = DBManager.connnect("jw");
@@ -172,6 +179,58 @@ public class OrderDBManager {
 		finally {
 			DBManager.Close(con, pstmt, rs);
 		}
+	}
+
+
+	public static void getAllOrder(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try
+		{
+			String sql = "select * from OrderTbl where Order_UserId = ?";
+			con = DBManager.connnect("jw");
+			pstmt = con.prepareStatement(sql);
+		
+			pstmt.setString(1, jwDBManager.getUserID());
+			rs = pstmt.executeQuery();
+		
+			ArrayList<OrderBean> arrOb = new ArrayList<OrderBean>();
+			while(rs.next())
+			{
+				arrOb.add(setOrderBean(rs));
+			}
+			request.setAttribute("arrOrder", arrOb);
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		finally {
+			DBManager.Close(con, pstmt, rs);
+		}
+		
+		
+	}
+
+
+	private static OrderBean setOrderBean(ResultSet rs) throws SQLException {
+		OrderBean ob = new OrderBean();
+		
+		ob.setNum(rs.getString("Order_Num"));
+		ob.setUserId(rs.getString("Order_UserId"));
+		ob.setProductNum(rs.getString("Order_ProductNumber"));
+		ob.setProductQuantity(rs.getInt("Order_productQuantity"));
+		ob.setReciever(rs.getString("Order_Reciever"));
+		ob.setInputDate(rs.getString("Order_Date"));
+		ob.setState(rs.getString("Order_State"));
+		ob.setAddress(rs.getString("Order_Address"));
+		ob.setDeliveryState(rs.getString("Order_DeliveryState"));
+		ob.setPaymentState(rs.getString("Order_PaymentState"));
+		ob.setProductPrice(rs.getInt("Order_ProductPrice"));
+		ob.setDeliveryPrice(rs.getInt("Order_DeliveryPrice"));
+		ob.setTotalPrice(rs.getInt("Order_TotalPrice"));
+		
+		return ob;
 	}
 	
 }
