@@ -58,7 +58,6 @@ public class DBManager {
 			pw="sm";
 		}
 		else if(who.equals("yj"))
-			
 		{
 			
 			String url ="jdbc:oracle:thin:@db202204301707_medium?TNS_ADMIN=/Users/choeyongjun/Wallet_DB202204301707";
