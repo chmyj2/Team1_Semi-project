@@ -10,7 +10,9 @@
 <link rel="stylesheet" href="css/home.css" media="screen">
 <link rel="stylesheet" href="css/ourCollection.css">
 <link rel="stylesheet" href="css/star_point.css">
-<link rel="stylesheet" href="css/jw.shop.css">
+<link rel="stylesheet" href="css/jw/shop.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <!-- JavaScript -->
@@ -42,7 +44,6 @@
         <ul>
             <li><a href="ourCollectionController">OUR COLLECTION</a></li>
            <li><a href="ShoppingController?name=Drink">COCKTAILS SALES</a></li>
-            <li><a href="ShoppingController?name=Goods">GOODS SALES</a></li>
             <li><a href="#">OUR SOCIAL</a>
                 <ul>
                    <li><a href="boardCfree">OUR SPACE</a></li>
@@ -59,6 +60,8 @@
 </div>   
 </div>
 
+
+
 <!-- 푸터 -->
 <div class="footer">
        <div class="indexFooter">
@@ -66,16 +69,21 @@
        			WE WANT TO GO HOME
        		</div>
        		<div class="indexFooterItem2">
-				Thank you for visiting our semi-project site. Please copy our semi - project site without permission.
+				Thank you for visiting our semi-project site. Please copy our semi - project site without permission. 
        		</div>
        		<div class="indexFooterItem3">
        			2022. BEST MEANINGLESS SENTENSE <span>|</span> SERVICE <span>|</span> SOLDESK <span>|</span> COMPANY <span>|</span> SEMI-PROJECT <span>|</span> DRINKS <span>|</span> COCKTAILS <span>|</span> SOCIAL
        		</div>
-       		<div class="indexFooterItem4">
-       			We Love MZ Design by. CHOI KIM LEE
-       		</div>
+       		<div style="position: absolute; z-index: 3; margin-left: 100px; margin-top: 70px" >
+       				<ul class="sns_ul">
+  						<li>
+    					<a href="https://twitter.com/dosu_official"><i class="fab fa-twitter icon"></i></a>
+  						</li>
+  						<li>
+    					<a href="https://www.instagram.com/dosu.official/"><i class="fab fa-instagram icon"></i></a></li>
+					</ul>
+       			</div>
        		<div class="indexFooterItem5">
-       		
        		</div>
        </div>
         

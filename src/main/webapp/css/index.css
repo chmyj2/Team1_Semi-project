@@ -282,3 +282,76 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 
 
 
+
+
+.sns_ul {
+  display: flex;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.sns_ul li {
+  list-style: none;
+  
+}
+
+.sns_ul li a {
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  text-align: center;
+  line-height: 50px;
+  font-size: 25px;
+  margin: 0 10px;
+  display: block;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid #fff;
+  z-index: 1;
+}
+
+.sns_ul li a .icon {
+  position: relative;
+  color: #262626;
+  transition: .5s;
+  z-index: 3;
+}
+
+.sns_ul li a:hover .icon {
+  color: #fff;
+  transform: rotateY(360deg);
+}
+
+.sns_ul li a:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f00;
+  transition: .5s;
+  z-index: 2;
+}
+
+.sns_ul li a:hover:before {
+  top: 0;
+}
+
+.sns_ul li:nth-child(1) a:before{
+
+  background: #3b5999;
+}
+
+
+
+.sns_ul li:nth-child(2) a:before {
+  background: linear-gradient(45deg, yellow, orange, #eb498d,blue);
+}
+
+
+
+
+
+
