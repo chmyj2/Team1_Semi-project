@@ -42,7 +42,7 @@
   
 </style>
 </head>
-<body style="background-color: rgb(240, 242, 241);">
+<body  class = "loginBody">
 	<div class="login" style="height:100%; width: 1000px;">
 		<span id="faq-title">자주 묻는 질문(FAQ)</span><br><br><br>
 		<div class="faq-content">

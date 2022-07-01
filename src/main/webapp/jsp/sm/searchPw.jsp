@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/login.css">
 </head>
-<body style="background-color: rgb(240, 242, 241);">
+<body class = "loginBody" class = "loginBody">
 <div>
 	<form action="searchPwC" method="post" class="login" style="height:330px;">
 		<h5>비밀번호 찾기</h5>

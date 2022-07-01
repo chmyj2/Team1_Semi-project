@@ -418,11 +418,11 @@
 		</form>
 	</div>
 	
-	
-	<div style="height: 100px;">
-	<div><button onclick="location.href='Drink_Info_regController'">운영자전용 상품등록버튼</button></div>
+	<c:if test="${sessionScope.accountInfo.user_id eq 'ADMIN' }">
+		<div style="height: 100px;">
+		<div><button onclick="location.href='Drink_Info_regController'">운영자전용 상품등록버튼</button></div>
 	</div>
-	
+	</c:if>
 	
 	
 	<c:forEach var="m" items="${drinks}" varStatus="status">

@@ -84,14 +84,14 @@ html { overflow-y: scroll; }
 }
 
 .home_Tbl_td2 p{
-	text-align: left;
+	text-align: center;
 	font-size: 50pt;
 	font-weight: bolder;
 
 }
 
 .home_Tbl_td2{
-	text-align: left;
+	text-align: center;
 	padding-bottom: 70px;
 	font-size: 20pt;
 	
@@ -132,7 +132,7 @@ html { overflow-y: scroll; }
    7px 7px 20px 0px rgba(0,0,0,.1),
    4px 4px 5px 0px rgba(0,0,0,.1);
   outline: none;
-  margin-left: 140px;
+  margin: 0 auto;
 }
 
 .btn-33 {

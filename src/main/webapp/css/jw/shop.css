@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
 
+
+
 .regPageCategoryDiv
 {
 	text-align: left;
@@ -8,6 +10,11 @@
 	height: 500px; 
 	border: 2px solid #212492;
 	margin:0 auto;
+}
+
+.loginBody
+{
+	background-color: rgb(240, 242, 241);
 }
 
 

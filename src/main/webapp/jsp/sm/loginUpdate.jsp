@@ -9,7 +9,7 @@
 <script type="text/javascript" src="jsp/sm/reg.js"></script>
 <script type="text/javascript" src="jsp/sm/validCheck.js"></script>
 </head>
-<body style="background-color: rgb(240, 242, 241);">
+<body class = "loginBody">
 <div>
 	<form action="InfoEditCotroller" method="post" class="login" name="updateForm" onsubmit="return update()">
 	

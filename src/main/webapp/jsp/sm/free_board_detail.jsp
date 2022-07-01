@@ -38,7 +38,7 @@ $(function(){
 </script>
 
 </head>
-<body style="background-color: rgb(240, 242, 241);">
+<body class = "loginBody">
 
 <div class="login" style="height:100%; width:1000px; text-align: left;">
 

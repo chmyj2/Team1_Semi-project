@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/login.css">
 </head>
-<body style="background-color: rgb(240, 242, 241);">
+<body class = "loginBody">
 <div>
 	<form action="LoginMainController" class="login" style="height:330px;">
 		회원님의 비밀번호는<br><br><p style="font-weight: 1000">${searchPw }</p><br>입니다.<br><br><br>

@@ -79,7 +79,7 @@ button:hover {
 }
 </style>
 </head>
-<body style="background-color: rgb(240, 242, 241);">
+<body class = "loginBody">
 <div class="login">
 	<form action="RegAccountC" method="post" name="regForm" onsubmit="return call()">	
 		<table style="text-align: left; width:350px;">

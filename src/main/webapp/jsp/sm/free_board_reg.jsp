@@ -10,7 +10,7 @@
 <script type="text/javascript" src="jsp/sm/reg.js"></script>
 <script type="text/javascript" src="jsp/sm/validCheck.js"></script>
 </head>
-<body style="background-color: rgb(240, 242, 241);">
+<body class = "loginBody">
 
 <form action="FreeRegC" method="post" enctype="multipart/form-data" 
 class="login" name="boardForm" onsubmit="return postReg()" style="height:500px; width:1000px;">

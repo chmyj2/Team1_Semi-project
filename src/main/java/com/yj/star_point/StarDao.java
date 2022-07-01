@@ -41,7 +41,7 @@ public class StarDao {
 			
 			
 			if(pstmt.executeUpdate() == 1){
-				System.out.println("등록 성공");
+				System.out.println("��� ����");
 			}
 			
 			
@@ -80,17 +80,17 @@ public class StarDao {
 				
 				if(rs.getDouble("AVG(SCORE)") < 0.5){
 					
-					request.setAttribute("star","☆☆☆☆☆" );
+					request.setAttribute("star","�١١١١�" );
 				} else if (rs.getDouble("AVG(SCORE)") >= 0.5 && rs.getDouble("AVG(SCORE)") < 1.5) {
-					request.setAttribute("star","★☆☆☆☆" );
+					request.setAttribute("star","�ڡ١١١�" );
 				}	else if (rs.getDouble("AVG(SCORE)") >= 1.5 && rs.getDouble("AVG(SCORE)") < 2.5) {
-					request.setAttribute("star","★★☆☆☆" );
+					request.setAttribute("star","�ڡڡ١١�" );
 				}	else if (rs.getDouble("AVG(SCORE)") >= 2.5 && rs.getDouble("AVG(SCORE)") < 3.5) {
-					request.setAttribute("star","★★★☆☆" );
+					request.setAttribute("star","�ڡڡڡ١�" );
 				}	else if (rs.getDouble("AVG(SCORE)") >= 3.5 && rs.getDouble("AVG(SCORE)") < 4.5) {
-					request.setAttribute("star","★★★★☆" );
+					request.setAttribute("star","�ڡڡڡڡ�" );
 				}	else if (rs.getDouble("AVG(SCORE)") >= 4.5) {
-					request.setAttribute("star","★★★★★" );
+					request.setAttribute("star","�ڡڡڡڡ�" );
 				}
 				
 				

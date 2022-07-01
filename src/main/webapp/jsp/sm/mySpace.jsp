@@ -148,7 +148,7 @@ html {
 </style>
 <script type="text/javascript" src="jsp/sm/jquery.js"></script>
 </head>
-<body style="background-color: rgb(240, 242, 241);">
+<body   class = "loginBody">
 
 <script type="text/javascript">
 $(function() {

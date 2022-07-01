@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/login.css">
 <link rel="stylesheet" href="css/board.css">
 </head>
-<body style="background-color: rgb(240, 242, 241);">
+<body class = "loginBody">
 <div>
 	<form class="login">
 		<h2>회원 탈퇴 안내</h2><br><br>

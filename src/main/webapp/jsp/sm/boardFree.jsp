@@ -150,7 +150,7 @@ color: white;
 
 </style>
 </head>
-<body style="background-color: rgb(240, 242, 241);">
+<body class = "loginBody">
 <!-- 슬라이더 -->
 	<div class="main1">
 	<ul>

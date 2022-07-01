@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/login.css">
 </head>
-<body style="background-color: rgb(240, 242, 241);">
+<body>
 
 <div class="dropdown">
       <a class="dropbtn"><button class="custom-btn btn-11">My Page</button></a>

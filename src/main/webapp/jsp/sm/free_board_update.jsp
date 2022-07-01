@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/login.css">
 <link rel="stylesheet" href="css/board.css">
 </head>
-<body style="background-color: rgb(240, 242, 241);">
+<body class = "loginBody">
 
 <form action="boardFreeUpdateC" method="post" enctype="multipart/form-data" 
 class="login" name="" onsubmit="return postUp()" style="height:500px; width:1000px;">

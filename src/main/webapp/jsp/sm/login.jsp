@@ -9,7 +9,9 @@
 <script type="text/javascript" src="jsp/sm/reg.js"></script>
 <script type="text/javascript" src="jsp/sm/validCheck.js"></script>
 </head>
-<body style="background-color: rgb(240, 242, 241);">
+
+
+<body class = "loginBody">
 <!-- 로그인 페이지/로그인 회원가입/LoginController로 이동해서 일 처리 -->
 
 <div>

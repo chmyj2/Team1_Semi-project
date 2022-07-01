@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/login.css">
 </head>
-<body style="background-color: rgb(240, 242, 241);">
+<body  class = "loginBody">
  <div>
 	<form action="MyPageController" class="login">
 		<h2>My Page</h2><br><br>

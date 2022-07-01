@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/login.css">
 </head>
-<body style="background-color: rgb(240, 242, 241);">
+<body class = "loginBody">
 <form class="login" style="height:500px; width:1000px;">
 <table id="tbl_board_title">
 	<tr style="font-weight: 1000;">
