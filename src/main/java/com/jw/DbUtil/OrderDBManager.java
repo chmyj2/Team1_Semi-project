@@ -151,9 +151,6 @@ public class OrderDBManager {
 		
 		try
 		{
-			
-	
-			
 			String sql = "select * from user_info_tbl where user_id = ?";
 			con = DBManager.connnect("jw");
 			pstmt = con.prepareStatement(sql);

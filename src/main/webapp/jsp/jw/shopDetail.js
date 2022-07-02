@@ -24,7 +24,7 @@ function quantityChange(quantity, price)
 }
 
 
-function goOrderController()
+function goOrderViewController()
 {
 	location.href = "OrderViewController";
 }

@@ -34,7 +34,7 @@
 		<button onclick = "goOrderController('${product.num }')">상품구입</button>
 	<button onclick = "cartAdderController('${product.num }')">장바구니에 추가</button>
 	<button onclick = "goCartView()">장바구니 바로가기 </button>
-	<button onclick = "goOrderController()">내 주문조회</button>
+	<button onclick = "goOrderViewController()">내 주문조회</button>
 		
 	</div>
 </div>
