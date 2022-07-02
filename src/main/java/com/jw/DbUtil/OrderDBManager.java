@@ -15,9 +15,6 @@ import com.util.db.DBManager;
 
 public class OrderDBManager {
 
-	private static String parentName = null;
-
-	
 	public static void orderMidPoint(HttpServletRequest request)
 	{
 		String[] nums 	=  request.getParameterValues("orderNum");
@@ -69,8 +66,9 @@ public class OrderDBManager {
 				String productName = rs.getString("Name");
 				String productPrice = rs.getString("Price");
 				String thumbnail  =  rs.getString("Thumbnail");
+				String Stock  =  rs.getString("Stock");
 				
-				arrOB.add(new SmallOrderBean(productNum,quantity,productName,productPrice, thumbnail));
+				arrOB.add(new SmallOrderBean(productNum,quantity,productName,productPrice, thumbnail,Stock));
 			}
 
 			request.setAttribute("order", arrOB);
@@ -87,43 +85,82 @@ public class OrderDBManager {
 	}
 	
 	
+	@SuppressWarnings("resource")
 	public static void regOrder(HttpServletRequest request)
 	{
 		Connection con = null;
-		PreparedStatement pstmt = null;
+		PreparedStatement orderPstmt = null;
+		PreparedStatement stockPstmt = null;
+		PreparedStatement cartPstmt = null;
+		String orderSql = "insert into OrderTbl values (Order_Number_Seq.nextval"
+				+ ",?,?,?,?,?,sysdate,?,?,?,?,?,?,?)";
+		String 	stockSql = "update productTbl set Stock = ?  where Num_PK = ?";
+		String cartSql = "delete cartTbl where Cart_Product_Num = ?";
+
 		
 		try {
 
-			String sql = "insert into OrderTbl values (Order_Number_Seq.nextval"
-					+ ",?,?,?,?,?,sysdate,?,?,?,?,?,?,?)";
-
-			con = DBManager.connnect("jw");
-			
-			pstmt = con.prepareStatement(sql);
 			String[] product = request.getParameterValues("product");
-
+			
+			con = DBManager.connnect("jw");
+			con.setAutoCommit(false);
+			
+			
+			
 			for (String pd : product) {
-			setPstmt(pstmt,request,pd);
-			
-			if(pstmt.executeUpdate()==1) {
-				System.out.println("등록성공");
-				request.setAttribute("r", "등록 성공");
+				orderPstmt = con.prepareStatement(orderSql);
+				stockPstmt = con.prepareStatement(stockSql);
+				cartPstmt = con.prepareStatement(cartSql);
+
+			String[] splitPd = pd.split(",");
+			setPstmt(orderPstmt,request,splitPd);
+			if(orderPstmt.executeUpdate()==1) {
+				System.out.println("등록성공");	
 			}
-			}
 			
+			
+				
+			stockPstmt.setInt(1, Integer.parseInt(splitPd[3])-Integer.parseInt(splitPd[1]));
+			stockPstmt.setString(2, splitPd[0]);
+			System.out.println("재고변경 시도"+splitPd[0]);
+			if(stockPstmt.executeUpdate()==1) {
+				System.out.println("변경완료"+splitPd[0]);
+			}
+				
+			cartPstmt.setString(1, splitPd[0]);
+			System.out.println("삭제시도"+splitPd[0]);
+			if(cartPstmt.executeUpdate()==1) {
+				System.out.println("삭제완료"+splitPd[0]);
+			}
+			System.out.println("이러면 커밋이 됬다는건디?");
+		}
+			con.commit();	
+			con.setAutoCommit(true);
 		} catch (Exception e) {
 			request.setAttribute("r", "서버 오류");
+			
+			if(con!=null)
+			{
+				try {
+					System.out.println("롤백시도");
+					con.rollback();
+					System.out.println("롤백성공");
+					
+				}catch (Exception exep) {
+					System.out.println("롤백실패");
+					System.out.println(exep);
+				}
+			}
 			System.out.println(e);
 		}finally {
-			DBManager.Close(con, pstmt, null);
+			DBManager.ClosePstmt(stockPstmt);
+			DBManager.ClosePstmt(orderPstmt);
+			DBManager.ClosePstmt(cartPstmt);
+			DBManager.Close(con, null, null);
 		}
 	}
 	
-	private static void setPstmt(PreparedStatement pstmt, HttpServletRequest request, String pd) throws SQLException {
-		
-			
-		
-		String[] splitPd = pd.split(",");
+	private static void setPstmt(PreparedStatement pstmt, HttpServletRequest request, String[] splitPd) throws SQLException {
 		String productNum = splitPd[0];
 		int productQuantity = Integer.parseInt(splitPd[1]);
 		int productPrice = Integer.parseInt(splitPd[2]);
@@ -140,6 +177,10 @@ public class OrderDBManager {
 		pstmt.setString(10, splitPd[2]);
 		pstmt.setString(11, request.getParameter("DeliveryPrice"));
 		pstmt.setInt(12, productPrice*productQuantity);
+		
+		for (String string : splitPd) {
+			System.out.println(string);
+			}
 		}
 
 
@@ -155,7 +196,8 @@ public class OrderDBManager {
 			con = DBManager.connnect("jw");
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, jwDBManager.getUserID());
+			
+			pstmt.setString(1, jwDBManager.getUserID(request));
 			rs = pstmt.executeQuery();
 			if(rs.next())
 			{
@@ -190,9 +232,10 @@ public class OrderDBManager {
 			con = DBManager.connnect("jw");
 			pstmt = con.prepareStatement(sql);
 		
-			pstmt.setString(1, jwDBManager.getUserID());
+			pstmt.setString(1, jwDBManager.getUserID(request));
 			rs = pstmt.executeQuery();
 		
+			System.out.println(jwDBManager.getUserID(request));
 			ArrayList<OrderBean> arrOb = new ArrayList<OrderBean>();
 			while(rs.next())
 			{
@@ -213,6 +256,7 @@ public class OrderDBManager {
 	private static OrderBean setOrderBean(ResultSet rs) throws SQLException {
 		OrderBean ob = new OrderBean();
 		
+		System.out.println(rs.getString("Order_UserId"));
 		ob.setNum(rs.getString("Order_Num"));
 		ob.setUserId(rs.getString("Order_UserId"));
 		ob.setProductNum(rs.getString("Order_ProductNumber"));
@@ -226,7 +270,6 @@ public class OrderDBManager {
 		ob.setProductPrice(rs.getInt("Order_ProductPrice"));
 		ob.setDeliveryPrice(rs.getInt("Order_DeliveryPrice"));
 		ob.setTotalPrice(rs.getInt("Order_TotalPrice"));
-		
 		return ob;
 	}
 	

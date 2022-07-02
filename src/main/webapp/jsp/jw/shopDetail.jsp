@@ -28,7 +28,7 @@
 		Stock	${ product.stock }개<hr>
 		
 		${ product.name}
-		<input id = "quantityInput" type = "number" onchange="quantityChange(this,${product.price })"
+		<input id = "quantityInput" type = "number" onchange="quantityChange(this,${product.price },${product.stock})"
 		name = "Quantity" style ="width:50px" value = 1>개
 		<span id = "totalPrice">${ product.price}</span> 원<br>
 		<button onclick = "goOrderController('${product.num }')">상품구입</button>

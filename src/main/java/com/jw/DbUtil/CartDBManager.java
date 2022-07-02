@@ -98,7 +98,7 @@ public class CartDBManager {
 			con = DBManager.connnect("jw");
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, jwDBManager.getUserID());
+			pstmt.setString(1, jwDBManager.getUserID(request));
 			
 			rs = pstmt.executeQuery();
 
@@ -139,8 +139,9 @@ public class CartDBManager {
 				String productName = rs.getString("Name");
 				String productPrice = rs.getString("Price");
 				String thumbnail  =  rs.getString("Thumbnail");
+				String stock =  rs.getString("Stock");
 				
-				arrOB.add(new SmallOrderBean(productNum,quantity,productName,productPrice, thumbnail));
+				arrOB.add(new SmallOrderBean(productNum,quantity,productName,productPrice, thumbnail,stock));
 			}
 
 			request.setAttribute("order", arrOB);

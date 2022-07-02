@@ -1,22 +1,24 @@
 package com.jw.DbUtil;
 
 public class SmallOrderBean {
-	String productNum;
-	int quantity;
-	String productName;
-	String productPrice;
-	String thumbnail;
+	private String productNum;
+	private int quantity;
+	private String productName;
+	private String productPrice;
+	private String thumbnail;
+	private String stock;
 	public SmallOrderBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public SmallOrderBean(String productNum, int quantity, String productName, String productPrice, String thumbnail) {
+	public SmallOrderBean(String productNum, int quantity, String productName, String productPrice, String thumbnail, String stock) {
 		super();
 		this.productNum = productNum;
 		this.quantity = quantity;
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.thumbnail = thumbnail;
+		this.stock = stock;
 	}
 	public String getProductNum() {
 		return productNum;
@@ -48,4 +50,12 @@ public class SmallOrderBean {
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
 	}
+	public String getStock() {
+		return stock;
+	}
+	public void setStock(String stock) {
+		this.stock = stock;
+	}
+	
+	
 }

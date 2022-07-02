@@ -14,8 +14,7 @@
 	<div>
 		<h1 style="text-align: left;">주문/결제</h1>
 	</div>
-	<c:forEach var="order" items = "${arrOrder}">
-		
+	<c:forEach var="order" items = "${arrOrder}">	
 	  <h1>주문번호 ${order.num }</h1><br>
 	  주문자ID ${order.userId }<br>
 	  주문물품 번호 ${order.productNum }<br>

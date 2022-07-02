@@ -148,7 +148,7 @@ html {
 </style>
 <script type="text/javascript" src="jsp/sm/jquery.js"></script>
 </head>
-<body   class = "loginBody">
+<body  >
 
 <script type="text/javascript">
 $(function() {

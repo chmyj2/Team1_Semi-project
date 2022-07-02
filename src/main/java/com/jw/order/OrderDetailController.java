@@ -14,6 +14,12 @@ import com.sm.hc.AccountDAO;
 public class OrderDetailController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if (!AccountDAO.loginCheck2(request)) {//회원
+			AccountDAO.loginCheck(request);
+			request.setAttribute("contentPage", "jsp/sm/login.jsp");
+			request.getRequestDispatcher("index.jsp").forward(request, response);		
+		}
 		AccountDAO.loginCheck(request);
 		OrderDBManager.getAllOrder(request);
 		System.out.println("불내버릴꺼야");

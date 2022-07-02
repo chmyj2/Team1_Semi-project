@@ -1,2 +1,2 @@
 insert into cartTbl values ('C41','yorunohosi','P81','3','2022-06-30 18:18:00');
-insert into cartTbl values ('C61','yorunohosi','P61','4','2022-07-01 12:49:49');
+insert into cartTbl values ('C61','yorunohosi','P61','5','2022-07-01 12:49:49');

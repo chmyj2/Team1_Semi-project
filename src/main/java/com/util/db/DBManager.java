@@ -16,9 +16,19 @@ public class DBManager {
 		// DB �۾� �ÿ��� ��·�� ���� �ؾߵ�
 		public static Connection connect() throws SQLException, ClassNotFoundException {		
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url="jdbc:oracle:thin:@localhost:1521:xe";
-			return DriverManager.getConnection(url, "sm", "sm");
+			String id =null;
+			String pw =null;
 			
+			
+			
+			
+				id="C##jw";
+				pw="jw1234";
+			
+			
+			
+			return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", id, pw);
+
 			
 			
 		}
@@ -47,22 +57,10 @@ public class DBManager {
 		
 		
 		
-		if(who.equals("jw"))
-		{
+		
 			id="C##jw";
 			pw="jw1234";
-		}
-		else if(who.equals("sm"))
-		{
-			id="sm";
-			pw="sm";
-		}
-		else if(who.equals("yj"))
-		{
-			
-			String url ="jdbc:oracle:thin:@db202204301707_medium?TNS_ADMIN=/Users/choeyongjun/Wallet_DB202204301707";
-	        return DriverManager.getConnection(url, "CYJ", "YJ802soldesk");
-		}
+		
 		
 		
 		return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", id, pw);
@@ -73,8 +71,18 @@ public class DBManager {
 		try {
 			if(rs!=null)
 			rs.close();
+			if(pstmt != null)
 			pstmt.close();
 			con.close();	
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	public static void ClosePstmt(PreparedStatement pstmt)
+	{
+		try {
+			if(pstmt != null)
+			pstmt.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

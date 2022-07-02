@@ -18,8 +18,17 @@ function goCartView()
 		location.href = "CartViewController";
 }
 
-function quantityChange(quantity, price)
+var prevStock = 0;
+function quantityChange(quantity, price,stock)
 {
+	if( quantity.value>stock)
+	{
+		quantity.value = stock;
+		alert("재고보다 많은 수량은 구매 불가능합니다");
+		return false;
+	}
+	
+	
 	document.getElementById("totalPrice").innerHTML= quantity.value*price;
 }
 

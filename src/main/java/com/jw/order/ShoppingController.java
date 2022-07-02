@@ -17,9 +17,7 @@ public class ShoppingController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountDAO.loginCheck(request);
 		
-		DBExportManager.DBReader("C:\\LJW\\TeamProject\\TeamProjectC\\","OrderTbl",14);
-		DBExportManager.DBReader("C:\\LJW\\TeamProject\\TeamProjectC\\","cartTbl",5);
-		
+		 
 		ProductDBManager.getAllProduct(request);
 		request.setAttribute("contentPage", "jsp/jw/shop.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);

@@ -85,8 +85,9 @@
 			<div style = "font-size:14pt; float: left; width:50%; height:40px;">${ors.productName }</div>
 			<div style = "float: left; width:40%; height:40px;">수량 ${ors.quantity }개 / 배송비 3500원</div>
 			<div style = "float: lef	t; width:10%; height:40px;"></div>
-			<input type = "hidden" name = "product" value = "${ors.productNum },${ors.quantity },${ors.productPrice}">
+			<input type = "hidden" name = "product" value = "${ors.productNum },${ors.quantity },${ors.productPrice },${ors.stock}">
 			<input type = "hidden" class ="${ors.productNum }" value = "${ors.productPrice}">
+			
 			<script type = "text/javascript">
 				totalPriceAdder(${ors.productPrice } * ${ors.quantity });
 			</script>

@@ -91,7 +91,12 @@ create table cartTbl
 	Cart_ProductQuantity 	Number(4) 		not null,
 	Cart_Date 				date 			not null
 );
-
+create table sellerTbl
+{
+	Num_PK varchar2(8 char) primary key,
+	userID	varchar2(16 char) not null,
+	stats	varchar2(16 char) not null
+}
 create table DiscountInfoTbl
 (
 	Discount_Code 		varchar2(20 char),

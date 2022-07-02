@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>  
 <script type="text/javascript" src="jsp/jw/PopTagAdder.js" ></script>
-
 </head>
 <body>
 
