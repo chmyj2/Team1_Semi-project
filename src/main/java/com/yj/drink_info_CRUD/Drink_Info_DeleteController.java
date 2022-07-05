@@ -7,15 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sm.hc.AccountDAO;
+
 
 @WebServlet("/Drink_Info_DeleteController")
 public class Drink_Info_DeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//삭제하는 일
-		DrinkDAO.delete_drink_info(request);
 		
-		DrinkDAO.Get_All_drink_Info(request);
-		
+		AccountDAO.loginCheck(request);
+		DrinkDAO m = DrinkDAO.getDdao();
+		m.delete_drink_info(request);
+		m.Get_All_drink_Info(request);
+		m.paging(1, request);
 		
 		request.setAttribute("contentPage", "jsp/yj/drink_Info_reg.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);

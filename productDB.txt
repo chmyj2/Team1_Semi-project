@@ -1,0 +1,4 @@
+insert into productTbl values ('P81','A220','잭다니엘','50000','0','특유의 맛이 진한 테네시 위스키 잭다니엘
+초심자 추천 안함','Jack Daniels1.jpg','null','null','null','#위스키 #테네시','Y','Y','500');
+insert into productTbl values ('P41','A218','JimBeam','25000','0','짐빔 싸고 맛있다!','Jim Beam14.jpeg','26.jpg','3.png','null','#위스키 #짐빔','Y','Y','50');
+insert into productTbl values ('P61','A207','Ciroc','60000','0','우리의 메인','ciroc1.png','null','null','null','#보드카 #vodka','Y','Y','50');

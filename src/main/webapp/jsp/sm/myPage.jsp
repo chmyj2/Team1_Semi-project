@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/login.css">
 </head>
-<body>
-
-<div>
-	<form action="MyPageController" class="login">
+<body  class = "loginBody">
+ <div>
+	<form action="HC" class="login">
 		<h2>My Page</h2><br><br>
 		<p style="font-size: 6px; text-align: left;">아이디</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_id }</p><br>
@@ -32,9 +32,9 @@
 		<p style="font-size: 6px; text-align: left;">나이</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_age }</p><br>
 							
-  		<br><button>수정하기</button>
+  		<br><button>홈으로 돌아가기</button>
 	</form>
-</div>
+</div> 
 
 
 

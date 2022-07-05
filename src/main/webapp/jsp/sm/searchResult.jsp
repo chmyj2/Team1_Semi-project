@@ -7,35 +7,32 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/login.css">
 </head>
-<body>
-
+<body class = "loginBody">
 <form class="login" style="height:500px; width:1000px;">
 <table id="tbl_board_title">
 	<tr style="font-weight: 1000;">
-		<td class="board_td_title">자유게시판 검색 결과&emsp;&emsp;</td>
-		<td class="board_td_title"><a href="FreeRegC">글쓰기&emsp;&emsp;</a></td>
-		<td style="width: 400px"></td>
-		<td><select class="form-control" name="searchField">
-				<option value="board_title">제목</option>
-				<option value="board_txt">내용</option>
-				<option value="user_id">작성자</option>
-			</select></td>
-		<td><input type="text" class="form-control"
-			placeholder="검색어 입력" name="searchText" maxlength="10"></td>
-		<td><button type="submit" class="btn btn-success">검색</button></td>
-
+		<td colspan="4" style="text-align: left; font-size: 25pt;">OUR SPACE</td>
+	</tr>
+	<tr style="font-weight: 1000;">
+		<td colspan="3" class="board_td_title">검색 결과</td>
+		<td style="width: 790px;"></td>
+		<td class="board_td_title" colspan="3" style="text-align: right;"><a href="boardCfree">목록으로</a></td>
+		
 </table><hr><br><br>
 
-<table>
+<table id="result_list">
 <c:forEach var="p" items="${posts }">
 
 
 	<tr class="f_tr1">
 		<td class="f_td1" style="width:5%;">${p.board_num }</td>
-		<td class="f_td1" style="width:30%; text-align: center;" onclick="location.href='boardFreeDetailC?No=${p.board_num }'">${p.board_title }</td>
+		<td class="f_td1" style="width:30%; text-align: center;" 
+		onclick="location.href='boardFreeDetailC?boardNum=${p.board_num }'">${p.board_title }</td>
 		<td class="f_td1">${p.user_id }</td>
-		<td class="f_td1"><fmt:formatDate value="${p.board_date }" type="both" dateStyle="short" timeStyle="short"/></td>
+		<td class="f_td1"><fmt:formatDate value="${p.board_date }" 
+		type="both" dateStyle="short" timeStyle="short"/></td>
 	</tr>
 </c:forEach>
 </table>

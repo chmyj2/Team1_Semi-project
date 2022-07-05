@@ -1,0 +1,3 @@
+
+
+var totalPrice = 0;

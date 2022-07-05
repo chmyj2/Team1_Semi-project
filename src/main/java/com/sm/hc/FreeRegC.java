@@ -23,21 +23,20 @@ public class FreeRegC extends HttpServlet {
 			request.getRequestDispatcher("index.jsp").forward(request, response);	
 		}
 		
-		//글 등록하는 페이지
-//		AccountDAO.loginCheck(request);
-//		request.setAttribute("contentPage", "jsp/sm/free_board_reg.jsp");
-//		request.getRequestDispatcher("index.jsp").forward(request, response);
-		
 	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		AccountDAO.loginCheck(request);
+		
 		//글 등록하는 일
 		AccountDAO.regFree(request);
 		
 		//글 모두 보여줌
 		AccountDAO.getAllFree(request);
+		AccountDAO.paging(1, request);
+		//AccountDAO.getAllFree(request);
 		
 		//다 보여주고 나면 여기로
 		request.setAttribute("contentPage", "jsp/sm/boardFree.jsp");

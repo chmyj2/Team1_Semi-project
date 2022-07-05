@@ -9,12 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jw.DbUtil.CartDBManager;
 import com.jw.DbUtil.CategoryDBManager;
+import com.sm.hc.AccountDAO;
 
 @WebServlet("/CategoryController")
 public class CategoryController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CategoryDBManager.printAllTag();
+		AccountDAO.loginCheck(request);
+		//CategoryDBManager.printAllTag();
 		CategoryDBManager.getAllTag(request);
 		request.getRequestDispatcher("jsp/jw/PopTagAdder.jsp").forward(request, response);
 	}

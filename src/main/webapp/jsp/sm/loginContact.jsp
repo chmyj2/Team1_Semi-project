@@ -5,8 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/login.css">
+
 </head>
-<body>
+<body class = "loginBody">
 
 <div>
 	<form action="MyPageController" method="post" class="login" style="height:230px;">

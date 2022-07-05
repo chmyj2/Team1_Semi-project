@@ -18,6 +18,7 @@ public class boardFreeDetailC extends HttpServlet {
 		//클릭한 게시글 정보 얻기
 		AccountDAO.loginCheck(request);
 		AccountDAO.getPost(request);
+		AccountDAO.getComment(request);
 		
 		//정보 얻고 여기로
 		request.setAttribute("contentPage", "jsp/sm/free_board_detail.jsp");

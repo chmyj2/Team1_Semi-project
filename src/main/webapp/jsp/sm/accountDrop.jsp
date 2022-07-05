@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/login.css">
 </head>
-<body>
-
+<body class = "loginBody">
 <div>
 	<form class="login">
 		<h2>탈퇴 되었습니다.</h2>

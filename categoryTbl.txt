@@ -1,0 +1,14 @@
+insert into categoryTbl values ('A1','0','Drinks','1');
+insert into categoryTbl values ('A2','0','Goods','1');
+insert into categoryTbl values ('A102','A2','Shaker','2');
+insert into categoryTbl values ('A208','A1','RUM','2');
+insert into categoryTbl values ('A217','A215','Scotch Whisky','3');
+insert into categoryTbl values ('A207','A1','Vodka','2');
+insert into categoryTbl values ('A210','A1','Liqueur','2');
+insert into categoryTbl values ('A211','A1','Wine','2');
+insert into categoryTbl values ('A212','A1','Beer','2');
+insert into categoryTbl values ('A213','A1','Others','2');
+insert into categoryTbl values ('A220','A215','Tennessee','3');
+insert into categoryTbl values ('A215','A1','Whisky','2');
+insert into categoryTbl values ('A218','A215','Bourbon Whiskey','3');
+insert into categoryTbl values ('A209','A1','Gin','2');

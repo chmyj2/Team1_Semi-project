@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jw.DbUtil.CategoryDBManager;
+import com.sm.hc.AccountDAO;
 
 @WebServlet("/tagDeleteController")
 public class tagDeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		AccountDAO.loginCheck(request);
 		CategoryDBManager.deleteTag(request);
 		response.sendRedirect("CategoryController");
 	}

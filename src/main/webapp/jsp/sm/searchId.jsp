@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/login.css">
 </head>
-<body>
-
+<body class = "loginBody" >
 <div>
 	<form action="searchIdC" method="post" class="login" style="height:330px;">
 		<h5>아이디 찾기</h5>

@@ -1,7 +1,5 @@
-body {
-  background-color: rgb(240, 242, 241);
-  font-family: "Asap", sans-serif;
-}
+
+
 
 .login {
   overflow: hidden;
@@ -55,7 +53,7 @@ body {
   font-family: "Asap", sans-serif;
   cursor: pointer;
   color: #fff;
-  font-size: 16px;
+  font-size: 13px;
   text-transform: uppercase;
   width: 100px;
   border: 0;
@@ -79,7 +77,7 @@ body {
 
 
 
-/*µå·Ó´Ù¿î*/
+/*ï¿½ï¿½Ó´Ù¿ï¿½*/
 
 
 .dropdown{
@@ -90,7 +88,7 @@ body {
 .dropdown-content{
   display : none;
   position : absolute;
-  z-index : 3; /*´Ù¸¥ ¿ä¼Òµéº¸´Ù ¾Õ¿¡ ¹èÄ¡*/
+  z-index : 3; /*ï¿½Ù¸ï¿½ ï¿½ï¿½Òµéº¸ï¿½ï¿½ ï¿½Õ¿ï¿½ ï¿½ï¿½Ä¡*/
   border : 1px solid rgb(37, 37, 37);
   border-radius : 4px;
   background-color: #f5f5f5;
@@ -98,7 +96,7 @@ body {
   color : rgb(37, 37, 37);
   padding : 12px;
   width :150px;
-  height: 150px;
+  height: 190px;
   text-align: center;
   cursor : pointer;
   font-size : 15px;
@@ -125,7 +123,7 @@ a:visited { color:gray; }
 
 
 
-/* °Ô½ÃÆÇ css */
+/* ï¿½Ô½ï¿½ï¿½ï¿½ css */
 
 #tbl_board_list{
 	border : white solid 1px;
@@ -135,23 +133,28 @@ a:visited { color:gray; }
     border: none;
 }
 
+#result_list{
+	border-collapse: collapse;
+    border: none;
+}
+
 .f_tr1{
 	border-collapse: collapse;
     border: none;
 }
 
-.f_tr1:hover {
+.f_tr1:hover,.f_td1:hover  {
+	border:none;
 	background-color: #f4f4f4;
 	cursor: pointer;	
+	font-weight:600;
+	
 }
 
 .f_td1{
 	text-align: left;
-	font-size:10pt;
+	font-size:13pt;
 	width: 10%;
 }
 
-.f_td1:hover{
-	font-weight:600;
-}
 

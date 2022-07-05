@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="css/board.css">
 </head>
-<body>
-
+<body class = "loginBody">
 <div>
 	<form class="login">
 		<h2>회원 탈퇴 안내</h2><br><br>
@@ -22,9 +22,11 @@
 	<label for="agree">
 		<input type="checkbox" id="agree" name="agree" onchange="aaa()">
 		안내 사항을 모두 확인하였으며, 이에 동의합니다.
-	</label><br><br>		
+	</label><br><br>
   		<button type="button" id="checkButton" name="checkButton" disabled="disabled"
-  		 style="font-size: 10pt;" onclick="location.href='AccountDropController2'">회원 탈퇴</button>	
+  		 style="font-size: 10pt; height: 30px; width: 100px; border-radius: 5px;
+  		 border: 1px solid gray; margin-left: 120px;"
+  		 onclick="location.href='AccountDropController2'">회원 탈퇴</button>	
 	</form>
 </div>
 

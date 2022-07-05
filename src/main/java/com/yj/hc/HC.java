@@ -8,15 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sm.hc.AccountDAO;
+import com.yj.drink_info_CRUD.DrinkDAO;
 
 @WebServlet("/HC")
 public class HC extends HttpServlet {
+	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		AccountDAO.loginCheck(request);
+		
 		request.setAttribute("contentPage", "home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
-//	주석
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}

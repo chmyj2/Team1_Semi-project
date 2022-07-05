@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+
+
+.productTitle
+{
+	font-size : 24px;	
+}
+
+.productStockDiv
+{
+	margin-top : 5px;
+	margin-bottom : 20px;
+}
+.productContent
+{
+	font-size : 18px;
+	height : 150px;	
+}
+.priceDiv
+{
+	margin-top:40px;
+	
+	height : 80px;
+	font-size : 18px;	
+	
+}
+
+.shopDetailButton
+{
+	padding: 0 8px;
+	
+	display:inline-block;
+	width : 150px;
+	height: 50px;
+	border : 1px solid transparent;
+	color : white;
+
+	line-height: 51px;	
+	background-color: #212492;
+	cursor : pointer;
+	
+	touch-action : manipulation;
+	text-align: center;
+		
+	font-weight:600;
+	font-size: 1vw;
+	
+	font-family: DiageoAGRegularCnd;
+}

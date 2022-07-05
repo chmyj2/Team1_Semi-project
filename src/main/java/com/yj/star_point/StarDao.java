@@ -10,8 +10,8 @@ import org.apache.jasper.tagplugins.jstl.core.If;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.yj.drink_info_CRUD.DBManager;
 import com.yj.drink_info_CRUD.Drink;
+import com.util.db.DBManager;
 
 public class StarDao {
 
@@ -22,27 +22,15 @@ public class StarDao {
 		PreparedStatement pstmt = null;
 		
 		try {
-		con = DBManager.connect();
+		con = DBManager.connnect("yj");
 		String sql = "insert into star_point_tbl values(star_point_tbl_seq.nextval,?,?,?)";
 		pstmt = con.prepareStatement(sql);
-		
-		
 		
 		
 		String cocktail_num = request.getParameter("num");
 		String userId = request.getParameter("user_id");
 		int rating = Integer.parseInt(request.getParameter("rating"));
 
-								
-			
-
-			System.out.println(cocktail_num);			
-			System.out.println(userId);
-			System.out.println(rating);
-			
-			
-			
-			
 			
 			
 			pstmt.setString(1, cocktail_num);
@@ -52,10 +40,8 @@ public class StarDao {
 			
 			
 			
-			
-			
 			if(pstmt.executeUpdate() == 1){
-				System.out.println("등록 성공");
+				System.out.println("��� ����");
 			}
 			
 			
@@ -63,7 +49,7 @@ public class StarDao {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				DBManager.close(con, pstmt, null);
+				DBManager.Close(con, pstmt, null);
 			}
 			
 		
@@ -78,7 +64,7 @@ public class StarDao {
 
 		try {			
 			String sql = "SELECT AVG(score) FROM star_point_tbl where product_num = ?";
-			con = DBManager.connect();
+			con = DBManager.connnect("yj");
 			pstmt = con.prepareStatement(sql);
 			
 			String num = request.getParameter("num");
@@ -94,18 +80,17 @@ public class StarDao {
 				
 				if(rs.getDouble("AVG(SCORE)") < 0.5){
 					
-					request.setAttribute("star","평점 없음" );
-					
+					request.setAttribute("star","�١١١١�" );
 				} else if (rs.getDouble("AVG(SCORE)") >= 0.5 && rs.getDouble("AVG(SCORE)") < 1.5) {
-					request.setAttribute("star","★" );
+					request.setAttribute("star","�ڡ١١١�" );
 				}	else if (rs.getDouble("AVG(SCORE)") >= 1.5 && rs.getDouble("AVG(SCORE)") < 2.5) {
-					request.setAttribute("star","★★" );
+					request.setAttribute("star","�ڡڡ١١�" );
 				}	else if (rs.getDouble("AVG(SCORE)") >= 2.5 && rs.getDouble("AVG(SCORE)") < 3.5) {
-					request.setAttribute("star","★★★" );
+					request.setAttribute("star","�ڡڡڡ١�" );
 				}	else if (rs.getDouble("AVG(SCORE)") >= 3.5 && rs.getDouble("AVG(SCORE)") < 4.5) {
-					request.setAttribute("star","★★★★" );
+					request.setAttribute("star","�ڡڡڡڡ�" );
 				}	else if (rs.getDouble("AVG(SCORE)") >= 4.5) {
-					request.setAttribute("star","★★★★★" );
+					request.setAttribute("star","�ڡڡڡڡ�" );
 				}
 				
 				
@@ -126,7 +111,7 @@ public class StarDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			DBManager.close(con, pstmt, rs);
+			DBManager.Close(con, pstmt, rs);
 		}
 		
 	}
