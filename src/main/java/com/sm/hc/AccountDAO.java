@@ -276,7 +276,7 @@ public class AccountDAO {
 		PreparedStatement pstmt = null; //실행 도구
 		String sql = "update user_info_tbl set user_pw=?, user_addr=?, user_phoneNumber=? where user_id=?";
 
-		try {
+		try { 
 			request.setCharacterEncoding("utf-8");
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
@@ -285,10 +285,29 @@ public class AccountDAO {
 			String pw3 = request.getParameter("pw3");
 			String addr = request.getParameter("addr");
 			String phoneNum = request.getParameter("phoneNum");
-
+			
+			if(pw3.equals(""))
+			{
+				pw3 = request.getParameter("prevPw");
+			}
+			if(addr.equals(""))
+			{
+				addr = request.getParameter("prevAddr");
+			}
+			if(phoneNum.equals(""))
+			{
+				phoneNum = request.getParameter("prevNum");
+			}
+			System.out.println("확인");
+			System.out.println(pw3);
+			System.out.println(addr);
+			System.out.println(phoneNum);
+			System.out.println("확인");
 			// 세션 쓰던가 넘겨 주던가
 			Account a = (Account)request.getSession().getAttribute("accountInfo");
 			String id = a.getUser_id();			
+			
+			
 			
 			//값 입력받기
 			pstmt.setString(1, pw3);
@@ -501,7 +520,7 @@ public class AccountDAO {
 			}
 						
 			} catch (Exception e) {
-				e.printStackTrace();
+				System.out.println(e);
 				request.setAttribute("r", "서버 오류...");
 			} finally {
 				DBManager.close(con, pstmt, null);
@@ -810,6 +829,7 @@ public class AccountDAO {
 			
 			System.out.println(boardNum);
 			System.out.println(commentTxt);
+			System.out.println(id);
 			
 			pstmt.setString(1, boardNum);
 			pstmt.setString(2, id);

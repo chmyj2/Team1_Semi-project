@@ -88,9 +88,20 @@
 			<input type = "hidden" name = "product" value = "${ors.productNum },${ors.quantity },${ors.productPrice },${ors.stock}">
 			<input type = "hidden" class ="${ors.productNum }" value = "${ors.productPrice}">
 			
+			
+			<c:if test="${empty sessionScope.accountInfo.user_id}">
 			<script type = "text/javascript">
 				totalPriceAdder(${ors.productPrice } * ${ors.quantity });
 			</script>
+			</c:if>
+			<c:if test="${not empty sessionScope.accountInfo.user_id}">
+			<script type = "text/javascript">
+				totalPriceAdder(${ors.productPrice *0.95} * ${ors.quantity });
+			</script>
+			</c:if>
+			
+			
+			
 		</c:forEach>
 	</div>
 	<div>

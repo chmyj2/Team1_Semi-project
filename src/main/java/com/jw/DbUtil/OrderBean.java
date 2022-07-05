@@ -4,6 +4,7 @@ public class OrderBean {
 	private String num;
 	private String userId;
 	private String productNum;
+	private String productName;
 	private int productQuantity;
 	private String reciever;
 	private String inputDate;
@@ -22,13 +23,16 @@ public class OrderBean {
 	}
 
 
-	public OrderBean(String num, String userId, String productNum, int productQuantity, String reciever,
-			String inputDate, String state, String address, String paymentState, int productPrice, int deliveryPrice,
-			int totalPrice) {
+
+
+	public OrderBean(String num, String userId, String productNum, String productName, int productQuantity,
+			String reciever, String inputDate, String state, String address, String paymentState, int productPrice,
+			String deliveryState, int deliveryPrice, int totalPrice) {
 		super();
 		this.num = num;
 		this.userId = userId;
 		this.productNum = productNum;
+		this.productName = productName;
 		this.productQuantity = productQuantity;
 		this.reciever = reciever;
 		this.inputDate = inputDate;
@@ -36,9 +40,27 @@ public class OrderBean {
 		this.address = address;
 		this.paymentState = paymentState;
 		this.productPrice = productPrice;
+		this.deliveryState = deliveryState;
 		this.deliveryPrice = deliveryPrice;
 		this.totalPrice = totalPrice;
 	}
+
+
+
+
+	public String getProductName() {
+		return productName;
+	}
+
+
+
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+
+
 
 	public String getDeliveryState() {
 		return deliveryState;

@@ -1,8 +1,5 @@
 @charset "UTF-8";
 
-
-
-
 .regPageCategoryDiv
 {
 	text-align: left;
@@ -17,7 +14,30 @@
 	background-color: rgb(240, 242, 241);
 }
 
+.exShopButtonDiv
+{
 
+	text-align:center; 
+	width: 100%;
+	height :70px;
+	
+}
+
+.drinkImg
+{
+	width:180px; 
+	height:210px; 
+	border: 10px solid #fff;
+	box-shadow: 0 0 15px 10px rgb(0 0 0 / 5%);	
+}
+.shopContentsDiv
+{
+	width : 70%;
+	margin: 0 auto;
+	padding-top: 30px;
+	background-color: white;
+	
+}
 .categoryTitleDiv
 {
 	background-color: #212492;
@@ -40,6 +60,7 @@
 {
 	margin-top : 20px;
 	margin-left : 20px;
+	margin-bottom : 30px;
 	
 }
 
@@ -67,14 +88,65 @@
 	
 	font-family: DiageoAGRegularCnd;
 }
+.shopButton2
+{
+	padding: 0 16px;
+	
+	display:inline-block;
+	width : 150px;
+	height: 50px;
+	border : 1px solid transparent;
+	color : white;
 
+	line-height: 51px;	
+	background-color: #212492;
+	cursor : pointer;
+	
+	touch-action : manipulation;
+	text-align: center;
+		
+	font-weight:400;
+	font-size: 1.2vw;
+	
+	font-family: DiageoAGRegularCnd;
+}
+.shopButton3
+{
+	padding: 0 16px;
+	
+	display:inline-block;
+	width : 150px;
+	height: 50px;
+	border : 1px solid transparent;
+	color : white;
 
+	line-height: 51px;	
+	background-color: #8080ff;
+	cursor : pointer;
+	
+	touch-action : manipulation;
+	text-align: center;
+		
+	font-weight:400;
+	font-size: 1.2vw;
+	
+	font-family: DiageoAGRegularCnd;
+}
+
+.conetentList
+{
+	margin : 0 30px;
+	width:200px; 
+	height:280px; 
+	float:left;
+}
 
 .priceSettingDiv
 {
 	margin-left: 20px;
 	margin-top: 20px;
 }
+
 .shoButton-Gray
 {
 	background-color: gray;
@@ -138,7 +210,6 @@
 	margin-left : 25px;
 	margin-right: 0px;
 	height : 500px;
-		
 }
 
 .imgExpDiv

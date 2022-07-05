@@ -152,7 +152,6 @@ public class CategoryDBManager {
 					}
 				}
 			}
-			
 			request.setAttribute("categories", arrCategory);
 		
 		}catch (Exception e) {

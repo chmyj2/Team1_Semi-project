@@ -52,7 +52,8 @@ public class ProductDBManager {
 		
 		try
 		{
-			String sql = "select * from productTbl where Num_PK = ?";
+			String sql= "select * from productTbl, categoryTbl where productTbl.CategorytNum = categoryTbl.Num_PK and productTbl.Num_PK = ?";
+			//String sql = "select * from productTbl where Num_PK = ?";
 			con = DBManager.connnect("jw");
 			pstmt = con.prepareStatement(sql);
 			
@@ -60,7 +61,9 @@ public class ProductDBManager {
 			rs = pstmt.executeQuery();
 			if(rs.next())
 			{
-				request.setAttribute("product", ProductBeanSet(rs));	
+				ProductBean pb = ProductBeanSet(rs);
+				pb.setCategoryNum(rs.getString(17));
+				request.setAttribute("product", pb);
 			}
 		}catch (Exception e) {
 			System.out.println(e);
@@ -77,7 +80,7 @@ public class ProductDBManager {
 		ResultSet rs = null;
 		try
 		{
-			String sql = "select * from productTbl";
+			String sql = "select * from productTbl where OnSale = 'Y' and OnExhibition = 'Y'";
 			con = DBManager.connnect("jw");
 			pstmt = con.prepareStatement(sql);
 			
@@ -106,9 +109,9 @@ public class ProductDBManager {
 		pb.setVat(rs.getInt("VAT"));
 		pb.setContent(rs.getString("Contents"));
 		pb.setThumbnail(rs.getString("Thumbnail"));
-		pb.setImg1("Img1");
-		pb.setImg2("Img2");
-		pb.setImg3("Img3");
+		pb.setImg1(rs.getString("Img1"));
+		pb.setImg2(rs.getString("Img2"));
+		pb.setImg3(rs.getString("Img3"));
 		ArrayList<String> arrTemp = new ArrayList<String>();
 		String[] arrStrTemp = rs.getString("Tag").split("#");
 

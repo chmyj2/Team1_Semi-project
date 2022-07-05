@@ -27,6 +27,7 @@ public class OrderDBManager {
 		for (String str: nums) {
 			String[] tempStr = null;
 			tempStr  = str.split(",");
+			
 			mapStr.put(tempStr[0], Integer.parseInt(tempStr[1]));
 		}
 		
@@ -89,14 +90,19 @@ public class OrderDBManager {
 	public static void regOrder(HttpServletRequest request)
 	{
 		Connection con = null;
+		
+		
+		PreparedStatement stockCheckPstmt = null;
 		PreparedStatement orderPstmt = null;
 		PreparedStatement stockPstmt = null;
 		PreparedStatement cartPstmt = null;
+		
+		ResultSet rs = null;
 		String orderSql = "insert into OrderTbl values (Order_Number_Seq.nextval"
 				+ ",?,?,?,?,?,sysdate,?,?,?,?,?,?,?)";
 		String 	stockSql = "update productTbl set Stock = ?  where Num_PK = ?";
 		String cartSql = "delete cartTbl where Cart_Product_Num = ?";
-
+		String stockCheckSql = "select * from productTbl where Num_PK = ?";
 		
 		try {
 
@@ -111,8 +117,24 @@ public class OrderDBManager {
 				orderPstmt = con.prepareStatement(orderSql);
 				stockPstmt = con.prepareStatement(stockSql);
 				cartPstmt = con.prepareStatement(cartSql);
-
+				stockCheckPstmt = con.prepareStatement(stockCheckSql);
+			
+				
 			String[] splitPd = pd.split(",");
+			stockCheckPstmt.setString(1, splitPd[0]);
+			
+			rs = stockCheckPstmt.executeQuery();
+			int productStock = 0;
+			if(rs.next())
+			{
+				productStock = rs.getInt("Stock");
+				System.out.println(productStock);
+			}
+			if(productStock <Integer.parseInt(splitPd[1]))
+			{
+				throw new Exception("선택하신 분의 재고가 없습니다");
+	 		}
+			
 			setPstmt(orderPstmt,request,splitPd);
 			if(orderPstmt.executeUpdate()==1) {
 				System.out.println("등록성공");	
@@ -120,11 +142,13 @@ public class OrderDBManager {
 			
 			
 				
-			stockPstmt.setInt(1, Integer.parseInt(splitPd[3])-Integer.parseInt(splitPd[1]));
+			stockPstmt.setInt(1, productStock -Integer.parseInt(splitPd[1]));
 			stockPstmt.setString(2, splitPd[0]);
 			System.out.println("재고변경 시도"+splitPd[0]);
 			if(stockPstmt.executeUpdate()==1) {
 				System.out.println("변경완료"+splitPd[0]);
+				con.commit();	
+				System.out.println("커밋");
 			}
 				
 			cartPstmt.setString(1, splitPd[0]);
@@ -132,7 +156,6 @@ public class OrderDBManager {
 			if(cartPstmt.executeUpdate()==1) {
 				System.out.println("삭제완료"+splitPd[0]);
 			}
-			System.out.println("이러면 커밋이 됬다는건디?");
 		}
 			con.commit();	
 			con.setAutoCommit(true);
@@ -220,15 +243,43 @@ public class OrderDBManager {
 		}
 	}
 
-
-	public static void getAllOrder(HttpServletRequest request) {
+	public static void updateCancelRequest(HttpServletRequest request)
+	{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		
+		try
+		{
+			String sql = "update orderTbl set Order_State ='취소요청' where Order_Num = ?";
+			con = DBManager.connnect("jw");
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, request.getParameter("num"));
+			
+			
+			if(pstmt.executeUpdate()==1) {
+				System.out.println("삭제요청 성공");
+				request.setAttribute("result", "삭제요청 성공");
+			}
+			
+			
+		}catch (Exception e) {
+			System.out.println(e);
+		}finally {
+			
+		}
+		
+	}
+	public static void getAllOrderUseId(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try
 		{
-			String sql = "select * from OrderTbl where Order_UserId = ?";
+			
+			String sql = "select OrderTbl.*,productTbl.name  from OrderTbl,productTbl where OrderTbl.Order_ProductNumber=productTbl.Num_Pk and Order_UserId = ?";
 			con = DBManager.connnect("jw");
 			pstmt = con.prepareStatement(sql);
 		
@@ -247,9 +298,7 @@ public class OrderDBManager {
 		}
 		finally {
 			DBManager.Close(con, pstmt, rs);
-		}
-		
-		
+		}		
 	}
 
 
@@ -270,7 +319,118 @@ public class OrderDBManager {
 		ob.setProductPrice(rs.getInt("Order_ProductPrice"));
 		ob.setDeliveryPrice(rs.getInt("Order_DeliveryPrice"));
 		ob.setTotalPrice(rs.getInt("Order_TotalPrice"));
+		ob.setProductName(rs.getString("Name"));
 		return ob;
 	}
-	
+
+
+	public static void getAllOrder(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try
+		{
+			String sql = "select OrderTbl.*,productTbl.name from OrderTbl,productTbl where OrderTbl.Order_ProductNumber=productTbl.Num_Pk";
+			con = DBManager.connnect("jw");
+			pstmt = con.prepareStatement(sql);
+		
+			rs = pstmt.executeQuery();
+		
+			System.out.println(jwDBManager.getUserID(request));
+			ArrayList<OrderBean> arrOb = new ArrayList<OrderBean>();
+			while(rs.next())
+			{
+				arrOb.add(setOrderBean(rs));
+			}
+			request.setAttribute("arrOrder", arrOb);
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		finally {
+			DBManager.Close(con, pstmt, rs);
+		}	
+	}
+
+
+	public static void orderCancel(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement stockCheckPstmt = null;
+		PreparedStatement stockPstmt = null;
+		ResultSet rs = null;
+		String stockCheckSql = "select Stock from productTbl where Num_PK = ?";
+		String stockSql = "update productTbl set Stock = ?  where Num_PK = ?";
+
+		try
+		{
+			String sql = "delete orderTbl where Order_Num IN (" ;
+			String[] orderNums = request.getParameterValues("orderNum");
+			
+			for(int i = 0 ; i < orderNums.length;i++){		
+				if(orderNums.length-1==i)
+				{
+					sql += "?)";	
+					break;
+				}
+				sql += "?,";
+			}
+			System.out.println(sql);
+			con = DBManager.connnect("jw");
+			pstmt = con.prepareStatement(sql);
+			stockCheckPstmt = con.prepareStatement(stockCheckSql);
+			stockPstmt = con.prepareStatement(stockSql);
+			pstmt = con.prepareStatement(sql);
+			con.setAutoCommit(false);
+
+			for(int i = 0 ; i < orderNums.length;i++){
+				stockCheckPstmt.setString(1, orderNums[i].split(",")[1]);
+				stockPstmt.setString(2, orderNums[i].split(",")[1]);
+				rs = stockCheckPstmt.executeQuery();
+				if(rs.next())
+				{		
+					int stock = rs.getInt(1)+Integer.parseInt(orderNums[i].split(",")[2]);
+					System.out.println(stock);
+					 stockPstmt.setInt(1,stock);
+					 System.out.println("조회성공");
+					 if(stockPstmt.executeUpdate()==1){
+						 System.out.println("성공");
+					 }
+				}
+				pstmt.setString(i+1, orderNums[i].split(",")[0]);
+			}
+			
+			
+			System.out.println(sql);
+
+			
+			if(pstmt.executeUpdate()==1) {
+				System.out.println("삭제성공");
+				request.setAttribute("result", "삭제성공");
+				con.commit();
+			}
+			
+			con.setAutoCommit(true);
+			return;
+		}catch (Exception e) {
+			if(con!=null)
+			{
+				try {
+					System.out.println("롤백시도");
+					con.rollback();
+					System.out.println("롤백성공");
+					
+				}catch (Exception exep) {
+					System.out.println("롤백실패");
+					System.out.println(exep);
+				}
+			}
+			System.out.println(e);
+			
+		}
+		finally {
+			DBManager.Close(con, pstmt, rs);
+			
+		}		
+	}
 }

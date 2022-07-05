@@ -246,7 +246,7 @@
 			<div class="yj_city">
 			<?xml version="1.0" encoding="utf-8"?>
 
-			<a href="http://localhost:8080/TeamProject/Drink_Info_DetailController?num=45"><img alt="" src="img/mojitos.webp" style="width: 300px;height: 250px">
+			<a href="http://localhost/TeamProject/Drink_Info_DetailController?num=45"><img alt="" src="img/mojitos.webp" style="width: 300px;height: 250px">
 			<ellipse class="st4" id="sh1" cx="170.5" cy ="124.75" rx="37.5" ry="37.5"/>
 			<ellipse id="XMLID_15_" class="st4" cx="170.5" cy="124.75" rx="27.5" ry="27.5"/>
 
@@ -286,7 +286,7 @@
 		<div class="yj_image" id="i1">
 			<div class="yj_city">
 			<?xml version="1.0" encoding="utf-8"?>
-			<a href="http://localhost:8080/TeamProject/Drink_Info_DetailController?num=50"><img alt="" src="img/old-fashioned-cocktail.webp" style="width: 300px;height: 250px">
+			<a href="http://localhost/TeamProject/Drink_Info_DetailController?num=50"><img alt="" src="img/old-fashioned-cocktail.webp" style="width: 300px;height: 250px">
 			<ellipse class="st5" id="sh3" cx="150.5" cy ="224.75" rx="77.5" ry="77.5"/>
 
 			<ellipse class="st5" id="sh2" cx="150.5" cy ="224.75" rx="57.5" ry="57.5"/>
@@ -336,7 +336,7 @@
 			<?xml version="1.0" encoding="utf-8"?>
 
 
-			<a href="http://localhost:8080/TeamProject/Drink_Info_DetailController?num=78"><img alt="" src="img/assorted-sangria-cocktails.webp" style="width: 300px;height: 250px">
+			<a href="http://localhost/TeamProject/Drink_Info_DetailController?num=78"><img alt="" src="img/assorted-sangria-cocktails.webp" style="width: 300px;height: 250px">
 			
 			<ellipse class="st5" id="sh3" cx="150.5" cy ="224.75" rx="77.5" ry="77.5"/>
 

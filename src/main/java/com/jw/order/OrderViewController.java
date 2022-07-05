@@ -22,7 +22,7 @@ public class OrderViewController extends HttpServlet {
 			request.getRequestDispatcher("index.jsp").forward(request, response);		
 		}
 		AccountDAO.loginCheck(request);
-		OrderDBManager.getAllOrder(request);
+		OrderDBManager.getAllOrderUseId(request);
 		request.setAttribute("contentPage", "jsp/jw/OrderView.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 		

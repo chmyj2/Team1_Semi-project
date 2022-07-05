@@ -43,6 +43,12 @@
 		<p style="font-size: 6px; text-align: left;">
 		<input type="text" name="phoneNum" placeholder="${sessionScope.accountInfo.user_phoneNumber }" maxlength="11"  style="width:150px; border: none; border-bottom: 2px solid gray;"></p><br>
 
+
+		<input type="hidden" name="prevPw" value = "${sessionScope.accountInfo.user_pw }"><br>
+		<input type ="hidden" name = "prevAddr" value = "${sessionScope.accountInfo.user_addr }">
+		<input type ="hidden" name = "prevNum" value = "${sessionScope.accountInfo.user_phoneNumber }">
+
+		
 		<p style="font-size: 6px; text-align: left;">나이</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_age }</p><br>
 							

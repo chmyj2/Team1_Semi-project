@@ -15,36 +15,32 @@
 	<div class = "regPageCategoryDiv" >
 	<div class = "categoryTitleDiv">CATEGORY</div>
 		<div class = "categoryButtonsDiv">
-				<a id = "categorySearch " class= "shopButton" onclick = "onSearchDiv()">CATEGORY SEARCH</a>
 				<a id = "categorySelect" class= "shopButton" onclick = "onSelectDiv()">CATEGORY SELECT</a>
 				<a class= "shopButton shoButton-Gray"  onclick="createPopup()">ADD CATEGORY</a>
 		</div>
 		
-		<div class = "cSearchDiv">
-			<input class = "categorySearchInput" placeholder = "카테고리명 입력">
-		</div>
+
 			<input id ="categoryInputId" name ="categoryNum" value="" type = "hidden">
 		
+
 		
-		
-		
-		
-		<div class = "cSelectDiv" style = "width : 95%; display : none;" >
+		<div class = "cSelectDiv" style = "width : 95%;" >
 			<input id = "CategoryNum"  type = "hidden" value = "">
-			<div style = "float: left; width : 30%; border: 1px solid gold;" >
+			<div style = "float: left; width : 30%; border: 1px solid gold;  margin-left : 30px;" >
 				<c:forEach var="category" items = "${categories}">	
 					<a style="cursor:pointer" onclick = "selectMainCategory('${category.num}')" >${category.name}</a>
 					<hr>
 				</c:forEach>
-			 </div>
+			 </div>	
 			 
 			 
-		<div class = "MCategoryDiv" style = "float: left; width : 30%; display:none" >
+		<div class = "MCategoryDiv" style = "float: left; width : 30%; margin-left:30px; display:none" >
 			<c:forEach var="category" items = "${categories}">	
-				<div class =${category.num }>
+				<div class =${category.num } >
 					<c:forEach var="childCategory" items = "${category.getChild()}">	
-						<a style="cursor:pointer" onclick = "selectMidCategory('${childCategory.num}')"> ${childCategory.name }</a>
-						<hr>	
+					
+		<a style="cursor:pointer" onclick = "selectMidCategory('${childCategory.num}')"> ${childCategory.name }</a>
+				<hr>	
 					</c:forEach>
 				</div>
 			</c:forEach>
@@ -54,7 +50,7 @@
 		<div class = "SubCategoryDiv" style = "float: left; width : 30%; display : none" > 
 			<c:forEach var="category" items = "${categories}">	
 				<c:forEach var="secondCategory" items = "${category.getChild()}">	
-					<div class =${secondCategory.num } style = "display : none">
+					<div class =${secondCategory.num } style = "display : none; margin-left : 30px;">
 						<c:forEach var="thirdCategory" items = "${secondCategory.getChild()}">	
 							<a style="cursor:pointer" onclick = "selectSubCategory('${thirdCategory.num}')">${thirdCategory.name }</a>
 							<hr>				
@@ -76,18 +72,18 @@
 			</div>
 	</div>
 	
-	<div class = "regPageCategoryDiv">
-		<div class = "categoryTitleDiv">판매가</div>
+	<div style = "margin-top :50px;" class = "regPageCategoryDiv">
+		<div  class = "categoryTitleDiv">판매가</div>
 		
 		<div class = "priceSettingDiv">
-			<div>
+			<div style = "margin-top :30px;">
 				<div class = "rdgPageDiv">
 					판매가격
 				</div>
-				<input name = "price" class = "PriceInput">
+				<input type = "number" name = "price" class = "PriceInput">
 			</div>
 			
-			<div>
+			<div style = "margin-top :30px;">
 				<div class = "rdgPageDiv"> 
 					할인여부
 				</div>
@@ -95,22 +91,22 @@
 				X  <input type = "radio" name = "onDiscount" value= "N">	
 			</div>
 			
-			<div>
+			<div style = "margin-top :30px;">
 				<div class = "rdgPageDiv"> 
 					할인명
 				</div>
 				<input name = "discountName" class = "PriceInput">
 			</div>
 			
-		<div>
-				<div class = "rdgPageDiv"> 
+		<div style = "margin-top :30px;">
+				<div  class = "rdgPageDiv"> 
 				전체할인가
 				</div>
 				<input name = "discountPrice" class = "PriceInput">
 		</div>
 		
-		<div>
-				<div class = "rdgPageDiv"> 
+		<div style = "margin-top :30px;">
+				<div  class = "rdgPageDiv"> 
 				부가세
 				</div>
 				과세  <input type = "radio" name = "onVAT" value= "10">
@@ -250,7 +246,7 @@
 			</div>
 		</div>
 	<div>
-		<button>등록</button>
+		<button class = "shopButton" style = "margin-top: 30px; margin-bottom: 30px">등록</button>
 	</div>
 	</form>
 	

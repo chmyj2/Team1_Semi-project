@@ -10,20 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.jw.DbUtil.OrderDBManager;
 import com.sm.hc.AccountDAO;
 
-@WebServlet("/OrderDetailController")
-public class OrderDetailController extends HttpServlet {
-
+@WebServlet("/OrderAdminController")
+public class OrderAdminController extends HttpServlet {
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		if (!AccountDAO.loginCheck2(request)) {//회원
-			AccountDAO.loginCheck(request);
-			request.setAttribute("contentPage", "jsp/sm/login.jsp");
-			request.getRequestDispatcher("index.jsp").forward(request, response);		
-		}
 		AccountDAO.loginCheck(request);
 		OrderDBManager.getAllOrder(request);
-		System.out.println("불내버릴꺼야");
-		request.setAttribute("contentPage", "jsp/jw/OrderDetail.jsp");
+		request.setAttribute("contentPage", "jsp/jw/OrderAdminView.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 

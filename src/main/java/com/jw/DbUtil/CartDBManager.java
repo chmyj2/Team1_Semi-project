@@ -90,6 +90,7 @@ public class CartDBManager {
 	public static void getAllCartUseUserId(HttpServletRequest request)
 	{
 		Connection con = null;
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try
@@ -97,15 +98,14 @@ public class CartDBManager {
 			String sql = "select * from cartTbl where Cart_userID = ?" ;
 			con = DBManager.connnect("jw");
 			pstmt = con.prepareStatement(sql);
-			
 			pstmt.setString(1, jwDBManager.getUserID(request));
-			
 			rs = pstmt.executeQuery();
 
 			HashMap<String, Integer> mapStr = new HashMap<String, Integer>();
 			while(rs.next())
 			{
-				mapStr.put(rs.getString("Cart_Product_Num"), rs.getInt("Cart_ProductQuantity"));
+				mapStr.put(rs.getString("Cart_Product_Num"),
+						rs.getInt("Cart_ProductQuantity"));
 			}
 			pstmt.close();
 			rs.close();
@@ -132,14 +132,20 @@ public class CartDBManager {
 			rs = pstmt.executeQuery();
 			ArrayList<SmallOrderBean> arrOB = new ArrayList<SmallOrderBean>();
 			
-			while(rs.next())
+		  	while(rs.next())
 			{
 				String productNum = rs.getString("Num_PK");
-				int quantity = mapStr.get(productNum);
 				String productName = rs.getString("Name");
 				String productPrice = rs.getString("Price");
 				String thumbnail  =  rs.getString("Thumbnail");
-				String stock =  rs.getString("Stock");
+				
+				String stock = rs.getString("Stock");
+				int iStock =  Integer.parseInt(stock);
+				int quantity = mapStr.get(productNum);
+				if( iStock <quantity )
+				{
+					quantity = iStock;
+				}
 				
 				arrOB.add(new SmallOrderBean(productNum,quantity,productName,productPrice, thumbnail,stock));
 			}
@@ -194,13 +200,27 @@ public class CartDBManager {
 		ResultSet rs = null;
 		try
 		{
-			String sql = "delete cartTbl where Cart_Product_Num = ?" ;
+			String sql = "delete cartTbl where Cart_Product_Num IN (" ;
+			String[] productNums = request.getParameterValues("orderNum");
+			
+			for(int i = 0 ; i < productNums.length;i++){		
+				if(productNums.length-1==i)
+				{
+					sql += "?)";	
+					break;
+				}
+				sql += "?,";
+			}
+			System.out.println(sql);
 			con = DBManager.connnect("jw");
 			pstmt = con.prepareStatement(sql);
-			
 
-			pstmt.setString(1, request.getParameter("productNum"));
-						
+			for(int i = 0 ; i < productNums.length;i++){
+				pstmt.setString(i+1, productNums[i].split(",")[0]);
+			}
+			System.out.println(sql);
+
+			
 			if(pstmt.executeUpdate()==1) {
 				System.out.println("등록성공");
 				request.setAttribute("result", "등록 성공");

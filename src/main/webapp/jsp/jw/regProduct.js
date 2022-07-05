@@ -33,7 +33,7 @@ var selectedSubNum = 0;
 var prevH2Name = null;
 var prevH3Name = null;
 
-		var categoryInput = document.getElementById("categoryInputId");
+var categoryInput = document.getElementById("categoryInputId");
 
 function selectMainCategory(Num)
 {

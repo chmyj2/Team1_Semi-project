@@ -1,9 +1,20 @@
 drop sequence category_Number_Seq;
 create sequence category_Number_Seq;
-
+create sequence comment_tbl_seq
+create sequence board_tbl_seq
 select * from categoryTbl;
 
+ALTER SEQUENCE cocktail_recipe_tbl_seq INCREMENT BY 1000;
 
+ALTER SEQUENCE star_point_tbl_seq INCREMENT BY 1000;
+
+select * from 
+
+select * from productTbl, categoryTbl 
+where productTbl.CategorytNum = categoryTbl.Num_PK 
+and productTbl.Num_PK = 'P103';
+select * from CATEGORYTBL
+create sequence cocktail_recipe_tbl_seq
 insert into categoryTbl values(category_Number_Seq.nextval,-1,null,1);
 delete categoryTbl where Name = 'Scotch Whisky';
 
@@ -14,6 +25,7 @@ insert into productTbl values ('P823','A220','잭다니엘','50000','0','특유의 맛이
 초심자 추천 안함','Jack Daniels1.jpg','null','null','null','#위스키 #테네시','Y','Y','500');
 insert into user_info_tbl values('yorunohosi','a0624124!@$','이준우','남','경기도 고양시 일산동구 성현로','010-8985-4474',27);
 select * from user_info_tbl;
+
 
 create table user_info_tbl(
 user_id varchar2(16 char) primary key,
@@ -48,7 +60,7 @@ create table categoryTbl
 	Name varchar2(16) not null unique,
 	Hierarchy_Level Number(1)
 )
-
+select OrderTbl.*,productTbl.name  from OrderTbl,productTbl where OrderTbl.Order_ProductNumber=productTbl.Num_Pk and Order_UserId = 'yorunohosi'
 create table productTbl
 (
 	Num_PK 	 		VARCHAR2(8 char) 	primary key,
@@ -92,11 +104,11 @@ create table cartTbl
 	Cart_Date 				date 			not null
 );
 create table sellerTbl
-{
+(
 	Num_PK varchar2(8 char) primary key,
 	userID	varchar2(16 char) not null,
 	stats	varchar2(16 char) not null
-}
+)
 create table DiscountInfoTbl
 (
 	Discount_Code 		varchar2(20 char),

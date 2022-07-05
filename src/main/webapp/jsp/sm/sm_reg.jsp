@@ -30,7 +30,6 @@ $(function(){
 		        	$("#showResult").text("사용중인 ID 입니다.");
 		        	$("#showResult").css("color","red");
 		        	iddd.focus();
-		    		iddd.value="";
 		        }else{
 		        	$("#showResult").text("");
 		        }
@@ -88,7 +87,7 @@ button:hover {
 			</tr>
 			<tr><td style="height: 40px;"></td></tr>
 			<tr>
-				<td><p>아이디 [ 영어 | 5글자 이상 ]</p></td>
+				<td><p>아이디 [ 영어만 | 5글자 이상 ]</p></td>
 			</tr>
 			<tr>
 				<td>

@@ -9,7 +9,7 @@
 </head>
 <body  class = "loginBody">
  <div>
-	<form action="MyPageController" class="login">
+	<form action="HC" class="login">
 		<h2>My Page</h2><br><br>
 		<p style="font-size: 6px; text-align: left;">아이디</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_id }</p><br>
@@ -32,7 +32,7 @@
 		<p style="font-size: 6px; text-align: left;">나이</p>
 		<p style="font-size: 6px; text-align: left;">${sessionScope.accountInfo.user_age }</p><br>
 							
-  		<br><button>수정하기</button>
+  		<br><button>홈으로 돌아가기</button>
 	</form>
 </div> 
 
