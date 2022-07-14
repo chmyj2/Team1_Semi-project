@@ -13,7 +13,7 @@ Tools : <img src="https://img.shields.io/badge/Eclipse IDE-2C2255?style=flat-squ
 ***
 
 # Description<br>
-<img width="500" src="https://user-images.githubusercontent.com/107032817/177462112-03fdbbee-85c4-4529-a8ba-ff33cfcd9435.png"/>
+<img width="500" alt="KakaoTalk_Photo_2022-07-14-23-11-49" src="https://user-images.githubusercontent.com/107030993/179002990-052b821d-b379-43d2-acd5-5f873504e7a7.png">
 
 칵테일과 주류에 관심도가 높은 성인을 대상으로, 접근이 용이한 칵테일 정보·판매 사이트를 만들고자 하였습니다. 인기 칵테일의 정보를 제공하고 레시피를 추천하며,<br>주류를 함께 구입할 수 있는 판매 사이트와 회원 커뮤니티 개발을 목표로 프로젝트를 진행하였습니다.<br>
 カクテルや酒類に関心の高い大人を対象に、アクセスが容易なカクテル情報・販売サイトを作ろうとしました。<br>人気カクテルの情報を提供し、レシピをお勧めし、酒類を一緒に購入できる販売サイトと会員コミュニティ開発を目指してプロジェクトを進めました。
