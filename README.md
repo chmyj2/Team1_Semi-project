@@ -22,6 +22,8 @@ Tools : <img src="https://img.shields.io/badge/Eclipse IDE-2C2255?style=flat-squ
 <br>
 
 # Detail<br>
+<img width="500" alt="KakaoTalk_Photo_2022-07-14-23-11-54" src="https://user-images.githubusercontent.com/107030993/179003492-b2b3933c-8823-49db-9447-ea452a4e526f.png">
+
 
 # Design & DB<br>
 <img width="40%" src="https://user-images.githubusercontent.com/107032817/177460461-e4be102c-4443-4982-ab46-141677a5912d.png"/>  <img width="40%" src="https://user-images.githubusercontent.com/107032817/177460570-8f949dde-7f82-40fb-8102-c94e98112f51.png"/>
