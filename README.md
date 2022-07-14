@@ -1,4 +1,5 @@
 # DOSU : 칵테일 정보 제공 및 판매, 회원 커뮤니티 웹 사이트
+カクテル情報の提供と販売、会員コミュニティのウェブサイト<br>
 **2022 Semi-Project Team 1** <br>
 
 Project nickname : DOSU <br>
