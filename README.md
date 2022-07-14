@@ -26,7 +26,7 @@ Tools : <img src="https://img.shields.io/badge/Eclipse IDE-2C2255?style=flat-squ
 
 
 # Design & DB<br>
-<img width="40%" src="https://user-images.githubusercontent.com/107032817/177460461-e4be102c-4443-4982-ab46-141677a5912d.png"/>  <img width="40%" src="https://user-images.githubusercontent.com/107032817/177460570-8f949dde-7f82-40fb-8102-c94e98112f51.png"/>
+<img width="40%" alt="스크린샷 2022-07-14 오후 11 18 24" src="https://user-images.githubusercontent.com/107030993/179004373-c868a450-b8da-465f-bde2-604c2eeb9534.png">  <img width="40%" src="https://user-images.githubusercontent.com/107032817/177460570-8f949dde-7f82-40fb-8102-c94e98112f51.png"/>
 
 # function
 
